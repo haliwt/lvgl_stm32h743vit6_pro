@@ -4,7 +4,7 @@
  */
 
 /*Copy this file as "lv_port_indev.c" and set this value to "1" to enable content*/
-#if 0
+#if 1
 
 /*********************
  *      INCLUDES
@@ -23,7 +23,7 @@
 /**********************
  *  STATIC PROTOTYPES
  **********************/
-
+#if 0
 static void touchpad_init(void);
 static void touchpad_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data);
 static bool touchpad_is_pressed(void);
@@ -41,7 +41,7 @@ static uint32_t keypad_get_key(void);
 static void encoder_init(void);
 static void encoder_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data);
 static void encoder_handler(void);
-
+#endif 
 static void button_init(void);
 static void button_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data);
 static int8_t button_get_pressed_id(void);
@@ -82,6 +82,8 @@ void lv_port_indev_init(void)
      */
 
     static lv_indev_drv_t indev_drv;
+
+    #if 0
 
     /*------------------
      * Touchpad
@@ -150,6 +152,8 @@ void lv_port_indev_init(void)
      *and assign this input device to group to navigate in it:
      *`lv_indev_set_group(indev_encoder, group);`*/
 
+    #endif 
+
     /*------------------
      * Button
      * -----------------*/
@@ -178,7 +182,7 @@ void lv_port_indev_init(void)
 /*------------------
  * Touchpad
  * -----------------*/
-
+#if 0
 /*Initialize your touchpad*/
 static void touchpad_init(void)
 {
@@ -349,7 +353,7 @@ static void encoder_handler(void)
     encoder_diff += 0;
     encoder_state = LV_INDEV_STATE_REL;
 }
-
+#endif 
 /*------------------
  * Button
  * -----------------*/

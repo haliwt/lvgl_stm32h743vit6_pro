@@ -23,10 +23,10 @@
 #include <stdio.h>
 
 
-//LV_FONT_DECLARE(myFont24)
+LV_FONT_DECLARE(myFont24)
 //LV_FONT_DECLARE(myFont14)
 //LV_FONT_DECLARE(lv_font_montserrat_12)
-LV_FONT_DECLARE(lv_font_montserrat_14)
+//LV_FONT_DECLARE(lv_font_montserrat_14)
 
 lv_obj_t *font_label;
 
@@ -41,8 +41,11 @@ void lv_mainstart(void)
 
     lv_obj_set_style_bg_color(lv_scr_act(),lv_palette_main(LV_PALETTE_BLUE),LV_STATE_DEFAULT);  /* 设置背景颜色 */
     font_label = lv_label_create(lv_scr_act());
-    lv_obj_set_style_text_font(font_label,&lv_font_montserrat_14,LV_STATE_DEFAULT);
-    lv_label_set_text(font_label, "hello world!!");
+    //lv_obj_set_style_text_font(font_label,&lv_font_montserrat_14,LV_STATE_DEFAULT);
+    //lv_label_set_text(font_label, "hello world!!");
+
+    lv_obj_set_style_text_font(font_label,&myFont24,LV_STATE_DEFAULT);
+    lv_label_set_text(font_label, "你好 世界");
     lv_obj_center(font_label);
     
 

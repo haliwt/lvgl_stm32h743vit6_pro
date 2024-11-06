@@ -33,6 +33,7 @@
 #include "bsp_led.h"
 #include "bsp_tft_app.h"
 #include "lv_port_disp_template.h"
+#include "lv_port_indev_template.h"
 #include "lvgl.h"
 #include "lv_mainstart.h"
 
@@ -113,6 +114,7 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim17);
   lv_init();
   lv_port_disp_init();
+  lv_port_indev_init();
   freeRTOS_handler();
  // lv_mainstart();
   /* USER CODE END 2 */
