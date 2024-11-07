@@ -11,6 +11,7 @@
  *********************/
 #include "lv_port_indev_template.h"
 #include "../../lvgl.h"
+#include "bsp.h"
 
 /*********************
  *      DEFINES
@@ -42,22 +43,32 @@ static void encoder_init(void);
 static void encoder_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data);
 static void encoder_handler(void);
 #endif 
+
 static void button_init(void);
-static void button_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data);
+//static void button_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data);
 static int8_t button_get_pressed_id(void);
 static bool button_is_pressed(uint8_t id);
+
+static bool button1_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data);
+static bool button2_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data);
+
+static bool button1_pressed = false;
+static bool button2_pressed = false;
 
 /**********************
  *  STATIC VARIABLES
  **********************/
+#if 0
 lv_indev_t * indev_touchpad;
 lv_indev_t * indev_mouse;
 lv_indev_t * indev_keypad;
 lv_indev_t * indev_encoder;
-lv_indev_t * indev_button;
+#endif 
+//lv_indev_t * indev_button;
 
-static int32_t encoder_diff;
-static lv_indev_state_t encoder_state;
+
+//static int32_t encoder_diff;
+//static lv_indev_state_t encoder_state;
 
 /**********************
  *      MACROS
@@ -81,7 +92,7 @@ void lv_port_indev_init(void)
      *  You should shape them according to your hardware
      */
 
-    static lv_indev_drv_t indev_drv;
+   // static lv_indev_drv_t indev_drv;
 
     #if 0
 
@@ -157,22 +168,34 @@ void lv_port_indev_init(void)
     /*------------------
      * Button
      * -----------------*/
-
+     static lv_indev_drv_t indev_drv1;
+     static lv_indev_drv_t indev_drv2;
     /*Initialize your button if you have*/
     button_init();
 
     /*Register a button input device*/
-    lv_indev_drv_init(&indev_drv);
-    indev_drv.type = LV_INDEV_TYPE_BUTTON;
-    indev_drv.read_cb = button_read;
-    indev_button = lv_indev_drv_register(&indev_drv);
+   
+    lv_indev_drv_init(&indev_drv1);
+    indev_drv1.type = LV_INDEV_TYPE_BUTTON;
+    indev_drv1.read_cb = button1_read;
+
+    lv_indev_drv_init(&indev_drv2);
+    indev_drv2.type = LV_INDEV_TYPE_BUTTON;
+    indev_drv2.read_cb = button2_read;
+
+
+
+
+    
+    lv_indev_t* indev_button1 = lv_indev_drv_register(&indev_drv1);
+    lv_indev_t*  indev_button2 = lv_indev_drv_register(&indev_drv2);
 
     /*Assign buttons to points on the screen*/
-    static const lv_point_t btn_points[2] = {
-        {10, 10},   /*Button 0 -> x:10; y:10*/
-        {40, 100},  /*Button 1 -> x:40; y:100*/
-    };
-    lv_indev_set_button_points(indev_button, btn_points);
+//    static const lv_point_t btn_points[2] = {
+//        {10, 10},   /*Button 0 -> x:10; y:10*/
+//        {40, 100},  /*Button 1 -> x:40; y:100*/
+//    };
+//    lv_indev_set_button_points(indev_button, btn_points);
 }
 
 /**********************
@@ -362,18 +385,21 @@ static void encoder_handler(void)
 static void button_init(void)
 {
     /*Your code comes here*/
+  
 }
 
 /*Will be called by the library to read the button*/
-static void button_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data)
+static bool button1_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data)
 {
-
+    uint8_t current_state;
+    #if 0
     static uint8_t last_btn = 0;
+    
 
     /*Get the pressed button's ID*/
     int8_t btn_act = button_get_pressed_id();
 
-    if(btn_act >= 0) {
+    if(btn_act > 0) {
         data->state = LV_INDEV_STATE_PR;
         last_btn = btn_act;
     }
@@ -383,6 +409,46 @@ static void button_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data)
 
     /*Save the last pressed button's ID*/
     data->btn_id = last_btn;
+
+
+    //key handler function add codes 
+   #endif
+
+   if(KEY0==0) current_state = 1;
+
+   //if key  be changed 
+   if(current_state != button1_pressed){
+
+       button1_pressed = current_state;
+       data->state = button1_pressed ? LV_INDEV_STATE_PR :LV_INDEV_STATE_REL;
+       return false ; // data of button1 has been be changed data.
+   }
+
+
+   return true; //button1 of data don't be changed data.
+
+ }
+
+
+static bool button2_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data)
+{
+    uint8_t current_state ;
+
+    if(KEY1==0) current_state = 1;
+    
+      //if key  be changed 
+      if(current_state != button2_pressed){
+    
+          button2_pressed = current_state;
+          data->state = button2_pressed ? LV_INDEV_STATE_PR :LV_INDEV_STATE_REL;
+          return false ; // data of button1 has been be changed data.
+      }
+    
+    
+      return true; //button1 of data don't be changed data.
+
+
+
 }
 
 /*Get ID  (0, 1, 2 ..) of the pressed button*/
@@ -405,8 +471,22 @@ static int8_t button_get_pressed_id(void)
 /*Test if `id` button is pressed or not*/
 static bool button_is_pressed(uint8_t id)
 {
-
+    uint8_t keyvalue;
     /*Your code comes here*/
+    keyvalue = key_scan(0);
+    if(id==0){
+        if(keyvalue == 1) return LV_INDEV_STATE_PR;
+
+    }
+    else if(id==1){
+        if(keyvalue == 2) return LV_INDEV_STATE_PR;
+
+    }
+    else{
+     return  LV_INDEV_STATE_REL;
+
+    }
+   
 
     return false;
 }

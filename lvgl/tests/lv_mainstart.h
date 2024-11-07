@@ -3,4 +3,7 @@
 
 void lv_mainstart(void);
 
+void lv_display_button_init(void);
+
+
 #endif

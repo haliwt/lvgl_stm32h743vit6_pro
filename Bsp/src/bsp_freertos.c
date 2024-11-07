@@ -6,6 +6,7 @@
 
 
 #include "lv_port_disp_template.h"
+#include "lv_port_indev_template.h"
 #include "lvgl.h"
 #include "lv_mainstart.h"
 
@@ -64,8 +65,10 @@ void freeRTOS_handler(void)
 */
 static void vTaskMsgPro(void *pvParameters)
 {
-
-   lv_mainstart();
+   
+    
+  //  lv_mainstart();
+ 
     while(1)
     {
 	    lv_timer_handler(); /* LVGL¼ÆÊ±Æ÷ */
@@ -99,6 +102,7 @@ static void vTaskStart(void *pvParameters)
 //           LED0(0);
 //        }
 		LED0_TOGGLE();
+		
         vTaskDelay(1000);
     }
 }

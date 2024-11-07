@@ -115,6 +115,8 @@ int main(void)
   lv_init();
   lv_port_disp_init();
   lv_port_indev_init();
+  lv_display_button_init();
+  //lv_mainstart();
   freeRTOS_handler();
  // lv_mainstart();
   /* USER CODE END 2 */
