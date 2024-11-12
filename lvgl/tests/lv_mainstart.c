@@ -111,19 +111,19 @@ lv_event_code_t code0 ;
 /* Initialize input devices */
 void lv_port_indev_init(void) 
 {
- //  static lv_indev_drv_t indev_drv1;
- //  static lv_indev_drv_t indev_drv2;
+   static lv_indev_drv_t indev_drv1;
+   static lv_indev_drv_t indev_drv2;
 
-//   lv_indev_drv_init(&indev_drv1);
-//    indev_drv1.type = LV_INDEV_TYPE_BUTTON;
-//    indev_drv1.read_cb = button1_read; // Read callback for the first button
-//
-//    lv_indev_drv_init(&indev_drv2);
-//    indev_drv2.type = LV_INDEV_TYPE_BUTTON;
-//    indev_drv2.read_cb = button2_read; // Read callback for the second button
-//
-//     lv_indev_drv_register(&indev_drv1);
-//     lv_indev_drv_register(&indev_drv2);
+   lv_indev_drv_init(&indev_drv1);
+    indev_drv1.type = LV_INDEV_TYPE_BUTTON;
+  //  indev_drv1.read_cb = button1_read; // Read callback for the first button
+
+    lv_indev_drv_init(&indev_drv2);
+    indev_drv2.type = LV_INDEV_TYPE_BUTTON;
+   // indev_drv2.read_cb = button2_read; // Read callback for the second button
+
+     lv_indev_drv_register(&indev_drv1);
+     lv_indev_drv_register(&indev_drv2);
 
     /* Create buttons */
     button_init();
@@ -162,9 +162,9 @@ static void button1_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data)
     /* Get the pressed button's ID */
    // int8_t btn_act = button_get_pressed_id();
 
-    if(KEY0 == 0){//if(btn_act >= 0) {
+    if(KEY1 == 0){//if(btn_act >= 0) {
       HAL_Delay(10);
-      if(KEY0==0){
+      if(KEY1==0){
        // update_button_color(btn1, true);    // Change color of button 1
         key1_pressed++;
         
@@ -202,10 +202,10 @@ static void button2_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data) {
     /* Get the pressed button's ID */
   //  int8_t btn_act = button_get_pressed_id();
 
-    if(KEY1 == 0){//if(btn_act >= 0) {
+    if(KEY2 == 0){//if(btn_act >= 0) {
         
         HAL_Delay(10);//osDelay(20);
-       if(KEY1==0){
+       if(KEY2==0){
      //   update_button_color(btn2, true);    // Change color of button 1
         key2_pressed ++;
         data->state = LV_INDEV_STATE_PR;
@@ -275,19 +275,43 @@ void check_button_state(void)
     ///static uint32_t last_debounce_time = 0;
     //uint32_t debounce_delay = 50; // 去抖动延迟，单位为毫秒
 
-    // 读取按键状态
-   if (KEY0 == GPIO_PIN_RESET){ // 替换为实际的GPIO端口和引脚号
+   
+
+   //key2
+
+   if(KEY2 == GPIO_PIN_SET){ // 替换为实际的GPIO端口和引脚号
         // 检测到按键按下
         osDelay(20);
         
-   if(KEY0==GPIO_PIN_RESET){ //if (HAL_GetTick() - last_debounce_time > debounce_delay) {
+   if(KEY2==GPIO_PIN_SET){ //if (HAL_GetTick() - last_debounce_time > debounce_delay) {
+            //last_debounce_time = HAL_GetTick();
+            // 改变按键颜色为红色
+             key2_pressed++;
+            lv_obj_set_style_bg_color(btn2, lv_color_hex(0xFF0000), 0); // 使用lv_color_hex设置颜色
+    }
+   } 
+   else{
+        if(key2_pressed > 0){
+            key2_pressed=0;
+        // 检测到按键释放
+        lv_obj_set_style_bg_color(btn2, lv_color_hex(0x00ff00), 0); // 使用lv_color_hex设置颜色
+        }
+    }
+
+
+   // 读取按键状态
+   if (KEY1 == GPIO_PIN_RESET){ // 替换为实际的GPIO端口和引脚号
+        // 检测到按键按下
+        osDelay(20);
+        
+   if(KEY1==GPIO_PIN_RESET){ //if (HAL_GetTick() - last_debounce_time > debounce_delay) {
             //last_debounce_time = HAL_GetTick();
             // 改变按键颜色为红色
              key1_pressed++;
             lv_obj_set_style_bg_color(btn1, lv_color_hex(0xFF0000), 0); // 使用lv_color_hex设置颜色
     }
    } 
-   else {
+   else if(KEY1==GPIO_PIN_SET){
         if(key1_pressed > 0){
             key1_pressed=0;
         // 检测到按键释放

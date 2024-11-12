@@ -33,6 +33,10 @@
 #include "lv_port_indev_template.h"
 #include "lvgl.h"
 #include "lv_mainstart.h"
+#include "gui_guider.h"
+#include "events_init.h"
+
+lv_ui guider_ui;
 
 /* USER CODE END Includes */
 
@@ -120,7 +124,9 @@ int main(void)
   // lv_example_btn_run();
     //lv_mainstart();
     //lv_display_button_init();
-    lv_port_indev_init() ;
+  //  lv_port_indev_init() ;
+    setup_ui(&guider_ui);
+    events_init(&guider_ui);
     freeRTOS_handler();
 
   /* USER CODE END 2 */
