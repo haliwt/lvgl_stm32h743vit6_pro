@@ -89,14 +89,13 @@ uint8_t LCD_Read_Data(void)
 }
 void TFT_GPIO_Reset(void)
 {
-
-    
-	LCD_RST_SetHigh();
-	HAL_Delay(100);
-	LCD_RST_SetLow();
-    HAL_Delay(200);
+   // LCD_RST_SetHigh();
+	//HAL_Delay(500);
+    LCD_RST_SetLow();
+    HAL_Delay(1000);
     LCD_RST_SetHigh();
 	HAL_Delay(100);
+
 
 }
 /*******************************************************************************
@@ -252,14 +251,14 @@ void LCD_Clear(uint16_t color)
 	   
 		   LCD_Write_Cmd(0X2C);
 	   
-		   for (i = 0; i < 320; i++)
-		   {
-			   for (j = 0; j < 240; j++)
-			   {
-				   LCD_Write_Data(color >> 8);
-				   LCD_Write_Data(color);
-			   }
-		   }
+//		   for (i = 0; i < 320; i++)
+//		   {
+//			   for (j = 0; j < 240; j++)
+//			   {
+//				   LCD_Write_Data(color >> 8);
+//				   LCD_Write_Data(color);
+//			   }
+//		   }
 
 		}
 

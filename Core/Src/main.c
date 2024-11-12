@@ -28,10 +28,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "bsp_st7789v.h"
-#include "bsp_tft.h"
-#include "bsp_led.h"
-#include "bsp_tft_app.h"
+#include "bsp.h"
 #include "lv_port_disp_template.h"
 #include "lv_port_indev_template.h"
 #include "lvgl.h"
@@ -112,13 +109,20 @@ int main(void)
   MX_DMA2D_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim17);
+   
+  TFT_GPIO_Reset();
+ // TFT_LCD_Init();
   lv_init();
+  
   lv_port_disp_init();
-  lv_port_indev_init();
-  lv_display_button_init();
-  //lv_mainstart();
-  freeRTOS_handler();
- // lv_mainstart();
+  //lv_port_indev_init();
+  //lv_display_button_init();
+  // lv_example_btn_run();
+    //lv_mainstart();
+    //lv_display_button_init();
+    lv_port_indev_init() ;
+    freeRTOS_handler();
+
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in cmsis_os2.c) */

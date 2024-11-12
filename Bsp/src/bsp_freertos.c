@@ -68,11 +68,13 @@ static void vTaskMsgPro(void *pvParameters)
    
     
   //  lv_mainstart();
- 
+   //  lv_port_indev_init() ;
     while(1)
     {
 	    lv_timer_handler(); /* LVGL¼ÆÊ±Æ÷ */
+         check_button_state() ;
         vTaskDelay(5);
+       //physical_button_pressed();
 		
     }
 }

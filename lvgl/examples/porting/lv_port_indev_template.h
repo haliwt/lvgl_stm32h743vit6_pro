@@ -30,7 +30,11 @@ extern "C" {
 /**********************
  * GLOBAL PROTOTYPES
  **********************/
-void lv_port_indev_init(void);
+//void lv_port_indev_init(void);
+
+void button1_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data);
+void button2_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data);
+
 
 /**********************
  *      MACROS
@@ -39,6 +43,9 @@ void lv_port_indev_init(void);
 #ifdef __cplusplus
 } /*extern "C"*/
 #endif
+
+
+
 
 #endif /*LV_PORT_INDEV_TEMPL_H*/
 
