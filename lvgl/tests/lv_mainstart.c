@@ -351,21 +351,11 @@ void update_works_time(lv_ui *ui)
   if(time_colon_flag ==0){
 
       time_colon_flag++ ; 
-
-    
-
-    ui->scrHome_minuteNumbers = lv_spangroup_create(ui->scrHome);
-    lv_spangroup_set_align(ui->scrHome_minuteNumbers, LV_TEXT_ALIGN_LEFT);
-    lv_spangroup_set_overflow(ui->scrHome_minuteNumbers, LV_SPAN_OVERFLOW_CLIP);
-    lv_spangroup_set_mode(ui->scrHome_minuteNumbers, LV_SPAN_MODE_BREAK);
-    //create span
-    ui->scrHome_minuteNumbers_span = lv_spangroup_new_span(ui->scrHome_minuteNumbers);
-    lv_span_set_text(ui->scrHome_minuteNumbers_span, "00");
-    lv_style_set_text_color(&ui->scrHome_minuteNumbers_span->style, lv_color_hex(0x000000));
-    lv_style_set_text_decor(&ui->scrHome_minuteNumbers_span->style, LV_TEXT_DECOR_NONE);
-    lv_style_set_text_font(&ui->scrHome_minuteNumbers_span->style, &lv_font_montserratMedium_52);
-    lv_obj_set_pos(ui->scrHome_minuteNumbers, 97, 51);
-    lv_obj_set_size(ui->scrHome_minuteNumbers, 58, 50);
+  
+      lv_span_set_text(ui->scrHome_minuteNumbers_span, "00");
+      lv_style_set_text_font(&ui->scrHome_minuteNumbers_span->style, &lv_font_montserratMedium_52);
+      lv_obj_set_pos(ui->scrHome_minuteNumbers, 97, 51);
+      lv_obj_set_size(ui->scrHome_minuteNumbers, 58, 50);
 
 
   }
@@ -378,7 +368,11 @@ void update_works_time(lv_ui *ui)
       min_value ++;
       
      lv_disp_time[0]  = min_value;
-     lv_label_set_text(ui->scrHome_minuteNumbers,&lv_disp_time[0]);
+     
+     lv_label_set_text(ui->scrHome_minuteNumbers,"01");
+     lv_style_set_text_font(&ui->scrHome_minuteNumbers_span->style, &lv_font_montserratMedium_52);
+     lv_obj_set_pos(ui->scrHome_minuteNumbers, 97, 51);
+     lv_obj_set_size(ui->scrHome_minuteNumbers, 58, 50);
      if(lv_disp_time[0] > 59){//59 minutes 
 
           hour_value ++ ;
@@ -392,29 +386,42 @@ void update_works_time(lv_ui *ui)
 
   }
 
-  #if 0
 
-  if(gpro_t.gTimer_lv_disp_time_colon > 0){
-      gpro_t.gTimer_lv_disp_time_colon=0;
 
-      time_colon_flag ++;
+  if(gpro_t.gTimer_lv_disp_time_colon <  2){
+    //  gpro_t.gTimer_lv_disp_time_colon=0;
 
-      if(time_colon_flag == 1){
-        lv_label_set_text(ui->scrHome_timeColon, ":");
+     // time_colon_flag ++;
 
-      }
-      else{
-
-           time_colon_flag=0;
-          //lv_label_set_text(ui->scrHome_timeColon, LV_STATE_HIDDEN);
-           lv_obj_add_flag(ui->scrHome_timeColon,LV_OBJ_FLAG_HIDDEN);
-       }
-
+     // if(time_colon_flag == 1){
+      
+        lv_obj_clear_flag(ui->scrHome_timeColon, LV_OBJ_FLAG_HIDDEN); // 显示标签
+       
+//        ui->scrHome_timeColon = lv_label_create(ui->scrHome);
+//        lv_label_set_text(ui->scrHome_timeColon, ":");
+//        lv_label_set_long_mode(ui->scrHome_timeColon, LV_LABEL_LONG_WRAP);
+//        lv_obj_set_pos(ui->scrHome_timeColon, 69, 54);
+//        lv_obj_set_size(ui->scrHome_timeColon, 28, 40);
+//
+//      }
+//      else{
+//
+//           time_colon_flag=0;
+//          //lv_label_set_text(ui->scrHome_timeColon, LV_STATE_HIDDEN);
+//           lv_obj_add_flag(ui->scrHome_timeColon,LV_OBJ_FLAG_HIDDEN);
+//       }
+//
 
 
 
   }
-  #endif 
+  else if(gpro_t.gTimer_lv_disp_time_colon > 1 && gpro_t.gTimer_lv_disp_time_colon < 3){
+       gpro_t.gTimer_lv_disp_time_colon=0;
+
+       lv_obj_add_flag(ui->scrHome_timeColon,LV_OBJ_FLAG_HIDDEN);
+
+  }
+   
 
 }
 
