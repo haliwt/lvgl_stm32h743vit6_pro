@@ -9,7 +9,8 @@
 #include "lv_port_indev_template.h"
 #include "lvgl.h"
 #include "lv_mainstart.h"
-
+#include "gui_guider.h"
+#include "events_init.h"
 
 
 
@@ -73,6 +74,7 @@ static void vTaskMsgPro(void *pvParameters)
     {
 	    lv_timer_handler(); /* LVGL¼ÆÊ±Æ÷ */
         // check_button_state() ;
+        
         vTaskDelay(5);
        //physical_button_pressed();
 		
@@ -104,6 +106,7 @@ static void vTaskStart(void *pvParameters)
 //           LED0(0);
 //        }
 		LED0_TOGGLE();
+        update_works_time(&guider_ui);
 		
         vTaskDelay(1000);
     }

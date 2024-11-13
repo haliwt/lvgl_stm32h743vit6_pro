@@ -18,6 +18,13 @@
 
 typedef struct _bsp_pro_t{
 
+
+   char lv_disp_minutes_value[1];
+   char lv_disp_hours_value[1];
+
+
+
+   uint8_t gTimer_lv_disp_time_colon;
    uint8_t gTimer_lv_disp_time; 
 
 

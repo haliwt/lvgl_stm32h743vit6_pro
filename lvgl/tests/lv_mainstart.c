@@ -29,6 +29,11 @@
 #include "gui_guider.h"
 #include "events_init.h"
 
+bsp_pro_t gpro_t;
+
+
+
+char lv_disp_time[2] ;
 
 //static void button1_event_cb(lv_event_t *e);
 ////static void button1_event_cb(lv_obj_t * btn, lv_event_t event);
@@ -339,6 +344,79 @@ void check_button_state(void)
 #endif 
 
 
+void update_works_time(lv_ui *ui)
+{
+  static uint8_t time_colon_flag,min_value,hour_value;
+
+  if(time_colon_flag ==0){
+
+      time_colon_flag++ ; 
+
+    
+
+    ui->scrHome_minuteNumbers = lv_spangroup_create(ui->scrHome);
+    lv_spangroup_set_align(ui->scrHome_minuteNumbers, LV_TEXT_ALIGN_LEFT);
+    lv_spangroup_set_overflow(ui->scrHome_minuteNumbers, LV_SPAN_OVERFLOW_CLIP);
+    lv_spangroup_set_mode(ui->scrHome_minuteNumbers, LV_SPAN_MODE_BREAK);
+    //create span
+    ui->scrHome_minuteNumbers_span = lv_spangroup_new_span(ui->scrHome_minuteNumbers);
+    lv_span_set_text(ui->scrHome_minuteNumbers_span, "00");
+    lv_style_set_text_color(&ui->scrHome_minuteNumbers_span->style, lv_color_hex(0x000000));
+    lv_style_set_text_decor(&ui->scrHome_minuteNumbers_span->style, LV_TEXT_DECOR_NONE);
+    lv_style_set_text_font(&ui->scrHome_minuteNumbers_span->style, &lv_font_montserratMedium_52);
+    lv_obj_set_pos(ui->scrHome_minuteNumbers, 97, 51);
+    lv_obj_set_size(ui->scrHome_minuteNumbers, 58, 50);
+
+
+  }
+
+
+  
+  if(gpro_t.gTimer_lv_disp_time > 59){
+     gpro_t.gTimer_lv_disp_time =0;
+     
+      min_value ++;
+      
+     lv_disp_time[0]  = min_value;
+     lv_label_set_text(ui->scrHome_minuteNumbers,&lv_disp_time[0]);
+     if(lv_disp_time[0] > 59){//59 minutes 
+
+          hour_value ++ ;
+          lv_disp_time[1]  = hour_value;
+          
+           lv_label_set_text(ui->scrHome_hourNumbers,&lv_disp_time[1]);
+
+
+      }
+
+
+  }
+
+  #if 0
+
+  if(gpro_t.gTimer_lv_disp_time_colon > 0){
+      gpro_t.gTimer_lv_disp_time_colon=0;
+
+      time_colon_flag ++;
+
+      if(time_colon_flag == 1){
+        lv_label_set_text(ui->scrHome_timeColon, ":");
+
+      }
+      else{
+
+           time_colon_flag=0;
+          //lv_label_set_text(ui->scrHome_timeColon, LV_STATE_HIDDEN);
+           lv_obj_add_flag(ui->scrHome_timeColon,LV_OBJ_FLAG_HIDDEN);
+       }
+
+
+
+
+  }
+  #endif 
+
+}
 
 
 

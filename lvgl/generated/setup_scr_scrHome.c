@@ -227,27 +227,33 @@ void setup_scr_scrHome(lv_ui *ui)
     lv_obj_set_style_shadow_width(ui->scrHome_timeColon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
 
     //Write codes scrHome_minuteNumbers
-    ui->scrHome_minuteNumbers = lv_label_create(ui->scrHome);
-    lv_label_set_text(ui->scrHome_minuteNumbers, "10");
-    lv_label_set_long_mode(ui->scrHome_minuteNumbers, LV_LABEL_LONG_WRAP);
-    lv_obj_set_pos(ui->scrHome_minuteNumbers, 94, 51);
-    lv_obj_set_size(ui->scrHome_minuteNumbers, 60, 48);
+    ui->scrHome_minuteNumbers = lv_spangroup_create(ui->scrHome);
+    lv_spangroup_set_align(ui->scrHome_minuteNumbers, LV_TEXT_ALIGN_LEFT);
+    lv_spangroup_set_overflow(ui->scrHome_minuteNumbers, LV_SPAN_OVERFLOW_CLIP);
+    lv_spangroup_set_mode(ui->scrHome_minuteNumbers, LV_SPAN_MODE_BREAK);
+    //create span
+    ui->scrHome_minuteNumbers_span = lv_spangroup_new_span(ui->scrHome_minuteNumbers);
+    lv_span_set_text(ui->scrHome_minuteNumbers_span, "10");
+    lv_style_set_text_color(&ui->scrHome_minuteNumbers_span->style, lv_color_hex(0x000000));
+    lv_style_set_text_decor(&ui->scrHome_minuteNumbers_span->style, LV_TEXT_DECOR_NONE);
+    lv_style_set_text_font(&ui->scrHome_minuteNumbers_span->style, &lv_font_montserratMedium_52);
+    lv_obj_set_pos(ui->scrHome_minuteNumbers, 97, 51);
+    lv_obj_set_size(ui->scrHome_minuteNumbers, 58, 50);
 
-    //Write style for scrHome_minuteNumbers, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
-    lv_obj_set_style_border_width(ui->scrHome_minuteNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_radius(ui->scrHome_minuteNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_color(ui->scrHome_minuteNumbers, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui->scrHome_minuteNumbers, &lv_font_montserratMedium_52, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_opa(ui->scrHome_minuteNumbers, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_letter_space(ui->scrHome_minuteNumbers, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_line_space(ui->scrHome_minuteNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_align(ui->scrHome_minuteNumbers, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_opa(ui->scrHome_minuteNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_top(ui->scrHome_minuteNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_right(ui->scrHome_minuteNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_bottom(ui->scrHome_minuteNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_left(ui->scrHome_minuteNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_shadow_width(ui->scrHome_minuteNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    //Write style state: LV_STATE_DEFAULT for &style_scrHome_minuteNumbers_main_main_default
+    static lv_style_t style_scrHome_minuteNumbers_main_main_default;
+    ui_init_style(&style_scrHome_minuteNumbers_main_main_default);
+
+    lv_style_set_border_width(&style_scrHome_minuteNumbers_main_main_default, 0);
+    lv_style_set_radius(&style_scrHome_minuteNumbers_main_main_default, 0);
+    lv_style_set_bg_opa(&style_scrHome_minuteNumbers_main_main_default, 0);
+    lv_style_set_pad_top(&style_scrHome_minuteNumbers_main_main_default, 0);
+    lv_style_set_pad_right(&style_scrHome_minuteNumbers_main_main_default, 0);
+    lv_style_set_pad_bottom(&style_scrHome_minuteNumbers_main_main_default, 0);
+    lv_style_set_pad_left(&style_scrHome_minuteNumbers_main_main_default, 0);
+    lv_style_set_shadow_width(&style_scrHome_minuteNumbers_main_main_default, 0);
+    lv_obj_add_style(ui->scrHome_minuteNumbers, &style_scrHome_minuteNumbers_main_main_default, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_spangroup_refr_mode(ui->scrHome_minuteNumbers);
 
     //The custom code of scrHome.
 

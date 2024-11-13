@@ -122,6 +122,7 @@ int main(void)
 
     events_init(&guider_ui);
     setup_ui(&guider_ui);
+    
    
     freeRTOS_handler();
 
