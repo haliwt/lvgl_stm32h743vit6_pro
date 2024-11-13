@@ -40,7 +40,7 @@ extern "C" {
 /**********************
  *      TYPEDEFS
  **********************/
-
+void clock_count_24(int *hour, int *minute, int *second);
 /**********************
  * GLOBAL PROTOTYPES
  **********************/
