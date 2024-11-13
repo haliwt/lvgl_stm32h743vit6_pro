@@ -351,12 +351,12 @@ uint8_t min_value;
 void update_works_time(lv_ui *ui)
 {
   static uint8_t hour_value,power_on_first;
-  char value[1];
+
 
    lv_span_t span;
    span.txt = NULL;
    span.static_flag = 0;
-   text[0] = '\0'; // 初始化字符串为空
+   char text[4]; // 60个数字 * 3个字符（假设最大为两位数）+ 1个空字符
 
   if(power_on_first ==0){
 
@@ -364,39 +364,45 @@ void update_works_time(lv_ui *ui)
 
     lv_label_set_text(ui->scrHome_hourNumbers, "00");
     lv_label_set_long_mode(ui->scrHome_hourNumbers, LV_LABEL_LONG_WRAP);
-    lv_obj_set_pos(ui->scrHome_hourNumbers, 5, 51);
-    lv_obj_set_size(ui->scrHome_hourNumbers, 63, 48);
+    lv_obj_set_pos(ui->scrHome_hourNumbers, 9, 51);
+    lv_obj_set_size(ui->scrHome_hourNumbers, 76, 46);
   
       lv_span_set_text(ui->scrHome_minuteNumbers_span, "00");
      //lv_style_set_text_font(&ui->scrHome_minuteNumbers_span->style, &lv_font_montserratMedium_50);
-      lv_obj_set_pos(ui->scrHome_minuteNumbers, 87, 51);
-    lv_obj_set_size(ui->scrHome_minuteNumbers, 70, 43);
+     lv_obj_set_pos(ui->scrHome_minuteNumbers, 94, 51);
+    lv_obj_set_size(ui->scrHome_minuteNumbers, 83, 44);
 
 
   }
 
 
   
-  if(gpro_t.gTimer_lv_disp_time > 5){
+  if(gpro_t.gTimer_lv_disp_time > 59){
      gpro_t.gTimer_lv_disp_time =0;
      
         min_value++;
         char num_str[3]; // 3个字符 + 1个空字符
-        snprintf(num_str, sizeof(num_str), "%02d", i); // 格式化数字为两位字符串
+        snprintf(num_str, sizeof(num_str), "%02d", min_value); // 格式化数字为两位字符串
         strcat(text, num_str); // 将数字字符串追加到 text
         
     
      
     
         lv_label_set_text(ui->scrHome_hourNumbers,text);
-        lv_obj_set_pos(ui->scrHome_hourNumbers, 5, 51);
-        lv_obj_set_size(ui->scrHome_hourNumbers, 63, 48);
-     if(lv_disp_time[0] > 59){//59 minutes 
+        lv_obj_set_pos(ui->scrHome_minuteNumbers, 94, 51);
+        lv_obj_set_size(ui->scrHome_minuteNumbers, 83, 44);
+     if(min_value > 59){//59 minutes 
+          min_value =0;
 
           hour_value ++ ;
-          lv_disp_time[1]  = hour_value;
+         
+          char num_str[3]; // 3个字符 + 1个空字符
+          snprintf(num_str, sizeof(num_str), "%02d", hour_value); // 格式化数字为两位字符串
+          strcat(text, num_str); // 将数字字符串追加到 text
           
-           lv_label_set_text(ui->scrHome_hourNumbers,&lv_disp_time[1]);
+         lv_label_set_text(ui->scrHome_hourNumbers,text);
+         lv_obj_set_pos(ui->scrHome_hourNumbers, 9, 51);
+         lv_obj_set_size(ui->scrHome_hourNumbers, 76, 46);
 
 
       }
