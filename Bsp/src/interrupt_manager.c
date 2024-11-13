@@ -1,7 +1,7 @@
 #include "bsp.h"
 #include "lvgl.h"
 
-uint8_t indicator_time_flag;
+
 /*******************************************************************************
 	*
 	*Function Name:void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
@@ -21,7 +21,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
            tm0=0;
            
-           indicator_time_flag++ ;
+           gpro_t.gTimer_lv_disp_time++;
 
         }
 

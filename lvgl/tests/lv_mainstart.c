@@ -19,10 +19,16 @@
  */
  
 #include "lv_mainstart.h"
+#include <stdio.h>
+#include <time.h>
+
 #include "lv_port_indev_template.h"
 #include "lvgl.h"
-#include <stdio.h>
+
 #include "bsp.h"
+#include "gui_guider.h"
+#include "events_init.h"
+
 
 //static void button1_event_cb(lv_event_t *e);
 ////static void button1_event_cb(lv_obj_t * btn, lv_event_t event);
@@ -46,9 +52,10 @@
 
 //LV_FONT_DECLARE(myFont24)
 //LV_FONT_DECLARE(myFont14)
-LV_FONT_DECLARE(lv_font_montserrat_12)
+//LV_FONT_DECLARE(lv_font_montserrat_12)
 //LV_FONT_DECLARE(lv_font_montserrat_14)
 
+#if 0
 
 
 // 全局变量定义
@@ -57,7 +64,12 @@ lv_obj_t* btn2; // 定义按钮 2
 
 lv_obj_t *font_label;
 
-#if 0
+
+
+
+
+
+
 /**
  * @brief  LVGL演示
  * @param  无
@@ -81,6 +93,8 @@ void lv_mainstart(void)
 
 }
 #else 
+
+#if 0
 
 /*********************
  *  STATIC PROTOTYPES
@@ -321,4 +335,10 @@ void check_button_state(void)
    
 }
 #endif 
+
+#endif 
+
+
+
+
 

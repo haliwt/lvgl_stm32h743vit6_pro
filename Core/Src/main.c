@@ -119,14 +119,10 @@ int main(void)
   lv_init();
   
   lv_port_disp_init();
-  //lv_port_indev_init();
-  //lv_display_button_init();
-  // lv_example_btn_run();
-    //lv_mainstart();
-    //lv_display_button_init();
-  //  lv_port_indev_init() ;
-    setup_ui(&guider_ui);
+
     events_init(&guider_ui);
+    setup_ui(&guider_ui);
+   
     freeRTOS_handler();
 
   /* USER CODE END 2 */
@@ -146,27 +142,6 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-     // LED0_TOGGLE();
-      //HAL_Delay(500);
-    // tft_display_handler();
-   //  LCDF4_DrawLine(0 ,20 , 100 , 20 ,RED);
-
-   //  LCDF4_DrawLine(0,20 , 320, 20 ,GREEN);
-
-   //  LCDF4_DrawRect(10, 10, 200, 100, BLUE);
-
-   // LCDF4_DrawHLine(0, 20, 320 ,RED);
-
-    
-   ///LCDF4_DrawVLine(100,0,240,BLUE);
-
-   //lcd_fill(0,0, 320,240 ,BLUE);
-   //lcd_draw_circle(160,120,20,RED);
-    // 
-    // lv_task_handler();
-    /// HAL_Delay(10);
-     // lv_mainstart();
-    
     
   }
   /* USER CODE END 3 */

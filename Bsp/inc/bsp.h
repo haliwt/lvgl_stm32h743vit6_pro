@@ -16,7 +16,17 @@
 
 
 
+typedef struct _bsp_pro_t{
 
+   uint8_t gTimer_lv_disp_time; 
+
+
+
+}bsp_pro_t;
+
+
+
+extern bsp_pro_t gpro_t;
 
 
 #endif 

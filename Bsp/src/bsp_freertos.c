@@ -72,7 +72,7 @@ static void vTaskMsgPro(void *pvParameters)
     while(1)
     {
 	    lv_timer_handler(); /* LVGL¼ÆÊ±Æ÷ */
-         check_button_state() ;
+        // check_button_state() ;
         vTaskDelay(5);
        //physical_button_pressed();
 		

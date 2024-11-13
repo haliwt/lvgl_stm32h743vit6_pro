@@ -28,10 +28,11 @@ typedef struct
 	lv_span_t *scrHome_humidityNumbers_span;
 	lv_obj_t *scrHome_tempNumbers;
 	lv_span_t *scrHome_tempNumbers_span;
-	lv_obj_t *scrHome_timeNumbers;
-	lv_span_t *scrHome_timeNumbers_span;
 	lv_obj_t *scrHome_dataNumbers;
 	lv_span_t *scrHome_dataNumbers_span;
+	lv_obj_t *scrHome_hourNumbers;
+	lv_obj_t *scrHome_timeColon;
+	lv_obj_t *scrHome_minuteNumbers;
 }lv_ui;
 
 typedef void (*ui_setup_scr_t)(lv_ui * ui);
@@ -60,8 +61,8 @@ LV_IMG_DECLARE(_s07_bg_same_16bit_alpha_320x240);
 LV_FONT_DECLARE(lv_font_montserratMedium_16)
 LV_FONT_DECLARE(lv_font_montserratMedium_18)
 LV_FONT_DECLARE(lv_font_montserratMedium_42)
-LV_FONT_DECLARE(lv_font_montserratMedium_58)
 LV_FONT_DECLARE(lv_font_SourceHanSerifSC_Regular_14)
+LV_FONT_DECLARE(lv_font_montserratMedium_52)
 
 
 #ifdef __cplusplus
