@@ -36,8 +36,6 @@ typedef struct
 	lv_span_t *scrHome_minuteNumbers_span;
 }lv_ui;
 
-extern lv_ui guider_ui;
-
 typedef void (*ui_setup_scr_t)(lv_ui * ui);
 
 void ui_init_style(lv_style_t * style);
@@ -55,7 +53,7 @@ void init_scr_del_flag(lv_ui *ui);
 void setup_ui(lv_ui *ui);
 
 
-
+extern lv_ui guider_ui;
 
 
 void setup_scr_scrHome(lv_ui *ui);
@@ -65,7 +63,7 @@ LV_FONT_DECLARE(lv_font_montserratMedium_16)
 LV_FONT_DECLARE(lv_font_montserratMedium_18)
 LV_FONT_DECLARE(lv_font_montserratMedium_42)
 LV_FONT_DECLARE(lv_font_SourceHanSerifSC_Regular_14)
-LV_FONT_DECLARE(lv_font_montserratMedium_52)
+LV_FONT_DECLARE(lv_font_montserratMedium_50)
 
 
 #ifdef __cplusplus

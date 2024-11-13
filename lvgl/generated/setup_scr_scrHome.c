@@ -184,14 +184,14 @@ void setup_scr_scrHome(lv_ui *ui)
     ui->scrHome_hourNumbers = lv_label_create(ui->scrHome);
     lv_label_set_text(ui->scrHome_hourNumbers, "12");
     lv_label_set_long_mode(ui->scrHome_hourNumbers, LV_LABEL_LONG_WRAP);
-    lv_obj_set_pos(ui->scrHome_hourNumbers, 12, 51);
-    lv_obj_set_size(ui->scrHome_hourNumbers, 60, 48);
+    lv_obj_set_pos(ui->scrHome_hourNumbers, 5, 51);
+    lv_obj_set_size(ui->scrHome_hourNumbers, 63, 48);
 
     //Write style for scrHome_hourNumbers, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
     lv_obj_set_style_border_width(ui->scrHome_hourNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_radius(ui->scrHome_hourNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_text_color(ui->scrHome_hourNumbers, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui->scrHome_hourNumbers, &lv_font_montserratMedium_52, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui->scrHome_hourNumbers, &lv_font_montserratMedium_50, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui->scrHome_hourNumbers, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_text_letter_space(ui->scrHome_hourNumbers, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_text_line_space(ui->scrHome_hourNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
@@ -207,7 +207,7 @@ void setup_scr_scrHome(lv_ui *ui)
     ui->scrHome_timeColon = lv_label_create(ui->scrHome);
     lv_label_set_text(ui->scrHome_timeColon, ":");
     lv_label_set_long_mode(ui->scrHome_timeColon, LV_LABEL_LONG_WRAP);
-    lv_obj_set_pos(ui->scrHome_timeColon, 69, 54);
+    lv_obj_set_pos(ui->scrHome_timeColon, 62, 51);
     lv_obj_set_size(ui->scrHome_timeColon, 28, 40);
 
     //Write style for scrHome_timeColon, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
@@ -236,9 +236,9 @@ void setup_scr_scrHome(lv_ui *ui)
     lv_span_set_text(ui->scrHome_minuteNumbers_span, "10");
     lv_style_set_text_color(&ui->scrHome_minuteNumbers_span->style, lv_color_hex(0x000000));
     lv_style_set_text_decor(&ui->scrHome_minuteNumbers_span->style, LV_TEXT_DECOR_NONE);
-    lv_style_set_text_font(&ui->scrHome_minuteNumbers_span->style, &lv_font_montserratMedium_52);
-    lv_obj_set_pos(ui->scrHome_minuteNumbers, 97, 51);
-    lv_obj_set_size(ui->scrHome_minuteNumbers, 58, 50);
+    lv_style_set_text_font(&ui->scrHome_minuteNumbers_span->style, &lv_font_montserratMedium_50);
+    lv_obj_set_pos(ui->scrHome_minuteNumbers, 87, 51);
+    lv_obj_set_size(ui->scrHome_minuteNumbers, 70, 43);
 
     //Write style state: LV_STATE_DEFAULT for &style_scrHome_minuteNumbers_main_main_default
     static lv_style_t style_scrHome_minuteNumbers_main_main_default;
