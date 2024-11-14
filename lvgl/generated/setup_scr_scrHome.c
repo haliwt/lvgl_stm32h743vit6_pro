@@ -26,43 +26,20 @@ void setup_scr_scrHome(lv_ui *ui)
     //Write style for scrHome, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
     lv_obj_set_style_bg_opa(ui->scrHome, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
 
-    //Write codes scrHome_img_1
-    ui->scrHome_img_1 = lv_img_create(ui->scrHome);
-    lv_obj_add_flag(ui->scrHome_img_1, LV_OBJ_FLAG_CLICKABLE);
-    lv_img_set_src(ui->scrHome_img_1, &_s07_bg_same_16bit_alpha_320x240);
-    lv_img_set_pivot(ui->scrHome_img_1, 50,50);
-    lv_img_set_angle(ui->scrHome_img_1, 0);
-    lv_obj_set_pos(ui->scrHome_img_1, 0, 0);
-    lv_obj_set_size(ui->scrHome_img_1, 320, 240);
+    //Write codes scrHome_backGround
+    ui->scrHome_backGround = lv_img_create(ui->scrHome);
+    lv_obj_add_flag(ui->scrHome_backGround, LV_OBJ_FLAG_CLICKABLE);
+    lv_img_set_src(ui->scrHome_backGround, &_s07_bg_same_16bit_alpha_320x240);
+    lv_img_set_pivot(ui->scrHome_backGround, 50,50);
+    lv_img_set_angle(ui->scrHome_backGround, 0);
+    lv_obj_set_pos(ui->scrHome_backGround, 0, 0);
+    lv_obj_set_size(ui->scrHome_backGround, 320, 240);
 
-    //Write style for scrHome_img_1, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
-    lv_obj_set_style_img_recolor_opa(ui->scrHome_img_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_img_opa(ui->scrHome_img_1, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_radius(ui->scrHome_img_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_clip_corner(ui->scrHome_img_1, true, LV_PART_MAIN|LV_STATE_DEFAULT);
-
-    //Write codes scrHome_wifi_label
-    ui->scrHome_wifi_label = lv_label_create(ui->scrHome);
-    lv_label_set_text(ui->scrHome_wifi_label, "" LV_SYMBOL_WIFI " ");
-    lv_label_set_long_mode(ui->scrHome_wifi_label, LV_LABEL_LONG_WRAP);
-    lv_obj_set_pos(ui->scrHome_wifi_label, 9, 11);
-    lv_obj_set_size(ui->scrHome_wifi_label, 41, 23);
-
-    //Write style for scrHome_wifi_label, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
-    lv_obj_set_style_border_width(ui->scrHome_wifi_label, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_radius(ui->scrHome_wifi_label, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_color(ui->scrHome_wifi_label, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui->scrHome_wifi_label, &lv_font_montserratMedium_16, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_opa(ui->scrHome_wifi_label, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_letter_space(ui->scrHome_wifi_label, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_line_space(ui->scrHome_wifi_label, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_align(ui->scrHome_wifi_label, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_opa(ui->scrHome_wifi_label, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_top(ui->scrHome_wifi_label, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_right(ui->scrHome_wifi_label, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_bottom(ui->scrHome_wifi_label, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_left(ui->scrHome_wifi_label, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_shadow_width(ui->scrHome_wifi_label, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    //Write style for scrHome_backGround, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
+    lv_obj_set_style_img_recolor_opa(ui->scrHome_backGround, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_img_opa(ui->scrHome_backGround, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui->scrHome_backGround, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_clip_corner(ui->scrHome_backGround, true, LV_PART_MAIN|LV_STATE_DEFAULT);
 
     //Write codes scrHome_timerNumbers
     ui->scrHome_timerNumbers = lv_spangroup_create(ui->scrHome);
@@ -248,6 +225,66 @@ void setup_scr_scrHome(lv_ui *ui)
     lv_obj_set_style_pad_bottom(ui->scrHome_minuteNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_pad_left(ui->scrHome_minuteNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_shadow_width(ui->scrHome_minuteNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+
+    //Write codes scrHome_wifiIcon
+    ui->scrHome_wifiIcon = lv_img_create(ui->scrHome);
+    lv_obj_add_flag(ui->scrHome_wifiIcon, LV_OBJ_FLAG_CLICKABLE);
+    lv_img_set_src(ui->scrHome_wifiIcon, &_wifi_symbol_black_alpha_22x17);
+    lv_img_set_pivot(ui->scrHome_wifiIcon, 50,50);
+    lv_img_set_angle(ui->scrHome_wifiIcon, 0);
+    lv_obj_set_pos(ui->scrHome_wifiIcon, 15, 10);
+    lv_obj_set_size(ui->scrHome_wifiIcon, 22, 17);
+
+    //Write style for scrHome_wifiIcon, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
+    lv_obj_set_style_img_recolor_opa(ui->scrHome_wifiIcon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_img_opa(ui->scrHome_wifiIcon, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui->scrHome_wifiIcon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_clip_corner(ui->scrHome_wifiIcon, true, LV_PART_MAIN|LV_STATE_DEFAULT);
+
+    //Write codes scrHome_dryIcon
+    ui->scrHome_dryIcon = lv_img_create(ui->scrHome);
+    lv_obj_add_flag(ui->scrHome_dryIcon, LV_OBJ_FLAG_CLICKABLE);
+    lv_img_set_src(ui->scrHome_dryIcon, &_dry_black_2_alpha_22x17);
+    lv_img_set_pivot(ui->scrHome_dryIcon, 50,50);
+    lv_img_set_angle(ui->scrHome_dryIcon, 0);
+    lv_obj_set_pos(ui->scrHome_dryIcon, 48, 10);
+    lv_obj_set_size(ui->scrHome_dryIcon, 22, 17);
+
+    //Write style for scrHome_dryIcon, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
+    lv_obj_set_style_img_recolor_opa(ui->scrHome_dryIcon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_img_opa(ui->scrHome_dryIcon, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui->scrHome_dryIcon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_clip_corner(ui->scrHome_dryIcon, true, LV_PART_MAIN|LV_STATE_DEFAULT);
+
+    //Write codes scrHome_plasmaIcon
+    ui->scrHome_plasmaIcon = lv_img_create(ui->scrHome);
+    lv_obj_add_flag(ui->scrHome_plasmaIcon, LV_OBJ_FLAG_CLICKABLE);
+    lv_img_set_src(ui->scrHome_plasmaIcon, &_plasma_black_2_alpha_22x17);
+    lv_img_set_pivot(ui->scrHome_plasmaIcon, 50,50);
+    lv_img_set_angle(ui->scrHome_plasmaIcon, 0);
+    lv_obj_set_pos(ui->scrHome_plasmaIcon, 81, 10);
+    lv_obj_set_size(ui->scrHome_plasmaIcon, 22, 17);
+
+    //Write style for scrHome_plasmaIcon, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
+    lv_obj_set_style_img_recolor_opa(ui->scrHome_plasmaIcon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_img_opa(ui->scrHome_plasmaIcon, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui->scrHome_plasmaIcon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_clip_corner(ui->scrHome_plasmaIcon, true, LV_PART_MAIN|LV_STATE_DEFAULT);
+
+    //Write codes scrHome_mouseIcon
+    ui->scrHome_mouseIcon = lv_img_create(ui->scrHome);
+    lv_obj_add_flag(ui->scrHome_mouseIcon, LV_OBJ_FLAG_CLICKABLE);
+    lv_img_set_src(ui->scrHome_mouseIcon, &_mouse_black_alpha_22x17);
+    lv_img_set_pivot(ui->scrHome_mouseIcon, 50,50);
+    lv_img_set_angle(ui->scrHome_mouseIcon, 0);
+    lv_obj_set_pos(ui->scrHome_mouseIcon, 112, 10);
+    lv_obj_set_size(ui->scrHome_mouseIcon, 22, 17);
+
+    //Write style for scrHome_mouseIcon, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
+    lv_obj_set_style_img_recolor_opa(ui->scrHome_mouseIcon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_img_opa(ui->scrHome_mouseIcon, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui->scrHome_mouseIcon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_clip_corner(ui->scrHome_mouseIcon, true, LV_PART_MAIN|LV_STATE_DEFAULT);
 
     //The custom code of scrHome.
 
