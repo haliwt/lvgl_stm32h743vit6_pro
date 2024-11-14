@@ -33,7 +33,6 @@ typedef struct
 	lv_obj_t *scrHome_hourNumbers;
 	lv_obj_t *scrHome_timeColon;
 	lv_obj_t *scrHome_minuteNumbers;
-	lv_span_t *scrHome_minuteNumbers_span;
 }lv_ui;
 
 typedef void (*ui_setup_scr_t)(lv_ui * ui);

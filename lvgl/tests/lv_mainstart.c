@@ -367,11 +367,10 @@ void update_works_time(lv_ui *ui)
     lv_obj_set_pos(ui->scrHome_hourNumbers, 9, 51);
     lv_obj_set_size(ui->scrHome_hourNumbers, 76, 46);
   
-      lv_span_set_text(ui->scrHome_minuteNumbers_span, "00");
+     lv_label_set_text(ui->scrHome_minuteNumbers, "00");
      //lv_style_set_text_font(&ui->scrHome_minuteNumbers_span->style, &lv_font_montserratMedium_50);
-     lv_obj_set_pos(ui->scrHome_minuteNumbers, 94, 51);
-    lv_obj_set_size(ui->scrHome_minuteNumbers, 83, 44);
-
+    lv_obj_set_pos(ui->scrHome_minuteNumbers, 94, 51);
+    lv_obj_set_size(ui->scrHome_minuteNumbers, 72, 44);
 
   }
 
@@ -385,12 +384,9 @@ void update_works_time(lv_ui *ui)
         snprintf(num_str, sizeof(num_str), "%02d", min_value); // 格式化数字为两位字符串
         strcat(text, num_str); // 将数字字符串追加到 text
         
-    
-     
-    
-        lv_label_set_text(ui->scrHome_hourNumbers,text);
+        lv_label_set_text(ui->scrHome_minuteNumbers,text);
         lv_obj_set_pos(ui->scrHome_minuteNumbers, 94, 51);
-        lv_obj_set_size(ui->scrHome_minuteNumbers, 83, 44);
+        lv_obj_set_size(ui->scrHome_minuteNumbers, 72, 44);
      if(min_value > 59){//59 minutes 
           min_value =0;
 
