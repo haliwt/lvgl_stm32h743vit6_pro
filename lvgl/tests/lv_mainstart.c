@@ -351,24 +351,25 @@ uint8_t min_value;
 void update_works_time(lv_ui *ui)
 {
   static uint8_t hour_value,power_on_first;
-
+  static uint8_t time_colon_symbol,time_colon_not,timeColon_disp_default=0xff,timeColon_not_default=0xff;
 
    lv_span_t span;
    span.txt = NULL;
    span.static_flag = 0;
-   char text[4]; // 60个数字 * 3个字符（假设最大为两位数）+ 1个空字符
-
+  // uint8_t minute_text[3],hour_text[3]; // 60个数字 * 3个字符（假设最大为两位数）+ 1个空字符
+   
   if(power_on_first ==0){
 
       power_on_first++ ; 
 
-    lv_label_set_text(ui->scrHome_hourNumbers, "00");
-    lv_label_set_long_mode(ui->scrHome_hourNumbers, LV_LABEL_LONG_WRAP);
+    //lv_label_set_text(ui->scrHome_hourNumbers, "00");
+    //lv_label_set_long_mode(ui->scrHome_hourNumbers, LV_LABEL_LONG_WRAP);
+    lv_label_set_text_fmt(ui->scrHome_hourNumbers,"%02d",0x00);
     lv_obj_set_pos(ui->scrHome_hourNumbers, 9, 51);
     lv_obj_set_size(ui->scrHome_hourNumbers, 76, 46);
   
-     lv_label_set_text(ui->scrHome_minuteNumbers, "00");
-     //lv_style_set_text_font(&ui->scrHome_minuteNumbers_span->style, &lv_font_montserratMedium_50);
+    // lv_label_set_text(ui->scrHome_minuteNumbers, "00");
+    lv_label_set_text_fmt(ui->scrHome_minuteNumbers,"%02d",0x00);
     lv_obj_set_pos(ui->scrHome_minuteNumbers, 94, 51);
     lv_obj_set_size(ui->scrHome_minuteNumbers, 72, 44);
 
@@ -380,23 +381,26 @@ void update_works_time(lv_ui *ui)
      gpro_t.gTimer_lv_disp_time =0;
      
         min_value++;
-        char num_str[3]; // 3个字符 + 1个空字符
-        snprintf(num_str, sizeof(num_str), "%02d", min_value); // 格式化数字为两位字符串
-        strcat(text, num_str); // 将数字字符串追加到 text
-        
-        lv_label_set_text(ui->scrHome_minuteNumbers,text);
+//        char num_str[3]; // 3个字符 + 1个空字符
+//        snprintf(num_str, sizeof(num_str), "%02d", min_value); // 格式化数字为两位字符串
+//        strcat(text, num_str); // 将数字字符串追加到 text
+     //   sprintf(text,"%02d",min_value);
+       // lv_label_set_text(ui->scrHome_minuteNumbers,text);
+        lv_label_set_text_fmt(ui->scrHome_minuteNumbers,"%02d",min_value);
         lv_obj_set_pos(ui->scrHome_minuteNumbers, 94, 51);
         lv_obj_set_size(ui->scrHome_minuteNumbers, 72, 44);
      if(min_value > 59){//59 minutes 
           min_value =0;
 
           hour_value ++ ;
-         
+         #if 0
           char num_str[3]; // 3个字符 + 1个空字符
           snprintf(num_str, sizeof(num_str), "%02d", hour_value); // 格式化数字为两位字符串
           strcat(text, num_str); // 将数字字符串追加到 text
-          
-         lv_label_set_text(ui->scrHome_hourNumbers,text);
+           lv_label_set_text(ui->scrHome_hourNumbers,text);
+         #endif 
+         lv_label_set_text_fmt(ui->scrHome_hourNumbers,"%02d",hour_value);
+        
          lv_obj_set_pos(ui->scrHome_hourNumbers, 9, 51);
          lv_obj_set_size(ui->scrHome_hourNumbers, 76, 46);
 
@@ -410,13 +414,27 @@ void update_works_time(lv_ui *ui)
 
   if(gpro_t.gTimer_lv_disp_time_colon <  1){
 
-      
+      if(timeColon_disp_default != time_colon_symbol){
+        timeColon_disp_default = time_colon_symbol;
+        time_colon_not++;
         lv_obj_clear_flag(ui->scrHome_timeColon, LV_OBJ_FLAG_HIDDEN); // 显示标签
+
+       }
    }
   else if(gpro_t.gTimer_lv_disp_time_colon > 0 && gpro_t.gTimer_lv_disp_time_colon < 2){
-       gpro_t.gTimer_lv_disp_time_colon=0;
+      
+       
+       if(timeColon_not_default != time_colon_not){
+               timeColon_not_default = time_colon_not;
+               time_colon_symbol++;
 
-       lv_obj_add_flag(ui->scrHome_timeColon,LV_OBJ_FLAG_HIDDEN);
+           lv_obj_add_flag(ui->scrHome_timeColon,LV_OBJ_FLAG_HIDDEN);
+       }
+
+  }
+  else{
+    gpro_t.gTimer_lv_disp_time_colon=0;
+
 
   }
    

@@ -73,7 +73,7 @@ static void vTaskMsgPro(void *pvParameters)
     while(1)
     {
 	    lv_timer_handler(); /* LVGL¼ÆÊ±Æ÷ */
-        // check_button_state() ;
+       update_works_time(&guider_ui);
         
         vTaskDelay(5);
        //physical_button_pressed();
@@ -106,8 +106,8 @@ static void vTaskStart(void *pvParameters)
 //           LED0(0);
 //        }
 		LED0_TOGGLE();
-        update_works_time(&guider_ui);
-		
+        
+	   // update_works_time(&guider_ui);
         vTaskDelay(1000);
     }
 }
