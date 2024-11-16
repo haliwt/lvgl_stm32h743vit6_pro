@@ -21,14 +21,6 @@ typedef struct
 	lv_obj_t *scrHome;
 	bool scrHome_del;
 	lv_obj_t *scrHome_backGround;
-	lv_obj_t *scrHome_timerNumbers;
-	lv_span_t *scrHome_timerNumbers_span;
-	lv_obj_t *scrHome_humidityNumbers;
-	lv_span_t *scrHome_humidityNumbers_span;
-	lv_obj_t *scrHome_tempNumbers;
-	lv_span_t *scrHome_tempNumbers_span;
-	lv_obj_t *scrHome_dataNumbers;
-	lv_span_t *scrHome_dataNumbers_span;
 	lv_obj_t *scrHome_hourNumbers;
 	lv_obj_t *scrHome_timeColon;
 	lv_obj_t *scrHome_minuteNumbers;
@@ -36,6 +28,10 @@ typedef struct
 	lv_obj_t *scrHome_dryIcon;
 	lv_obj_t *scrHome_plasmaIcon;
 	lv_obj_t *scrHome_mouseIcon;
+	lv_obj_t *scrHome_timerNumbers;
+	lv_obj_t *scrHome_humidityNumber;
+	lv_obj_t *scrHome_tempNumbers;
+	lv_obj_t *scrHome_label_1;
 }lv_ui;
 
 typedef void (*ui_setup_scr_t)(lv_ui * ui);
@@ -65,11 +61,10 @@ LV_IMG_DECLARE(_dry_black_2_alpha_22x17);
 LV_IMG_DECLARE(_plasma_black_2_alpha_22x17);
 LV_IMG_DECLARE(_mouse_black_alpha_22x17);
 
-LV_FONT_DECLARE(lv_font_montserratMedium_18)
-LV_FONT_DECLARE(lv_font_montserratMedium_42)
-LV_FONT_DECLARE(lv_font_SourceHanSerifSC_Regular_14)
 LV_FONT_DECLARE(lv_font_montserratMedium_50)
 LV_FONT_DECLARE(lv_font_montserratMedium_16)
+LV_FONT_DECLARE(lv_font_montserratMedium_42)
+LV_FONT_DECLARE(lv_font_SourceHanSerifSC_Regular_14)
 
 
 #ifdef __cplusplus

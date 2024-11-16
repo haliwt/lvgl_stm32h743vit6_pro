@@ -81,4 +81,5 @@ void setup_ui(lv_ui *ui)
     init_scr_del_flag(ui);
     setup_scr_scrHome(ui);
     lv_scr_load(ui->scrHome);
+    lv_hardware_init(ui);
 }

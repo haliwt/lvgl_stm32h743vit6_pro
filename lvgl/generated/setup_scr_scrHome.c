@@ -41,122 +41,6 @@ void setup_scr_scrHome(lv_ui *ui)
     lv_obj_set_style_radius(ui->scrHome_backGround, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_clip_corner(ui->scrHome_backGround, true, LV_PART_MAIN|LV_STATE_DEFAULT);
 
-    //Write codes scrHome_timerNumbers
-    ui->scrHome_timerNumbers = lv_spangroup_create(ui->scrHome);
-    lv_spangroup_set_align(ui->scrHome_timerNumbers, LV_TEXT_ALIGN_LEFT);
-    lv_spangroup_set_overflow(ui->scrHome_timerNumbers, LV_SPAN_OVERFLOW_CLIP);
-    lv_spangroup_set_mode(ui->scrHome_timerNumbers, LV_SPAN_MODE_BREAK);
-    //create span
-    ui->scrHome_timerNumbers_span = lv_spangroup_new_span(ui->scrHome_timerNumbers);
-    lv_span_set_text(ui->scrHome_timerNumbers_span, "  12:20");
-    lv_style_set_text_color(&ui->scrHome_timerNumbers_span->style, lv_color_hex(0x000000));
-    lv_style_set_text_decor(&ui->scrHome_timerNumbers_span->style, LV_TEXT_DECOR_NONE);
-    lv_style_set_text_font(&ui->scrHome_timerNumbers_span->style, &lv_font_montserratMedium_18);
-    lv_obj_set_pos(ui->scrHome_timerNumbers, 59, 189);
-    lv_obj_set_size(ui->scrHome_timerNumbers, 65, 19);
-
-    //Write style state: LV_STATE_DEFAULT for &style_scrHome_timerNumbers_main_main_default
-    static lv_style_t style_scrHome_timerNumbers_main_main_default;
-    ui_init_style(&style_scrHome_timerNumbers_main_main_default);
-
-    lv_style_set_border_width(&style_scrHome_timerNumbers_main_main_default, 0);
-    lv_style_set_radius(&style_scrHome_timerNumbers_main_main_default, 0);
-    lv_style_set_bg_opa(&style_scrHome_timerNumbers_main_main_default, 0);
-    lv_style_set_pad_top(&style_scrHome_timerNumbers_main_main_default, 0);
-    lv_style_set_pad_right(&style_scrHome_timerNumbers_main_main_default, 0);
-    lv_style_set_pad_bottom(&style_scrHome_timerNumbers_main_main_default, 0);
-    lv_style_set_pad_left(&style_scrHome_timerNumbers_main_main_default, 0);
-    lv_style_set_shadow_width(&style_scrHome_timerNumbers_main_main_default, 0);
-    lv_obj_add_style(ui->scrHome_timerNumbers, &style_scrHome_timerNumbers_main_main_default, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_spangroup_refr_mode(ui->scrHome_timerNumbers);
-
-    //Write codes scrHome_humidityNumbers
-    ui->scrHome_humidityNumbers = lv_spangroup_create(ui->scrHome);
-    lv_spangroup_set_align(ui->scrHome_humidityNumbers, LV_TEXT_ALIGN_LEFT);
-    lv_spangroup_set_overflow(ui->scrHome_humidityNumbers, LV_SPAN_OVERFLOW_CLIP);
-    lv_spangroup_set_mode(ui->scrHome_humidityNumbers, LV_SPAN_MODE_BREAK);
-    //create span
-    ui->scrHome_humidityNumbers_span = lv_spangroup_new_span(ui->scrHome_humidityNumbers);
-    lv_span_set_text(ui->scrHome_humidityNumbers_span, "49");
-    lv_style_set_text_color(&ui->scrHome_humidityNumbers_span->style, lv_color_hex(0x000000));
-    lv_style_set_text_decor(&ui->scrHome_humidityNumbers_span->style, LV_TEXT_DECOR_NONE);
-    lv_style_set_text_font(&ui->scrHome_humidityNumbers_span->style, &lv_font_montserratMedium_42);
-    lv_obj_set_pos(ui->scrHome_humidityNumbers, 209, 45);
-    lv_obj_set_size(ui->scrHome_humidityNumbers, 58, 45);
-
-    //Write style state: LV_STATE_DEFAULT for &style_scrHome_humidityNumbers_main_main_default
-    static lv_style_t style_scrHome_humidityNumbers_main_main_default;
-    ui_init_style(&style_scrHome_humidityNumbers_main_main_default);
-
-    lv_style_set_border_width(&style_scrHome_humidityNumbers_main_main_default, 0);
-    lv_style_set_radius(&style_scrHome_humidityNumbers_main_main_default, 0);
-    lv_style_set_bg_opa(&style_scrHome_humidityNumbers_main_main_default, 0);
-    lv_style_set_pad_top(&style_scrHome_humidityNumbers_main_main_default, 0);
-    lv_style_set_pad_right(&style_scrHome_humidityNumbers_main_main_default, 0);
-    lv_style_set_pad_bottom(&style_scrHome_humidityNumbers_main_main_default, 0);
-    lv_style_set_pad_left(&style_scrHome_humidityNumbers_main_main_default, 0);
-    lv_style_set_shadow_width(&style_scrHome_humidityNumbers_main_main_default, 0);
-    lv_obj_add_style(ui->scrHome_humidityNumbers, &style_scrHome_humidityNumbers_main_main_default, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_spangroup_refr_mode(ui->scrHome_humidityNumbers);
-
-    //Write codes scrHome_tempNumbers
-    ui->scrHome_tempNumbers = lv_spangroup_create(ui->scrHome);
-    lv_spangroup_set_align(ui->scrHome_tempNumbers, LV_TEXT_ALIGN_LEFT);
-    lv_spangroup_set_overflow(ui->scrHome_tempNumbers, LV_SPAN_OVERFLOW_CLIP);
-    lv_spangroup_set_mode(ui->scrHome_tempNumbers, LV_SPAN_MODE_BREAK);
-    //create span
-    ui->scrHome_tempNumbers_span = lv_spangroup_new_span(ui->scrHome_tempNumbers);
-    lv_span_set_text(ui->scrHome_tempNumbers_span, "35");
-    lv_style_set_text_color(&ui->scrHome_tempNumbers_span->style, lv_color_hex(0x000000));
-    lv_style_set_text_decor(&ui->scrHome_tempNumbers_span->style, LV_TEXT_DECOR_NONE);
-    lv_style_set_text_font(&ui->scrHome_tempNumbers_span->style, &lv_font_montserratMedium_42);
-    lv_obj_set_pos(ui->scrHome_tempNumbers, 209, 154);
-    lv_obj_set_size(ui->scrHome_tempNumbers, 53, 38);
-
-    //Write style state: LV_STATE_DEFAULT for &style_scrHome_tempNumbers_main_main_default
-    static lv_style_t style_scrHome_tempNumbers_main_main_default;
-    ui_init_style(&style_scrHome_tempNumbers_main_main_default);
-
-    lv_style_set_border_width(&style_scrHome_tempNumbers_main_main_default, 0);
-    lv_style_set_radius(&style_scrHome_tempNumbers_main_main_default, 0);
-    lv_style_set_bg_opa(&style_scrHome_tempNumbers_main_main_default, 0);
-    lv_style_set_pad_top(&style_scrHome_tempNumbers_main_main_default, 0);
-    lv_style_set_pad_right(&style_scrHome_tempNumbers_main_main_default, 0);
-    lv_style_set_pad_bottom(&style_scrHome_tempNumbers_main_main_default, 0);
-    lv_style_set_pad_left(&style_scrHome_tempNumbers_main_main_default, 0);
-    lv_style_set_shadow_width(&style_scrHome_tempNumbers_main_main_default, 0);
-    lv_obj_add_style(ui->scrHome_tempNumbers, &style_scrHome_tempNumbers_main_main_default, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_spangroup_refr_mode(ui->scrHome_tempNumbers);
-
-    //Write codes scrHome_dataNumbers
-    ui->scrHome_dataNumbers = lv_spangroup_create(ui->scrHome);
-    lv_spangroup_set_align(ui->scrHome_dataNumbers, LV_TEXT_ALIGN_LEFT);
-    lv_spangroup_set_overflow(ui->scrHome_dataNumbers, LV_SPAN_OVERFLOW_CLIP);
-    lv_spangroup_set_mode(ui->scrHome_dataNumbers, LV_SPAN_MODE_BREAK);
-    //create span
-    ui->scrHome_dataNumbers_span = lv_spangroup_new_span(ui->scrHome_dataNumbers);
-    lv_span_set_text(ui->scrHome_dataNumbers_span, "11月13日 星期三");
-    lv_style_set_text_color(&ui->scrHome_dataNumbers_span->style, lv_color_hex(0x000000));
-    lv_style_set_text_decor(&ui->scrHome_dataNumbers_span->style, LV_TEXT_DECOR_NONE);
-    lv_style_set_text_font(&ui->scrHome_dataNumbers_span->style, &lv_font_SourceHanSerifSC_Regular_14);
-    lv_obj_set_pos(ui->scrHome_dataNumbers, 36, 116);
-    lv_obj_set_size(ui->scrHome_dataNumbers, 110, 18);
-
-    //Write style state: LV_STATE_DEFAULT for &style_scrHome_dataNumbers_main_main_default
-    static lv_style_t style_scrHome_dataNumbers_main_main_default;
-    ui_init_style(&style_scrHome_dataNumbers_main_main_default);
-
-    lv_style_set_border_width(&style_scrHome_dataNumbers_main_main_default, 0);
-    lv_style_set_radius(&style_scrHome_dataNumbers_main_main_default, 0);
-    lv_style_set_bg_opa(&style_scrHome_dataNumbers_main_main_default, 0);
-    lv_style_set_pad_top(&style_scrHome_dataNumbers_main_main_default, 0);
-    lv_style_set_pad_right(&style_scrHome_dataNumbers_main_main_default, 0);
-    lv_style_set_pad_bottom(&style_scrHome_dataNumbers_main_main_default, 0);
-    lv_style_set_pad_left(&style_scrHome_dataNumbers_main_main_default, 0);
-    lv_style_set_shadow_width(&style_scrHome_dataNumbers_main_main_default, 0);
-    lv_obj_add_style(ui->scrHome_dataNumbers, &style_scrHome_dataNumbers_main_main_default, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_spangroup_refr_mode(ui->scrHome_dataNumbers);
-
     //Write codes scrHome_hourNumbers
     ui->scrHome_hourNumbers = lv_label_create(ui->scrHome);
     lv_label_set_text(ui->scrHome_hourNumbers, "00");
@@ -286,12 +170,102 @@ void setup_scr_scrHome(lv_ui *ui)
     lv_obj_set_style_radius(ui->scrHome_mouseIcon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_clip_corner(ui->scrHome_mouseIcon, true, LV_PART_MAIN|LV_STATE_DEFAULT);
 
+    //Write codes scrHome_timerNumbers
+    ui->scrHome_timerNumbers = lv_label_create(ui->scrHome);
+    lv_label_set_text(ui->scrHome_timerNumbers, "00:00");
+    lv_label_set_long_mode(ui->scrHome_timerNumbers, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(ui->scrHome_timerNumbers, 44, 189);
+    lv_obj_set_size(ui->scrHome_timerNumbers, 93, 17);
+
+    //Write style for scrHome_timerNumbers, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
+    lv_obj_set_style_border_width(ui->scrHome_timerNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui->scrHome_timerNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui->scrHome_timerNumbers, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui->scrHome_timerNumbers, &lv_font_montserratMedium_16, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui->scrHome_timerNumbers, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_letter_space(ui->scrHome_timerNumbers, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_line_space(ui->scrHome_timerNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui->scrHome_timerNumbers, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui->scrHome_timerNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui->scrHome_timerNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui->scrHome_timerNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui->scrHome_timerNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui->scrHome_timerNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_width(ui->scrHome_timerNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+
+    //Write codes scrHome_humidityNumber
+    ui->scrHome_humidityNumber = lv_label_create(ui->scrHome);
+    lv_label_set_text(ui->scrHome_humidityNumber, "00");
+    lv_label_set_long_mode(ui->scrHome_humidityNumber, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(ui->scrHome_humidityNumber, 194, 41);
+    lv_obj_set_size(ui->scrHome_humidityNumber, 71, 45);
+
+    //Write style for scrHome_humidityNumber, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
+    lv_obj_set_style_border_width(ui->scrHome_humidityNumber, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui->scrHome_humidityNumber, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui->scrHome_humidityNumber, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui->scrHome_humidityNumber, &lv_font_montserratMedium_50, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui->scrHome_humidityNumber, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_letter_space(ui->scrHome_humidityNumber, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_line_space(ui->scrHome_humidityNumber, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui->scrHome_humidityNumber, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui->scrHome_humidityNumber, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui->scrHome_humidityNumber, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui->scrHome_humidityNumber, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui->scrHome_humidityNumber, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui->scrHome_humidityNumber, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_width(ui->scrHome_humidityNumber, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+
+    //Write codes scrHome_tempNumbers
+    ui->scrHome_tempNumbers = lv_label_create(ui->scrHome);
+    lv_label_set_text(ui->scrHome_tempNumbers, "00");
+    lv_label_set_long_mode(ui->scrHome_tempNumbers, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(ui->scrHome_tempNumbers, 194, 148);
+    lv_obj_set_size(ui->scrHome_tempNumbers, 71, 45);
+
+    //Write style for scrHome_tempNumbers, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
+    lv_obj_set_style_border_width(ui->scrHome_tempNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui->scrHome_tempNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui->scrHome_tempNumbers, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui->scrHome_tempNumbers, &lv_font_montserratMedium_50, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui->scrHome_tempNumbers, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_letter_space(ui->scrHome_tempNumbers, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_line_space(ui->scrHome_tempNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui->scrHome_tempNumbers, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui->scrHome_tempNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui->scrHome_tempNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui->scrHome_tempNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui->scrHome_tempNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui->scrHome_tempNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_width(ui->scrHome_tempNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+
+    //Write codes scrHome_label_1
+    ui->scrHome_label_1 = lv_label_create(ui->scrHome);
+    lv_label_set_text(ui->scrHome_label_1, "11月15号 星期五");
+    lv_label_set_long_mode(ui->scrHome_label_1, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(ui->scrHome_label_1, 23, 113);
+    lv_obj_set_size(ui->scrHome_label_1, 129, 17);
+
+    //Write style for scrHome_label_1, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
+    lv_obj_set_style_border_width(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui->scrHome_label_1, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui->scrHome_label_1, &lv_font_SourceHanSerifSC_Regular_14, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui->scrHome_label_1, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_letter_space(ui->scrHome_label_1, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_line_space(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui->scrHome_label_1, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_width(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+
     //The custom code of scrHome.
 
 
     //Update current screen layout.
     lv_obj_update_layout(ui->scrHome);
 
-    //Init events for screen.
-    events_init_scrHome(ui);
 }

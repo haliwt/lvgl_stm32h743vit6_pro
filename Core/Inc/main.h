@@ -63,12 +63,18 @@ void Error_Handler(void);
 #define KEY_2_Pin                           GPIO_PIN_5
 #define KEY_2_GPIO_Port                     GPIOC
 
+#define KEY_3_Pin                           GPIO_PIN_4
+#define KEY_3_GPIO_Port                     GPIOC
+
+
 
 #define LED_Pin                         GPIO_PIN_1
 #define LED_GPIO_Port                    GPIOA
 
-#define BACKLIGHT_Pin GPIO_PIN_0
-#define BACKLIGHT_GPIO_Port GPIOB
+#define BACKLIGHT_Pin                       GPIO_PIN_0
+#define BACKLIGHT_GPIO_Port                 GPIOB
+
+
 #define CMD_DIP_Pin GPIO_PIN_1
 #define CMD_DIP_GPIO_Port GPIOB
 #define TFT_RESET_Pin GPIO_PIN_2

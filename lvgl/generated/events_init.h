@@ -18,7 +18,6 @@ extern "C" {
 
 void events_init(lv_ui *ui);
 
-void events_init_scrHome(lv_ui *ui);
 
 #ifdef __cplusplus
 }

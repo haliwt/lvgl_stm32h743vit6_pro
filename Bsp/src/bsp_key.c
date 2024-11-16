@@ -25,9 +25,9 @@ uint8_t key_scan(uint8_t mode)
         HAL_Delay(10);           /* 去抖动 */
         key_up = 0;
 
-        if (KEY1 == 0)  keyval = KEY0_PRES;
+        if (KEY1 == 0)  keyval = KEY1_PRES;
 
-        if (KEY2 == 0)  keyval = KEY1_PRES;
+        if (KEY2 == 0)  keyval = KEY2_PRES;
 
        
     }
