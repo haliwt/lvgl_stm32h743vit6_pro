@@ -50,6 +50,7 @@ char lv_disp_time[2] ;
 static lv_obj_t *btn1;
 static lv_obj_t *btn2;
 static lv_obj_t *btn3;
+static lv_obj_t *btn4;
 
 
 uint8_t min_value;
@@ -253,7 +254,10 @@ static void button_init(lv_ui *ui)
     lv_obj_center(label);
     #endif 
     /* Create button 2 */
-    btn3= ui->scrHome_timerNumbers;
+    
+    btn3= ui->scrHome_timerHoursNumbers;
+    btn1= ui->scrHome_timerHoursNumbers; 
+    btn2= ui->scrHome_timerHoursNumbers; 
     #if 0
     btn3 = lv_label_create(ui->scrHome);
     lv_label_set_text(ui->scrHome_timerNumbers, "00:00");
@@ -276,6 +280,7 @@ void check_button_state(lv_ui *ui)
 {
 
  static uint8_t key3_high_pressed,key3_low_pressed,key3_default= 0xff,key3_off_default=0xff;
+ static uint8_t key4_high_pressed,key4_low_pressed,key4_default= 0xff,key4_off_default=0xff;
    
 
   
@@ -291,8 +296,9 @@ void check_button_state(lv_ui *ui)
            // btn3 = lv_label_create(ui->scrHome);
             if(key3_default != key3_high_pressed){
                key3_default= key3_high_pressed;
-                 // lv_obj_set_style_bg_color(btn3, lv_color_hex(0xFF0000), 0); // 使用lv_color_hex设置颜色
-                 lv_obj_set_style_text_color(ui->scrHome_timerNumbers, lv_color_hex(0xFF0000), 0); //red color
+               key3_low_pressed++;
+               gpro_t.adjustTimerValue_enable = 1;
+               lv_obj_set_style_text_color(ui->scrHome_timerHoursNumbers, lv_color_hex(0xFF0000), 0); //red color
             }
     }
    } 
@@ -300,13 +306,113 @@ void check_button_state(lv_ui *ui)
       //btn3= ui->scrHome_timerNumbers;
       ///btn3 = lv_label_create(ui->scrHome);
        if(key3_off_default != key3_low_pressed){
-              key3_default= key3_low_pressed;
+              key3_off_default= key3_low_pressed;
               key3_high_pressed++;
         // 检测到按键释放
         //lv_obj_set_style_bg_color(btn3, lv_color_hex(0x00ff00), 0); // 使用lv_color_hex设置颜色
-              lv_obj_set_style_text_color(ui->scrHome_timerNumbers, lv_color_hex(0x000000), 0); //black color
+              gpro_t.adjustTimerValue_enable = 0;
+              lv_obj_set_style_text_color(ui->scrHome_timerHoursNumbers, lv_color_hex(0x000000), 0); //black color
         }
     }
+   //key4 
+   if(KEY4 == GPIO_PIN_SET){ // 替换为实际的GPIO端口和引脚号
+        // 检测到按键按下
+        osDelay(20);
+        
+   if(KEY4==GPIO_PIN_SET){ //if (HAL_GetTick() - last_debounce_time > debounce_delay) {
+            //last_debounce_time = HAL_GetTick();
+            // 改变按键颜色为红色
+            //btn3= ui->scrHome_timerNumbers;
+           // btn3 = lv_label_create(ui->scrHome);
+            if(key4_default != key4_high_pressed){
+               key4_default= key4_high_pressed;
+               key4_low_pressed++;
+              if(gpro_t.adjustTimerValue_enable ==1){
+                gpro_t.adjustTimerValue++;
+                if(gpro_t.adjustTimerValue > 24)gpro_t.adjustTimerValue=0;
+                //lv_label_set_text(ui->scrHome_timerNumbers, "00:00");
+                lv_label_set_text_fmt(ui->scrHome_timerHoursNumbers,"%02d",gpro_t.adjustTimerValue);
+                
+                 lv_obj_set_pos(ui->scrHome_timerHoursNumbers, 51, 189);
+                 lv_obj_set_size(ui->scrHome_timerHoursNumbers, 34, 13);
+              
+             }
+           }
+        } 
+    }
+   else{
+      //btn3= ui->scrHome_timerNumbers;
+      ///btn3 = lv_label_create(ui->scrHome);
+       if(key4_off_default != key4_low_pressed){
+              key4_off_default= key4_low_pressed;
+              key4_high_pressed++;
+      
+        }
+    }
+
+  
+
+   
+
+  //key1 button 
+   if(KEY1 == GPIO_PIN_RESET){ // 替换为实际的GPIO端口和引脚号
+        // 检测到按键按下
+        osDelay(20);
+        
+   if(KEY1==GPIO_PIN_RESET){ //if (HAL_GetTick() - last_debounce_time > debounce_delay) {
+            //last_debounce_time = HAL_GetTick();
+            // 改变按键颜色为红色
+            //btn3= ui->scrHome_timerNumbers;
+           // btn3 = lv_label_create(ui->scrHome);
+           if(gpro_t.adjustTimerValue_enable ==1){
+           
+               
+                gpro_t.adjustTimerValue++;
+                if(gpro_t.adjustTimerValue > 24)gpro_t.adjustTimerValue=0;
+                //lv_label_set_text(ui->scrHome_timerNumbers, "00:00");
+                lv_label_set_text_fmt(ui->scrHome_timerHoursNumbers,"%02d",gpro_t.adjustTimerValue);
+                
+                 lv_obj_set_pos(ui->scrHome_timerHoursNumbers, 51, 189);
+                 lv_obj_set_size(ui->scrHome_timerHoursNumbers, 34, 13);
+
+               
+                
+            }
+    
+   } 
+   }
+
+
+   //key1 button 
+   if(KEY2 == GPIO_PIN_RESET){ // 替换为实际的GPIO端口和引脚号
+        // 检测到按键按下
+        osDelay(20);
+        
+   if(KEY2==GPIO_PIN_RESET){ //if (HAL_GetTick() - last_debounce_time > debounce_delay) {
+            //last_debounce_time = HAL_GetTick();
+            // 改变按键颜色为红色
+            //btn3= ui->scrHome_timerNumbers;
+           // btn3 = lv_label_create(ui->scrHome);
+           if(gpro_t.adjustTimerValue_enable ==1){
+           
+               
+                gpro_t.adjustTimerValue--;
+                if(gpro_t.adjustTimerValue <  0)gpro_t.adjustTimerValue=24;
+                //lv_label_set_text(ui->scrHome_timerNumbers, "00:00");
+                lv_label_set_text_fmt(ui->scrHome_timerHoursNumbers,"%02d",gpro_t.adjustTimerValue);
+               
+                lv_obj_set_pos(ui->scrHome_timerHoursNumbers, 51, 189);
+                lv_obj_set_size(ui->scrHome_timerHoursNumbers, 34, 13);
+
+               
+                
+            }
+    
+   } 
+   }
+
+
+   
 
   #if 0
    // 读取按键状态

@@ -25,7 +25,7 @@ void EE_SDA_IN(void) 	//PB11配置成输入
   
   GPIO_InitStruct.Pin = EE_SDA_PIN ;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;//NOPULL;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 } 
@@ -37,7 +37,7 @@ void EE_SDA_OUT(void)//PB11配置成开漏输出
     
 	GPIO_InitStruct.Pin = EE_SDA_PIN ;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;//NOPULL;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 	
@@ -49,7 +49,7 @@ void EE_SCK_OUT(void) //PB10配置成开漏输出
 	GPIO_InitTypeDef GPIO_InitStruct = {0};
 	GPIO_InitStruct.Pin =  EE_SCL_PIN;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;//NOPULL;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 }
@@ -57,7 +57,7 @@ void EE_SCK_OUT(void) //PB10配置成开漏输出
 //读DATA引脚状态
 unsigned char EE_READ_SDA(void)
 {
-return HAL_GPIO_ReadPin(GPIOA,EE_SDA_PIN);
+return HAL_GPIO_ReadPin(GPIOB,EE_SDA_PIN);
 }	
 
 /******************************************************************************

@@ -28,10 +28,12 @@ typedef struct
 	lv_obj_t *scrHome_dryIcon;
 	lv_obj_t *scrHome_plasmaIcon;
 	lv_obj_t *scrHome_mouseIcon;
-	lv_obj_t *scrHome_timerNumbers;
+	lv_obj_t *scrHome_timerHoursNumbers;
 	lv_obj_t *scrHome_humidityNumber;
 	lv_obj_t *scrHome_tempNumbers;
-	lv_obj_t *scrHome_label_1;
+	lv_obj_t *scrHome_dataNumbers;
+	lv_obj_t *scrHome_timerColon;
+	lv_obj_t *scrHome_timerMinuteNumbers;
 }lv_ui;
 
 typedef void (*ui_setup_scr_t)(lv_ui * ui);

@@ -170,28 +170,28 @@ void setup_scr_scrHome(lv_ui *ui)
     lv_obj_set_style_radius(ui->scrHome_mouseIcon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_clip_corner(ui->scrHome_mouseIcon, true, LV_PART_MAIN|LV_STATE_DEFAULT);
 
-    //Write codes scrHome_timerNumbers
-    ui->scrHome_timerNumbers = lv_label_create(ui->scrHome);
-    lv_label_set_text(ui->scrHome_timerNumbers, "00:00");
-    lv_label_set_long_mode(ui->scrHome_timerNumbers, LV_LABEL_LONG_WRAP);
-    lv_obj_set_pos(ui->scrHome_timerNumbers, 44, 189);
-    lv_obj_set_size(ui->scrHome_timerNumbers, 93, 17);
+    //Write codes scrHome_timerHoursNumbers
+    ui->scrHome_timerHoursNumbers = lv_label_create(ui->scrHome);
+    lv_label_set_text(ui->scrHome_timerHoursNumbers, "00");
+    lv_label_set_long_mode(ui->scrHome_timerHoursNumbers, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(ui->scrHome_timerHoursNumbers, 51, 189);
+    lv_obj_set_size(ui->scrHome_timerHoursNumbers, 34, 13);
 
-    //Write style for scrHome_timerNumbers, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
-    lv_obj_set_style_border_width(ui->scrHome_timerNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_radius(ui->scrHome_timerNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_color(ui->scrHome_timerNumbers, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui->scrHome_timerNumbers, &lv_font_montserratMedium_16, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_opa(ui->scrHome_timerNumbers, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_letter_space(ui->scrHome_timerNumbers, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_line_space(ui->scrHome_timerNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_align(ui->scrHome_timerNumbers, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_opa(ui->scrHome_timerNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_top(ui->scrHome_timerNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_right(ui->scrHome_timerNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_bottom(ui->scrHome_timerNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_left(ui->scrHome_timerNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_shadow_width(ui->scrHome_timerNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    //Write style for scrHome_timerHoursNumbers, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
+    lv_obj_set_style_border_width(ui->scrHome_timerHoursNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui->scrHome_timerHoursNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui->scrHome_timerHoursNumbers, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui->scrHome_timerHoursNumbers, &lv_font_montserratMedium_16, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui->scrHome_timerHoursNumbers, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_letter_space(ui->scrHome_timerHoursNumbers, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_line_space(ui->scrHome_timerHoursNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui->scrHome_timerHoursNumbers, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui->scrHome_timerHoursNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui->scrHome_timerHoursNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui->scrHome_timerHoursNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui->scrHome_timerHoursNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui->scrHome_timerHoursNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_width(ui->scrHome_timerHoursNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
 
     //Write codes scrHome_humidityNumber
     ui->scrHome_humidityNumber = lv_label_create(ui->scrHome);
@@ -239,28 +239,74 @@ void setup_scr_scrHome(lv_ui *ui)
     lv_obj_set_style_pad_left(ui->scrHome_tempNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_shadow_width(ui->scrHome_tempNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
 
-    //Write codes scrHome_label_1
-    ui->scrHome_label_1 = lv_label_create(ui->scrHome);
-    lv_label_set_text(ui->scrHome_label_1, "11月15号 星期五");
-    lv_label_set_long_mode(ui->scrHome_label_1, LV_LABEL_LONG_WRAP);
-    lv_obj_set_pos(ui->scrHome_label_1, 23, 113);
-    lv_obj_set_size(ui->scrHome_label_1, 129, 17);
+    //Write codes scrHome_dataNumbers
+    ui->scrHome_dataNumbers = lv_label_create(ui->scrHome);
+    lv_label_set_text(ui->scrHome_dataNumbers, "11月15号 星期五");
+    lv_label_set_long_mode(ui->scrHome_dataNumbers, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(ui->scrHome_dataNumbers, 23, 113);
+    lv_obj_set_size(ui->scrHome_dataNumbers, 129, 17);
 
-    //Write style for scrHome_label_1, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
-    lv_obj_set_style_border_width(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_radius(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_color(ui->scrHome_label_1, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui->scrHome_label_1, &lv_font_SourceHanSerifSC_Regular_14, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_opa(ui->scrHome_label_1, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_letter_space(ui->scrHome_label_1, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_line_space(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_align(ui->scrHome_label_1, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_opa(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_top(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_right(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_bottom(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_left(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_shadow_width(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    //Write style for scrHome_dataNumbers, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
+    lv_obj_set_style_border_width(ui->scrHome_dataNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui->scrHome_dataNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui->scrHome_dataNumbers, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui->scrHome_dataNumbers, &lv_font_SourceHanSerifSC_Regular_14, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui->scrHome_dataNumbers, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_letter_space(ui->scrHome_dataNumbers, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_line_space(ui->scrHome_dataNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui->scrHome_dataNumbers, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui->scrHome_dataNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui->scrHome_dataNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui->scrHome_dataNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui->scrHome_dataNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui->scrHome_dataNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_width(ui->scrHome_dataNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+
+    //Write codes scrHome_timerColon
+    ui->scrHome_timerColon = lv_label_create(ui->scrHome);
+    lv_label_set_text(ui->scrHome_timerColon, ":");
+    lv_label_set_long_mode(ui->scrHome_timerColon, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(ui->scrHome_timerColon, 85, 186);
+    lv_obj_set_size(ui->scrHome_timerColon, 12, 19);
+
+    //Write style for scrHome_timerColon, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
+    lv_obj_set_style_border_width(ui->scrHome_timerColon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui->scrHome_timerColon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui->scrHome_timerColon, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui->scrHome_timerColon, &lv_font_montserratMedium_16, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui->scrHome_timerColon, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_letter_space(ui->scrHome_timerColon, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_line_space(ui->scrHome_timerColon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui->scrHome_timerColon, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui->scrHome_timerColon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui->scrHome_timerColon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui->scrHome_timerColon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui->scrHome_timerColon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui->scrHome_timerColon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_width(ui->scrHome_timerColon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+
+    //Write codes scrHome_timerMinuteNumbers
+    ui->scrHome_timerMinuteNumbers = lv_label_create(ui->scrHome);
+    lv_label_set_text(ui->scrHome_timerMinuteNumbers, "00");
+    lv_label_set_long_mode(ui->scrHome_timerMinuteNumbers, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(ui->scrHome_timerMinuteNumbers, 97, 189);
+    lv_obj_set_size(ui->scrHome_timerMinuteNumbers, 33, 14);
+
+    //Write style for scrHome_timerMinuteNumbers, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
+    lv_obj_set_style_border_width(ui->scrHome_timerMinuteNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui->scrHome_timerMinuteNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui->scrHome_timerMinuteNumbers, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui->scrHome_timerMinuteNumbers, &lv_font_montserratMedium_16, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui->scrHome_timerMinuteNumbers, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_letter_space(ui->scrHome_timerMinuteNumbers, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_line_space(ui->scrHome_timerMinuteNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui->scrHome_timerMinuteNumbers, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui->scrHome_timerMinuteNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui->scrHome_timerMinuteNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui->scrHome_timerMinuteNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui->scrHome_timerMinuteNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui->scrHome_timerMinuteNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_width(ui->scrHome_timerMinuteNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
 
     //The custom code of scrHome.
 

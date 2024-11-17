@@ -27,6 +27,9 @@ typedef struct _bsp_pro_t{
    int8_t sensor_temp_value;
    uint8_t sensor_huimidity_value;
 
+   uint8_t adjustTimerValue_enable;
+   int8_t adjustTimerValue;
+
 
 
    uint8_t gTimer_lv_disp_time_colon;
