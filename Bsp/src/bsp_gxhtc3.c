@@ -52,20 +52,21 @@ static int8_t  gxhtc3_read_sensor_temperature_value(void)
 
 void readSensorGXHTC3_data(void)
 {
-   uint8_t i;
-  
+   //uint8_t i;
+   
    gxhtc3_read_ee_i2c_data();
+   osDelay(1000);
    
    gpro_t.sensor_huimidity_value = gxhtc3_read_sensor_humidity_value();
    gpro_t.sensor_temp_value = gxhtc3_read_sensor_temperature_value();
 
-  
-
-   for(i=0;i< 5;i++){
-
-   i2c_read_data[i]=0;
-
-   }
+   
+//
+//   for(i=0;i< 5;i++){
+//
+//   i2c_read_data[i]=0;
+//
+//   }
  
 
 }

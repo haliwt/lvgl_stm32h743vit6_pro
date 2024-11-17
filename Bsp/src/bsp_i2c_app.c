@@ -6,11 +6,6 @@
 #define EE_IIC_SCL(val)         HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6,val)                    //SCL 输出高或者低     2.修改引脚即可修改IIC接口        
 #define EE_IIC_SDA(val)         HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7,val)                    //SDA 输出高或者低 
 
-
-
-
-
-
 /******************************************************************************
 *函  数：void EE_SDA_IN(void) 	//PB11配置成输入 
 *功　能：IIC初始化
@@ -284,10 +279,10 @@ uint8_t EE_IIC_ReadByteFromSlave(uint8_t I2C_Addr,uint8_t reg,uint8_t *buf)
     buf[4]=EE_IIC_ReadByte(1);
 
     buf_t=EE_IIC_ReadByte(0);
-
+ 
     
     
-     //EE_IIC_Stop(); //产生一个停止条件
+    // EE_IIC_Stop(); //产生一个停止条件
 	return 0;
 }
 

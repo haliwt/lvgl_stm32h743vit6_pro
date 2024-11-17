@@ -5,7 +5,7 @@
 
 #define LED0_GPIO_PORT                  GPIOA
 #define LED0_GPIO_PIN                   GPIO_PIN_1
-#define LED0_GPIO_CLK_ENABLE()          do{ __HAL_RCC_GPIOA_CLK_ENABLE(); }while(0)   /* PB口时钟使能 */
+#define LED0_GPIO_CLK()          do{__HAL_RCC_GPIOA_CLK_ENABLE(); }while(0)   /* PB口时钟使能 */
 
 //#define LED1_GPIO_PORT                  GPIOB
 //#define LED1_GPIO_PIN                   GPIO_PIN_0
