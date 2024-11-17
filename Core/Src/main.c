@@ -106,13 +106,15 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_I2C1_Init();
+ // MX_I2C1_Init();
   MX_TIM17_Init();
   MX_USART1_UART_Init();
   MX_SPI2_Init();
   MX_DMA2D_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim17);
+
+  bsp_init();
    
   TFT_GPIO_Reset();
  // TFT_LCD_Init();

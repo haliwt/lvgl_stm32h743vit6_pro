@@ -197,6 +197,7 @@ static void lv_port_indev_init(lv_ui *ui)
    static lv_indev_drv_t indev_drv1;
    static lv_indev_drv_t indev_drv2;
    static lv_indev_drv_t indev_drv3;
+   static lv_indev_drv_t indev_drv4;
 
    lv_indev_drv_init(&indev_drv1);
     indev_drv1.type = LV_INDEV_TYPE_BUTTON;
@@ -209,9 +210,13 @@ static void lv_port_indev_init(lv_ui *ui)
    lv_indev_drv_init(&indev_drv3);
    indev_drv2.type = LV_INDEV_TYPE_BUTTON;
 
+    lv_indev_drv_init(&indev_drv4);
+    indev_drv2.type = LV_INDEV_TYPE_BUTTON;
+
      lv_indev_drv_register(&indev_drv1);
      lv_indev_drv_register(&indev_drv2);
      lv_indev_drv_register(&indev_drv3);
+     lv_indev_drv_register(&indev_drv4);
 
     /* Create buttons */
 }
@@ -249,10 +254,13 @@ static void button_init(lv_ui *ui)
     #endif 
     /* Create button 2 */
     btn3= ui->scrHome_timerNumbers;
+    #if 0
     btn3 = lv_label_create(ui->scrHome);
-    //lv_label_set_text(ui->scrHome_timerNumbers, "00:00");
+    lv_label_set_text(ui->scrHome_timerNumbers, "00:00");
+    lv_label_set_long_mode(ui->scrHome_timerNumbers, LV_LABEL_LONG_WRAP);
     lv_obj_set_pos(ui->scrHome_timerNumbers, 44, 189);
     lv_obj_set_size(ui->scrHome_timerNumbers, 93, 17);
+    #endif 
    
 }
 
@@ -284,7 +292,7 @@ void check_button_state(lv_ui *ui)
             if(key3_default != key3_high_pressed){
                key3_default= key3_high_pressed;
                  // lv_obj_set_style_bg_color(btn3, lv_color_hex(0xFF0000), 0); // 使用lv_color_hex设置颜色
-                 lv_obj_set_style_text_color(ui->scrHome_timerNumbers, lv_color_hex(0xFF0000), 0);
+                 lv_obj_set_style_text_color(ui->scrHome_timerNumbers, lv_color_hex(0xFF0000), 0); //red color
             }
     }
    } 
@@ -296,7 +304,7 @@ void check_button_state(lv_ui *ui)
               key3_high_pressed++;
         // 检测到按键释放
         //lv_obj_set_style_bg_color(btn3, lv_color_hex(0x00ff00), 0); // 使用lv_color_hex设置颜色
-              lv_obj_set_style_text_color(ui->scrHome_timerNumbers, lv_color_hex(0x00ff00), 0);
+              lv_obj_set_style_text_color(ui->scrHome_timerNumbers, lv_color_hex(0x000000), 0); //black color
         }
     }
 
