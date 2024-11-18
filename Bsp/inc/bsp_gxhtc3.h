@@ -3,8 +3,7 @@
 #include "main.h"
 
 
-#define GX_ADDR_W     0xE0
-#define GX_ADDR_R     0xE1
+
 
 //#define GX_WK_UP    0x3517
 

@@ -3,6 +3,7 @@
 #include "main.h"
 
 
+void lv_dispTempHumidity_value(lv_ui* ui);
 
 
 

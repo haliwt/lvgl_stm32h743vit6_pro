@@ -228,22 +228,22 @@ void EE_IIC_SendByte(uint8_t data)
 ********************************************************************************/
 uint8_t EE_IIC_ReadByte(uint8_t ack)
 {
-	uint8_t i,receive=0;
+	uint8_t i,receive_data=0;
 	EE_SDA_IN(); //SDA设置为输入模式 等待接收从机返回数据
     for(i=0;i<8;i++ )
 	{
         EE_IIC_SCL((GPIO_PinState)0);  // SCL =0, maybe changed data.
         EE_IIC_Delay(1);
         EE_IIC_SCL((GPIO_PinState)1); // SCL =1 ,receive data 
-        receive<<=1;
-        if(EE_READ_SDA())receive++; //读取从机发送的电平，如果是高，就记录高
+        receive_data<<=1;
+        if(EE_READ_SDA())receive_data++; //读取从机发送的电平，如果是高，就记录高
         EE_IIC_Delay(1); 
     }					 
     if(ack)
         EE_IIC_Ack(); //发送ACK 
     else
         EE_IIC_NAck(); //发送nACK  
-    return receive;
+    return receive_data;
 }
 
 //从EE指定地址读取一个字节
@@ -264,15 +264,16 @@ uint8_t EE_IIC_ReadByteFromSlave(uint8_t I2C_Addr,uint8_t reg,uint8_t *buf)
 	
 	EE_IIC_Start();
     #endif 
-	EE_IIC_SendByte(I2C_Addr+1); //进入接收模式			   
+	//EE_IIC_SendByte(I2C_Addr+1); //进入接收模式		
+	EE_IIC_SendByte(I2C_Addr);  //read Address 
 	EE_IIC_WaitAck();
 	
    
-	buf[0]=EE_IIC_ReadByte(1);
+	buf[0]=EE_IIC_ReadByte(1); //humidity value 
     
     buf[1]=EE_IIC_ReadByte(1);
  
-    buf[2]=EE_IIC_ReadByte(1);
+    buf[2]=EE_IIC_ReadByte(1); //humidity of CRC
  
     buf[3]=EE_IIC_ReadByte(1);
  
@@ -280,14 +281,13 @@ uint8_t EE_IIC_ReadByteFromSlave(uint8_t I2C_Addr,uint8_t reg,uint8_t *buf)
 
     buf_t=EE_IIC_ReadByte(0);
  
+    EE_IIC_Stop();
     
-    
-    // EE_IIC_Stop(); //产生一个停止条件
 	return 0;
 }
 
 //发送一个字节内容到EE指定地址
-uint8_t EE_EE_IIC_SendByteToSlave(uint8_t I2C_Addr,uint8_t reg,uint8_t data)
+uint8_t EE_IIC_SendByteToSlave(uint8_t I2C_Addr,uint8_t reg,uint8_t data)
 {
 	EE_IIC_Start();
 	EE_IIC_SendByte(I2C_Addr); //发送从机地址
@@ -315,10 +315,12 @@ uint8_t EE_EE_IIC_SendByteToSlave(uint8_t I2C_Addr,uint8_t reg,uint8_t data)
 void gxhtc3_read_ee_i2c_data(void)
 {
 
-	EE_EE_IIC_SendByteToSlave(0xE0,0x5C,0x24);//0地址存储0xE0
-	
+	//EE_IIC_SendByteToSlave(GXHTC3_ADDR_W,0x5C,0x24);//0地址存储0xE0
+	EE_IIC_SendByteToSlave(GXHTC3_ADDR_W,GXHTC3_MEASURE_HIGH_CMD,GXHTC3_MEASURE_LOW_CMD);//0地址存储0xE0
 
-    EE_IIC_ReadByteFromSlave(0xE0,0x00,i2c_read_data);//从0地址读取1字节内容到EEDATA变量
+   // EE_IIC_ReadByteFromSlave(0XE0,0x00,i2c_read_data);//从0地址读取1字节内容到EEDATA变量
+
+    EE_IIC_ReadByteFromSlave(GXHTC3_ADDR_R,0x00,i2c_read_data);//从0地址读取1字节内容到EEDATA变量
 
 
 

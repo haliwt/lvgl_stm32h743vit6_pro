@@ -10,7 +10,7 @@ void bsp_init(void)
 
 void process_mainboard(void)
 {
-   readSensorGXHTC3_data();
+   //readSensorGXHTC3_data();
 
 }
 

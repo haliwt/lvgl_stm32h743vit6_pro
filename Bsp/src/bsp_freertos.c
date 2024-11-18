@@ -11,6 +11,7 @@
 #include "lv_mainstart.h"
 #include "gui_guider.h"
 #include "events_init.h"
+#include "lv_bsp.h"
 
 
 
@@ -107,7 +108,8 @@ static void vTaskStart(void *pvParameters)
 //           LED0(0);
 //        }
 		LED0_TOGGLE();
-        process_mainboard();
+      //  process_mainboard();
+      lv_dispTempHumidity_value(&guider_ui);
         
 	   // update_works_time(&guider_ui);
         vTaskDelay(1000);

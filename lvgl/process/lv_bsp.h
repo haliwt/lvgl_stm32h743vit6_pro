@@ -14,6 +14,10 @@
 #include "events_init.h"
 
 
+#include "lv_i2c.h"
+
+
+
 
 
 
