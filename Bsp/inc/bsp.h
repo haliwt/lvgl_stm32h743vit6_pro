@@ -7,6 +7,8 @@
 #include "usart.h"
 #include "i2c.h"
 
+
+#include "bsp_delay.h"
 #include "bsp_st7789v.h"
 #include "bsp_tft.h"
 #include "bsp_tft_app.h"

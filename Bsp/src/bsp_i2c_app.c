@@ -76,9 +76,11 @@ void EE_IIC_Delay(uint16_t us)
 	uint16_t j;
 	for(j=0;j<us;j++)
 	{
-        for(int i = 0; i < 20; i++)    
+        for(int i = 0; i < 100; i++) //20   
         {
-            __asm("NOP");//等待1个指令周期，系统主频16M
+           // __asm("NOP");//等待1个指令周期，系统主频16M
+           --asm("NOP");    //48OMHZ
+      
         }
 	}
     
@@ -98,28 +100,40 @@ void EE_IIC_Init(void)
     EE_IIC_SCL((GPIO_PinState)1);//CLK引脚输出高
     EE_IIC_SDA((GPIO_PinState)1);//DATA引脚输出高   
 }
-//开始	
+/***********************************************************************************************
+*
+*Function Name:void EE_IIC_Start(void)
+*Function : SDA -> HIGH ->LOW: SCL = H
+*
+*
+***********************************************************************************************/	
 void EE_IIC_Start(void)
 {
 	EE_SDA_OUT(); //DATA引脚配置成输出
 	EE_IIC_SDA((GPIO_PinState)1);//DATA引脚输出高	
 	EE_IIC_SCL((GPIO_PinState)1);//CLK引脚输出高
-	EE_IIC_Delay(4);//等待大约40us
+	delay_us(40);//EE_IIC_Delay(4);//等待大约40us
  	EE_IIC_SDA((GPIO_PinState)0); //DATA引脚输出低
 	EE_IIC_Delay(4);//等待大约40us
 	EE_IIC_SCL((GPIO_PinState)0); //CLK引脚输出低，钳住I2C总线，准备发送或接收数据 
 }
 
-//停止	  
+/***********************************************************************************************
+*
+*Function Name:void EE_IIC_Stop(void)
+*Function : SDA -> LOW ->HIGH : SCL = H
+*
+*
+***********************************************************************************************/
 void EE_IIC_Stop(void)
 {
-	EE_SDA_OUT(); //DATA引脚配置成输出
-	EE_IIC_SCL((GPIO_PinState)0);//CLK引脚输出低
-	EE_IIC_SDA((GPIO_PinState)0); //DATA引脚输出低
-  EE_IIC_Delay(4);//等待大约40us
-	EE_IIC_SCL((GPIO_PinState)1); //CLK引脚输出高
-	EE_IIC_SDA((GPIO_PinState)1); //DATA引脚输出高，发送I2C总线结束信号
-  EE_IIC_Delay(4);//等待大约40us							   	
+    EE_SDA_OUT(); //DATA引脚配置成输出
+    EE_IIC_SCL((GPIO_PinState)0);//CLK引脚输出低 数据更改
+    EE_IIC_SDA((GPIO_PinState)0); //DATA引脚输出--->低 (low-> 高  ---》I2C finish )
+    delay_us(40); //EE_IIC_Delay(4);//等待大约40us
+    EE_IIC_SCL((GPIO_PinState)1); //CLK引脚输出高 -->SCL--高
+    EE_IIC_SDA((GPIO_PinState)1); //DATA引脚输出---> 高，发送I2C总线结束信号
+    EE_IIC_Delay(4);//等待大约40us							   	
 }
 /********************************************************************************
 *
@@ -135,9 +149,9 @@ uint8_t EE_IIC_WaitAck(void)
 	uint8_t ucErrTime=0;
 	EE_SDA_IN(); //DATA引脚配置成输入  （从机给一个低电平做为应答） 
 	EE_IIC_SDA((GPIO_PinState)1);
-	EE_IIC_Delay(1);	   
+	delay_us(10);//EE_IIC_Delay(1);	   
 	EE_IIC_SCL((GPIO_PinState)1);
-	EE_IIC_Delay(1);//等待约10us 
+	delay_us(10);//EE_IIC_Delay(1);//等待约10us 
 	while(EE_READ_SDA())//一直读，直到读取到低电平应答
 	{
 		ucErrTime++;
@@ -154,8 +168,8 @@ uint8_t EE_IIC_WaitAck(void)
 /********************************************************************************
 *
 *Function Name:void EE_IIC_Ack(void)
-*Function : 应答信号，在第9个clock，SDA被拉低--应答， SDA-被拉高-结束，SCL-高电平
-*           传输数据，SCL-低电平，数据变更。master and slave as the same.
+*Function : 应答信号，在第9个clock，SDA被拉低-低电平--应答， SDA-被拉高-结束，
+*           SCL-高电平，传输数据，SCL-低电平，数据变更。
 *
 *
 *
@@ -165,17 +179,17 @@ void EE_IIC_Ack(void)
 	EE_IIC_SCL((GPIO_PinState)0); //SCL bus is pull low ,changed transmit data. 
 	EE_SDA_OUT();
 	EE_IIC_SDA((GPIO_PinState)0);  // transmit data is SDA = 0, answer signal
-	EE_IIC_Delay(1);
+	delay_us(10);//EE_IIC_Delay(1);
 	EE_IIC_SCL((GPIO_PinState)1); //SCL bus  is pull high ,bigin transmit data.
-	EE_IIC_Delay(2); //hold delay data
+	delay_us(10);//EE_IIC_Delay(2); //hold delay data
 	EE_IIC_SCL((GPIO_PinState)0); //release SCL bus
 }
 
 /********************************************************************************
 *
 *Function Name:void EE_IIC_Ack(void)
-*Function : 非应答信号，在第9个clock，SDA被拉低--应答， SDA-被拉高-结束，SCL-高电平
-*           传输数据，SCL-低电平，数据变更。master and slave as the same.
+*Function : 非应答信号，在第9个clock，SDA被拉低--应答， SDA-被拉高-高电平-结束，
+*           SCL-高电平，传输数据，SCL-低电平，数据变更
 *
 *
 *
@@ -187,7 +201,7 @@ void EE_IIC_NAck(void)
 	EE_IIC_SDA((GPIO_PinState)1);
 	EE_IIC_Delay((GPIO_PinState)1);
 	EE_IIC_SCL((GPIO_PinState)1);
-	EE_IIC_Delay(1);
+	delay_us(10);//EE_IIC_Delay(1);
 	EE_IIC_SCL((GPIO_PinState)0); //relaeas SCL bus.
 }					 				     
 /********************************************************************************
@@ -208,13 +222,13 @@ void EE_IIC_SendByte(uint8_t data)
     {              
 	    EE_IIC_SDA((GPIO_PinState)((data&0x80)>>7));//发送数据,从最高位开始发送。
         EE_IIC_Delay(1);			
-        EE_IIC_SCL((GPIO_PinState)1); //传输数据
+        EE_IIC_SCL((GPIO_PinState)1); //传输数据-SCL bus must pull high is send data.,slc is low changed data.
         
         data<<=1; // shift left one bit.
-        EE_IIC_Delay(1); // about times 10us.
+        delay_us(10);//EE_IIC_Delay(1); // about times 10us.hold up SCL is high level 1ous.
         EE_IIC_SCL((GPIO_PinState)0); // release SCL bus. 
     }
-    EE_IIC_Delay(1);
+   delay_us(10);// EE_IIC_Delay(1);
 } 	 
 
 /********************************************************************************
@@ -237,7 +251,7 @@ uint8_t EE_IIC_ReadByte(uint8_t ack)
         EE_IIC_SCL((GPIO_PinState)1); // SCL =1 ,receive data 
         receive_data<<=1;
         if(EE_READ_SDA())receive_data++; //读取从机发送的电平，如果是高，就记录高
-        EE_IIC_Delay(1); 
+        delay_us(10);//EE_IIC_Delay(1); 
     }					 
     if(ack)
         EE_IIC_Ack(); //发送ACK 
@@ -246,7 +260,16 @@ uint8_t EE_IIC_ReadByte(uint8_t ack)
     return receive_data;
 }
 
-//从EE指定地址读取一个字节
+
+/********************************************************************************
+*
+*Function Name:uint8_t EE_IIC_ReadByteFromSlave(uint8_t I2C_Addr,uint8_t reg,uint8_t *buf)
+*Function : 从EE指定地址读取一个字节
+*           
+*Input Ref: read_address = I2C_Addr+1,wich of register ,data be save *buf
+*Reftern Ref: receive data from slave device .
+*
+********************************************************************************/
 uint8_t EE_IIC_ReadByteFromSlave(uint8_t I2C_Addr,uint8_t reg,uint8_t *buf)
 {
 	

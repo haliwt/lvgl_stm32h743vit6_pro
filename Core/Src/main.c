@@ -112,6 +112,7 @@ int main(void)
   MX_SPI2_Init();
   MX_DMA2D_Init();
   /* USER CODE BEGIN 2 */
+  delay_init(480);
   HAL_TIM_Base_Start_IT(&htim17);
 
   bsp_init();
