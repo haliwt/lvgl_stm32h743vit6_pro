@@ -111,6 +111,7 @@ void update_works_time(lv_ui *ui)
         timeColon_disp_default = time_colon_symbol;
         time_colon_not++;
         lv_obj_clear_flag(ui->scrHome_timeColon, LV_OBJ_FLAG_HIDDEN); // 显示标签
+      
 
 
        }
@@ -126,13 +127,14 @@ void update_works_time(lv_ui *ui)
                time_colon_symbol++;
 
            lv_obj_add_flag(ui->scrHome_timeColon,LV_OBJ_FLAG_HIDDEN); //hidden icon
+           
        }
 
 
   }
   else{
     gpro_t.gTimer_lv_disp_time_colon=0;
-
+  
 
   }
    
@@ -144,28 +146,41 @@ void update_wifi_blinkicon_fun(lv_ui* ui)
       
     static uint8_t wifi_symbol,wifi_not,wifi_disp_default=0xff,wifi_not_default=0xff;
 
-      if(gpro_t.wifi_link_success ==0){
+    if(gpro_t.wifi_link_success ==0){
 
-      if(wifi_disp_default != wifi_symbol){
+    if(gpro_t.gTimer_lv_disp_wifi_colon <  2){
+    
+
+         if(wifi_disp_default != wifi_symbol){
              
              wifi_disp_default = wifi_symbol;
              wifi_not++;
+          
             lv_obj_clear_flag(ui->scrHome_wifiIcon,LV_OBJ_FLAG_HIDDEN); //display wifi icon
-           
-      }
-      else if(wifi_not_default != wifi_not){
+            
+        }
+   }
+   else if(gpro_t.gTimer_lv_disp_wifi_colon  > 1 &&  gpro_t.gTimer_lv_disp_wifi_colon  < 4){
+
+     if(wifi_not_default != wifi_not){
       
          wifi_not_default = wifi_not;
          wifi_symbol ++;
-
+       
 
          lv_obj_add_flag(ui->scrHome_wifiIcon,LV_OBJ_FLAG_HIDDEN);//wifi icon hidden
         
 
        }
-     }
+    }
+    else{
 
+        gpro_t.gTimer_lv_disp_wifi_colon =0;
+         wifi_not++;
+         wifi_symbol ++;
+    }
 
+  }
 }
 
 

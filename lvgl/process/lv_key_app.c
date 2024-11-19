@@ -37,7 +37,7 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
      lv_obj_set_style_img_recolor(ui->scrHome_wifiIcon,lv_color_hex(0xFF0000),LV_PART_MAIN | LV_STATE_DEFAULT);
      lv_obj_set_style_img_recolor_opa(ui->scrHome_wifiIcon,255,LV_PART_MAIN | LV_STATE_DEFAULT);
      lv_obj_set_pos(ui->scrHome_wifiIcon, 15, 10);
-   
+     lv_gpro_t.selectItem_add_numbers++;
 
    break;
 
@@ -53,7 +53,7 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
      lv_obj_set_style_img_recolor_opa(ui->scrHome_dryIcon,255,LV_PART_MAIN | LV_STATE_DEFAULT);
      lv_obj_set_pos(ui->scrHome_dryIcon, 48, 10);
 
-   
+      lv_gpro_t.selectItem_add_numbers++;
 
    break;
 
@@ -69,7 +69,7 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
     lv_obj_set_style_img_recolor_opa(ui->scrHome_plasmaIcon,255,LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_pos(ui->scrHome_plasmaIcon, 81, 10);
    
-    
+    lv_gpro_t.selectItem_add_numbers++;
 
    break;
 
@@ -85,6 +85,7 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
     lv_obj_set_style_img_recolor_opa(ui->scrHome_mouseIcon,255,LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_pos(ui->scrHome_mouseIcon, 112, 10);
     
+   lv_gpro_t.selectItem_add_numbers++;
 
    break;
 
@@ -97,7 +98,7 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
         //lv_label_set_text(ui->scrHome_tempNumbers, "00");
         lv_obj_set_style_text_color(ui->scrHome_tempNumbers,lv_color_hex(0xFF0000), 0); //red color
        
-       
+       lv_gpro_t.selectItem_add_numbers++;
 
 
    break;
@@ -110,7 +111,7 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
 
      lv_obj_set_style_text_color(ui->scrHome_timerHoursNumbers, lv_color_hex(0xFF0000), 0); //red color
 
-   
+     lv_gpro_t.selectItem_add_numbers++;
 
      lv_gpro_t.lv_seletc_time=0;
 
@@ -202,19 +203,26 @@ static void lv_edit_select_item(uint8_t item,lv_ui* ui)
 *Return Ref:NO
 *
 ****************************************************************************************/
-void check_disp_icon_times(lv_ui* ui)
+void check_select_icon_hidden(lv_ui* ui)
 {
 
-
+      static uint8_t changed_icon_default =0xff;
+      
       if(gpro_t.gTimer_lv_disp_icon_hold > 3){
 
           gpro_t.gTimer_lv_disp_icon_hold=0;
+          
 
-      
+
+
+       if(changed_icon_default != lv_gpro_t.selectItem_add_numbers){
+
+              changed_icon_default = lv_gpro_t.selectItem_add_numbers;
           //shut off display color red that timer timing defalult color is black
           lv_obj_set_style_text_color(ui->scrHome_timerHoursNumbers, lv_color_hex(0x000000), 0); //black color
       
            //shut off display color red that default is color black.
+           
            lv_obj_set_style_img_recolor(ui->scrHome_wifiIcon,lv_color_hex(0x000000),LV_PART_MAIN | LV_STATE_DEFAULT);
     
   
@@ -238,7 +246,8 @@ void check_disp_icon_times(lv_ui* ui)
              //shut off tempNumbers display color red that default is color black.
             lv_obj_set_style_text_color(ui->scrHome_tempNumbers, lv_color_hex(0x000000), 0); //black color
 
-        }
+       
+       }
+    }
 
 }
-

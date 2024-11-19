@@ -49,6 +49,7 @@ typedef struct _bsp_pro_t{
    uint8_t gTimer_lv_disp_time_colon;
    uint8_t gTimer_lv_disp_time; 
    uint8_t gTimer_lv_disp_icon_hold;
+   uint8_t gTimer_lv_disp_wifi_colon ;
 
 
 

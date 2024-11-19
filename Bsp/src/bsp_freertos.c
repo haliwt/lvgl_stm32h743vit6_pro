@@ -68,20 +68,17 @@ void freeRTOS_handler(void)
 static void vTaskMsgPro(void *pvParameters)
 {
    
-    
-  //  lv_mainstart();
-   //  lv_port_indev_init() ;
     while(1)
     {
-	    lv_timer_handler(); /* LVGL¼ÆÊ±Æ÷ */
+	    lv_timer_handler();
         update_works_time(&guider_ui);
         check_button_state(&guider_ui);
         
-        check_disp_icon_times(&guider_ui);
-        
-        
+        check_select_icon_hidden(&guider_ui);
+       
+        update_wifi_blinkicon_fun(&guider_ui);
         vTaskDelay(5);
-       //physical_button_pressed();
+      
 		
     }
 }
@@ -100,23 +97,14 @@ static void vTaskStart(void *pvParameters)
    // uint8_t keyvalue;
     while(1)
     {
-		/* 按键扫描 */
-//		keyvalue = key_scan(0);
-//        if(keyvalue == 1){
-//          LED0(1);
-//
-//        }
-//        else if(keyvalue == 2){
-//
-//           LED0(0);
-//        }
-		LED0_TOGGLE();
-      //  process_mainboard();
+
+	  LED0_TOGGLE();
+      
       lv_dispTempHumidity_value(&guider_ui);
-      update_wifi_blinkicon_fun(&guider_ui);
-        
-	   // update_works_time(&guider_ui);
-        vTaskDelay(1000);
+
+      // update_wifi_blinkicon_fun(&guider_ui);
+    
+      vTaskDelay(1000);
     }
 }
 
