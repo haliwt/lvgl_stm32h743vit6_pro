@@ -22,6 +22,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
            tm0=0;
            gpro_t.gTimer_lv_disp_time_colon++;
            gpro_t.gTimer_lv_disp_time++;
+           gpro_t.gTimer_lv_disp_icon_hold++;
 
         }
 

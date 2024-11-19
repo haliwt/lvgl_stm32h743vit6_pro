@@ -4,6 +4,9 @@
 
 static void lv_edit_select_item(uint8_t item,lv_ui* ui);
 
+static void check_disp_icon_times(lv_ui* ui);
+
+
 /****************************************************************************************
 *
 *Function Name:void lv_key_select_item(uint8_t select,lv_ui* ui)
@@ -29,6 +32,7 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
      ui->scrHome_wifiIcon = lv_img_create(ui->scrHome);
      lv_obj_add_flag(ui->scrHome_wifiIcon, LV_OBJ_FLAG_CLICKABLE);
      lv_img_set_src(ui->scrHome_wifiIcon, &_wifi_symbol_black_alpha_22x17);
+     
      lv_obj_set_style_img_recolor(ui->scrHome_wifiIcon,lv_color_hex(0xFF0000),LV_PART_MAIN | LV_STATE_DEFAULT);
      lv_obj_set_style_img_recolor_opa(ui->scrHome_wifiIcon,255,LV_PART_MAIN | LV_STATE_DEFAULT);
      lv_obj_set_pos(ui->scrHome_wifiIcon, 15, 10);
@@ -43,7 +47,9 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
      ui->scrHome_dryIcon = lv_img_create(ui->scrHome);
      lv_obj_add_flag(ui->scrHome_dryIcon, LV_OBJ_FLAG_CLICKABLE);
      lv_img_set_src(ui->scrHome_dryIcon, &_dry_black_2_alpha_22x17);
+     
      lv_obj_set_style_img_recolor(ui->scrHome_dryIcon,lv_color_hex(0xFF0000),LV_PART_MAIN | LV_STATE_DEFAULT);
+     lv_obj_set_style_img_recolor_opa(ui->scrHome_dryIcon,255,LV_PART_MAIN | LV_STATE_DEFAULT);
      lv_obj_set_pos(ui->scrHome_dryIcon, 48, 10);
 
    
@@ -59,6 +65,7 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
     lv_img_set_src(ui->scrHome_plasmaIcon, &_plasma_black_2_alpha_22x17);
     
     lv_obj_set_style_img_recolor(ui->scrHome_plasmaIcon,lv_color_hex(0xFF0000),LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_img_recolor_opa(ui->scrHome_plasmaIcon,255,LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_pos(ui->scrHome_plasmaIcon, 81, 10);
    
     
@@ -74,6 +81,7 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
     lv_img_set_src(ui->scrHome_mouseIcon, &_mouse_black_alpha_22x17);
     
     lv_obj_set_style_img_recolor(ui->scrHome_mouseIcon,lv_color_hex(0xFF0000),LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_img_recolor_opa(ui->scrHome_mouseIcon,255,LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_pos(ui->scrHome_mouseIcon, 112, 10);
     
 
@@ -109,8 +117,9 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
    break;
 
 
-}
+    }
 
+    check_disp_icon_times(ui);
 
 
 
@@ -135,7 +144,7 @@ static void lv_edit_select_item(uint8_t item,lv_ui* ui)
       break;
     
       case wifi_item:
-    
+        
           //shut off display color red that timer timing defalult color is black
           lv_obj_set_style_text_color(ui->scrHome_timerHoursNumbers, lv_color_hex(0x000000), 0); //black color
        break;
@@ -186,6 +195,51 @@ static void lv_edit_select_item(uint8_t item,lv_ui* ui)
 }
 }
 
+/****************************************************************************************
+*
+*Function Name:static void lv_edit_select_item(uint8_t item,lv_ui* ui)
+*Function:  only display edit lable image be selection color is red. 
+*Input Ref:lv_ui
+*Return Ref:NO
+*
+****************************************************************************************/
+static void check_disp_icon_times(lv_ui* ui)
+{
 
 
+      if(gpro_t.gTimer_lv_disp_icon_hold > 3){
+
+          gpro_t.gTimer_lv_disp_icon_hold=0;
+
+      
+          //shut off display color red that timer timing defalult color is black
+          lv_obj_set_style_text_color(ui->scrHome_timerHoursNumbers, lv_color_hex(0x000000), 0); //black color
+      
+           //shut off display color red that default is color black.
+           lv_obj_set_style_img_recolor(ui->scrHome_wifiIcon,lv_color_hex(0x000000),LV_PART_MAIN | LV_STATE_DEFAULT);
+    
+  
+        
+            //shut off DRY_ICON display color red that default is color black.
+           lv_obj_set_style_img_recolor(ui->scrHome_dryIcon,lv_color_hex(0x000000),LV_PART_MAIN | LV_STATE_DEFAULT);
+       
+    
+     
+
+           //shut off PLASMA_ICON display color red that default is color black.
+           lv_obj_set_style_img_recolor(ui->scrHome_plasmaIcon,lv_color_hex(0x000000),LV_PART_MAIN | LV_STATE_DEFAULT);
+    
+  
+
+
+            //shut off MOUSE_ICON display color red that default is color black.
+           lv_obj_set_style_img_recolor(ui->scrHome_mouseIcon,lv_color_hex(0x000000),LV_PART_MAIN | LV_STATE_DEFAULT);
+    
+    
+             //shut off tempNumbers display color red that default is color black.
+            lv_obj_set_style_text_color(ui->scrHome_tempNumbers, lv_color_hex(0x000000), 0); //black color
+
+        }
+
+}
 

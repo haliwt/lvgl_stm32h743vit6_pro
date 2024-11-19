@@ -107,6 +107,7 @@ void check_button_state(lv_ui *ui)
             if(key3_default != key3_high_pressed){
                key3_default= key3_high_pressed;
                key3_low_pressed++;
+               gpro_t.gTimer_lv_disp_icon_hold=0;
                lv_gpro_t.lv_seletc_time++;
                lv_key_select_item(lv_gpro_t.lv_seletc_time,ui);
                
