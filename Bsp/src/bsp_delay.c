@@ -3,6 +3,8 @@
 
 #define SYS_SUPPORT_OS    0
 
+static uint32_t g_fac_us = 0;  /* us延时倍乘数 */
+
 /**
  * @brief     初始化延迟函数
  * @param     sysclk: 系统时钟频率, 即CPU频率(rcc_c_ck), 480Mhz

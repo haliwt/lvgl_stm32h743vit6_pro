@@ -78,8 +78,8 @@ void EE_IIC_Delay(uint16_t us)
 	{
         for(int i = 0; i < 100; i++) //20   
         {
-           // __asm("NOP");//等待1个指令周期，系统主频16M
-           --asm("NOP");    //48OMHZ
+            __asm("NOP");//等待1个指令周期，系统主频16M
+         //  __asm("NOP");    //48OMHZ
       
         }
 	}

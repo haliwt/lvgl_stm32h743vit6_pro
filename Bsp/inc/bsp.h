@@ -8,6 +8,8 @@
 #include "i2c.h"
 
 
+
+
 #include "bsp_delay.h"
 #include "bsp_st7789v.h"
 #include "bsp_tft.h"
@@ -17,7 +19,15 @@
 #include "bsp_freertos.h"
 #include "bsp_i2c_app.h"
 #include "bsp_gxhtc3.h"
+
 #include "interrupt_manager.h"
+
+
+#include "FreeRTOS.h"
+#include "task.h"
+
+#include "cmsis_os.h"
+
 
 
 
@@ -29,8 +39,8 @@ typedef struct _bsp_pro_t{
    int8_t sensor_temp_value;
    uint8_t sensor_huimidity_value;
 
-   uint8_t adjustTimerValue_enable;
-   int8_t adjustTimerValue;
+ 
+  
 
 
 

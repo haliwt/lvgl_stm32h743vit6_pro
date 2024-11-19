@@ -5,14 +5,6 @@
 #include "events_init.h"
 
 
-void lv_hardware_init(lv_ui *ui);
-
-
-
-
-
-
-void check_button_state(lv_ui *ui) ;
 
 
 
