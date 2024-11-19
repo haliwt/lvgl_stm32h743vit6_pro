@@ -113,6 +113,7 @@ static void vTaskStart(void *pvParameters)
 		LED0_TOGGLE();
       //  process_mainboard();
       lv_dispTempHumidity_value(&guider_ui);
+      update_wifi_blinkicon_fun(&guider_ui);
         
 	   // update_works_time(&guider_ui);
         vTaskDelay(1000);
