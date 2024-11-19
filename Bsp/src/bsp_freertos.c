@@ -77,6 +77,9 @@ static void vTaskMsgPro(void *pvParameters)
         update_works_time(&guider_ui);
         check_button_state(&guider_ui);
         
+        check_disp_icon_times(&guider_ui);
+        
+        
         vTaskDelay(5);
        //physical_button_pressed();
 		

@@ -25,6 +25,8 @@ typedef enum _lv_select{
 
 void lv_key_select_item(uint8_t data,lv_ui* ui);
 
+void check_disp_icon_times(lv_ui* ui);
+
 
 
 #endif 

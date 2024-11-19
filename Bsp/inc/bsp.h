@@ -40,11 +40,12 @@ typedef struct _bsp_pro_t{
    uint8_t sensor_huimidity_value;
    uint8_t wifi_link_success;
 
- 
+   //wifi ref:
   
 
-
-
+ 
+  
+  //timer ref:
    uint8_t gTimer_lv_disp_time_colon;
    uint8_t gTimer_lv_disp_time; 
    uint8_t gTimer_lv_disp_icon_hold;

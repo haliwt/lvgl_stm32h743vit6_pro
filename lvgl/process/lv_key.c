@@ -41,6 +41,7 @@ static void lv_port_indev_init(lv_ui *ui)
    static lv_indev_drv_t indev_drv2;
    static lv_indev_drv_t indev_drv3;
    static lv_indev_drv_t indev_drv4;
+   static lv_indev_drv_t indev_drv5;
 
    lv_indev_drv_init(&indev_drv1);
     indev_drv1.type = LV_INDEV_TYPE_BUTTON;
@@ -56,10 +57,14 @@ static void lv_port_indev_init(lv_ui *ui)
     lv_indev_drv_init(&indev_drv4);
     indev_drv2.type = LV_INDEV_TYPE_BUTTON;
 
+    lv_indev_drv_init(&indev_drv5);
+    indev_drv2.type = LV_INDEV_TYPE_BUTTON;
+
      lv_indev_drv_register(&indev_drv1);
      lv_indev_drv_register(&indev_drv2);
      lv_indev_drv_register(&indev_drv3);
      lv_indev_drv_register(&indev_drv4);
+     lv_indev_drv_register(&indev_drv5);
 
     /* Create buttons */
 }

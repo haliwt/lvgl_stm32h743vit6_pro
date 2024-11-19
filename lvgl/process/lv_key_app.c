@@ -4,7 +4,8 @@
 
 static void lv_edit_select_item(uint8_t item,lv_ui* ui);
 
-static void check_disp_icon_times(lv_ui* ui);
+
+
 
 
 /****************************************************************************************
@@ -119,9 +120,7 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
 
     }
 
-    check_disp_icon_times(ui);
-
-
+   
 
 }
 
@@ -203,7 +202,7 @@ static void lv_edit_select_item(uint8_t item,lv_ui* ui)
 *Return Ref:NO
 *
 ****************************************************************************************/
-static void check_disp_icon_times(lv_ui* ui)
+void check_disp_icon_times(lv_ui* ui)
 {
 
 
