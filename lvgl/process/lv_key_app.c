@@ -27,8 +27,8 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
 
   case wifi_item:
 
-    lv_gpro_t.selectItem_enable = wifi_item;
-    lv_edit_select_item(lv_gpro_t.selectItem_enable,ui);
+   // lv_gpro_t.selectItem_enable = wifi_item;
+    lv_edit_select_item(select,ui);
     // 创建一个红色颜色滤镜
      ui->scrHome_wifiIcon = lv_img_create(ui->scrHome);
      lv_obj_add_flag(ui->scrHome_wifiIcon, LV_OBJ_FLAG_CLICKABLE);
@@ -46,8 +46,8 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
    break;
 
    case dry_item:
-    lv_gpro_t.selectItem_enable = dry_item;
-    lv_edit_select_item(lv_gpro_t.selectItem_enable,ui);
+   // lv_gpro_t.selectItem_enable = dry_item;
+    lv_edit_select_item(select,ui);
 
      ui->scrHome_dryIcon = lv_img_create(ui->scrHome);
      lv_obj_add_flag(ui->scrHome_dryIcon, LV_OBJ_FLAG_CLICKABLE);
@@ -62,8 +62,8 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
    break;
 
    case plasma_item:
-    lv_gpro_t.selectItem_enable = plasma_item;
-    lv_edit_select_item(lv_gpro_t.selectItem_enable,ui);
+    //lv_gpro_t.selectItem_enable = plasma_item;
+    lv_edit_select_item(select,ui);
 
     ui->scrHome_plasmaIcon = lv_img_create(ui->scrHome);
     lv_obj_add_flag(ui->scrHome_plasmaIcon, LV_OBJ_FLAG_CLICKABLE);
@@ -78,8 +78,8 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
    break;
 
    case mouse_item:
-    lv_gpro_t.selectItem_enable = mouse_item;
-    lv_edit_select_item(lv_gpro_t.selectItem_enable,ui);
+    //lv_gpro_t.selectItem_enable = mouse_item;
+    lv_edit_select_item(select,ui);
 
     ui->scrHome_mouseIcon = lv_img_create(ui->scrHome);
     lv_obj_add_flag(ui->scrHome_mouseIcon, LV_OBJ_FLAG_CLICKABLE);
@@ -95,8 +95,8 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
 
 
    case temp_item:
-      lv_gpro_t.selectItem_enable = temp_item;
-      lv_edit_select_item(lv_gpro_t.selectItem_enable,ui);
+     // lv_gpro_t.selectItem_enable = temp_item;
+      lv_edit_select_item(select,ui);
 
 
       lv_obj_set_style_text_color(ui->scrHome_tempNumbers,lv_color_hex(0xFF0000), 0); //red color
@@ -109,8 +109,8 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
 
    case timer_item:
 
-     lv_gpro_t.selectItem_enable = timer_item;
-     lv_edit_select_item(lv_gpro_t.selectItem_enable,ui);
+    // lv_gpro_t.selectItem_enable = timer_item;
+     lv_edit_select_item(select,ui);
 
      lv_obj_set_style_text_color(ui->scrHome_timerHoursNumbers, lv_color_hex(0xFF0000), 0); //red color
 
@@ -142,7 +142,7 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
 static void lv_edit_select_item(uint8_t item,lv_ui* ui)
 {
 
-    switch(lv_gpro_t.selectItem_enable){
+    switch(item){
       case null_item:
     
       break;
@@ -234,7 +234,9 @@ void check_select_icon_hidden(lv_ui* ui)
 //           lv_obj_set_style_img_recolor(ui->scrHome_wifiIcon,lv_color_hex(0x000000),LV_PART_MAIN | LV_STATE_DEFAULT);
 //            lv_obj_set_style_img_opa(ui->scrHome_wifiIcon,0, LV_PART_MAIN | LV_STATE_DEFAULT);
 //            lv_obj_set_pos(ui->scrHome_wifiIcon, 15, 10);
-          lv_gpro_t.selectItem_add_numbers= 0xfe;
+
+        lv_obj_set_style_img_recolor(ui->scrHome_wifiIcon,lv_color_hex(0x000000),LV_PART_MAIN | LV_STATE_DEFAULT);
+      lv_gpro_t.selectItem_add_numbers= 0xfe;
        break;
     
        case dry_item:

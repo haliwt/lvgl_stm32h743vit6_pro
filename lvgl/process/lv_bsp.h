@@ -26,7 +26,7 @@ typedef struct _lv_gpro{
     
 
    uint8_t lv_seletc_time;
-   uint8_t selectItem_enable ;
+
    uint8_t selectItem_add_numbers;
 
    uint8_t adjustTimerValue_enable;
