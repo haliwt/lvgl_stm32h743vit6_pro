@@ -36,6 +36,7 @@ uint8_t min_value;
 
 
 uint8_t wifi_symbol,wifi_not,wifi_disp_default=0xff,wifi_not_default=0xff;
+uint8_t wifi_icon_flag;
 
 
 /****************************************************************************************
@@ -156,6 +157,8 @@ void update_wifi_blinkicon_fun(lv_ui* ui)
       
   //  static uint8_t wifi_symbol,wifi_not,wifi_disp_default=0xff,wifi_not_default=0xff;
 
+    static uint8_t switch_flag;
+
     if(gpro_t.wifi_link_success ==0){
 
     if(gpro_t.gTimer_lv_disp_wifi_colon <  2){
@@ -175,8 +178,8 @@ void update_wifi_blinkicon_fun(lv_ui* ui)
 //
 //            }
 //           
-//          
-            lv_obj_set_style_img_opa(ui->scrHome_wifiIcon,255, LV_PART_MAIN|LV_STATE_DEFAULT);
+            wifi_icon_flag =0; 
+          //  lv_obj_set_style_img_opa(ui->scrHome_wifiIcon,255, LV_PART_MAIN|LV_STATE_DEFAULT);
             lv_obj_clear_flag(ui->scrHome_wifiIcon,LV_OBJ_FLAG_HIDDEN); //display wifi icon
            // lv_obj_set_pos(ui->scrHome_wifiIcon, 15, 10);
             
@@ -188,10 +191,31 @@ void update_wifi_blinkicon_fun(lv_ui* ui)
       
          wifi_not_default = wifi_not;
          wifi_symbol ++;
-      //   lv_obj_set_style_img_recolor_opa(ui->scrHome_wifiIcon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-         lv_obj_set_style_img_opa(ui->scrHome_wifiIcon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-         lv_obj_add_flag(ui->scrHome_wifiIcon,LV_OBJ_FLAG_HIDDEN);//wifi icon hidden
-         ///lv_obj_set_pos(ui->scrHome_wifiIcon, 15, 10);
+
+        // ui->scrHome_wifiIcon = lv_img_create(ui->scrHome);
+   
+         //lv_obj_set_style_img_opa(ui->scrHome_wifiIcon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+         lv_obj_add_flag(ui->scrHome_wifiIcon,LV_OBJ_FLAG_HIDDEN);
+        
+         //lv_obj_set_pos(ui->scrHome_wifiIcon, 15, 10);
+
+         if(!lv_obj_is_visible(ui->scrHome_wifiIcon)){
+
+                wifi_icon_flag =1;
+              //  lv_obj_add_flag(ui->scrHome_wifiIcon,LV_OBJ_FLAG_HIDDEN);
+                switch_flag ++;
+                if(switch_flag ==1){
+                 lv_obj_set_style_img_opa(ui->scrHome_wifiIcon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+
+                }
+                else{
+                  switch_flag =0;
+
+                  lv_obj_set_style_img_opa(ui->scrHome_wifiIcon,255, LV_PART_MAIN|LV_STATE_DEFAULT);
+
+                }
+                
+         }
         
 
        }
@@ -199,8 +223,7 @@ void update_wifi_blinkicon_fun(lv_ui* ui)
     else{
 
         gpro_t.gTimer_lv_disp_wifi_colon =0;
-          wifi_not++;
-          wifi_symbol ++;
+         
     }
 
   }

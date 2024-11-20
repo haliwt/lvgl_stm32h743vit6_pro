@@ -157,6 +157,10 @@ static void lv_edit_select_item(uint8_t item,lv_ui* ui)
 
            //shut off display color red that default is color black.
            lv_obj_set_style_img_recolor(ui->scrHome_wifiIcon,lv_color_hex(0x000000),LV_PART_MAIN | LV_STATE_DEFAULT);
+          
+            lv_obj_add_flag(ui->scrHome_wifiIcon,LV_OBJ_FLAG_HIDDEN);//wifi icon hidden
+
+             lv_obj_set_pos(ui->scrHome_wifiIcon, 15, 10);
     
        break;
     
@@ -236,6 +240,9 @@ void check_select_icon_hidden(lv_ui* ui)
 //            lv_obj_set_pos(ui->scrHome_wifiIcon, 15, 10);
 
         lv_obj_set_style_img_recolor(ui->scrHome_wifiIcon,lv_color_hex(0x000000),LV_PART_MAIN | LV_STATE_DEFAULT);
+        lv_obj_add_flag(ui->scrHome_wifiIcon,LV_OBJ_FLAG_HIDDEN);//wifi icon hidden
+         lv_obj_set_pos(ui->scrHome_wifiIcon, 15, 10);
+
       lv_gpro_t.selectItem_add_numbers= 0xfe;
        break;
     
@@ -243,7 +250,7 @@ void check_select_icon_hidden(lv_ui* ui)
 
             //shut off DRY_ICON display color red that default is color black.
            lv_obj_set_style_img_recolor(ui->scrHome_dryIcon,lv_color_hex(0x000000),LV_PART_MAIN | LV_STATE_DEFAULT);
-            
+           
           lv_gpro_t.selectItem_add_numbers= 0xff;
        break;
     
