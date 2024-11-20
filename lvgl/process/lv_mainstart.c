@@ -111,7 +111,7 @@ void update_works_time(lv_ui *ui)
         timeColon_disp_default = time_colon_symbol;
         time_colon_not++;
         lv_obj_clear_flag(ui->scrHome_timeColon, LV_OBJ_FLAG_HIDDEN); // 显示标签
-      
+        lv_obj_set_pos(ui->scrHome_wifiIcon, 15, 10);
 
 
        }
@@ -127,6 +127,7 @@ void update_works_time(lv_ui *ui)
                time_colon_symbol++;
 
            lv_obj_add_flag(ui->scrHome_timeColon,LV_OBJ_FLAG_HIDDEN); //hidden icon
+           lv_obj_set_pos(ui->scrHome_wifiIcon, 15, 10);
            
        }
 
@@ -167,7 +168,6 @@ void update_wifi_blinkicon_fun(lv_ui* ui)
          wifi_not_default = wifi_not;
          wifi_symbol ++;
        
-
          lv_obj_add_flag(ui->scrHome_wifiIcon,LV_OBJ_FLAG_HIDDEN);//wifi icon hidden
         
 
@@ -176,8 +176,7 @@ void update_wifi_blinkicon_fun(lv_ui* ui)
     else{
 
         gpro_t.gTimer_lv_disp_wifi_colon =0;
-         wifi_not++;
-         wifi_symbol ++;
+        
     }
 
   }

@@ -33,11 +33,15 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
      ui->scrHome_wifiIcon = lv_img_create(ui->scrHome);
      lv_obj_add_flag(ui->scrHome_wifiIcon, LV_OBJ_FLAG_CLICKABLE);
      lv_img_set_src(ui->scrHome_wifiIcon, &_wifi_symbol_black_alpha_22x17);
+
      
-     lv_obj_set_style_img_recolor(ui->scrHome_wifiIcon,lv_color_hex(0xFF0000),LV_PART_MAIN | LV_STATE_DEFAULT);
-     lv_obj_set_style_img_recolor_opa(ui->scrHome_wifiIcon,255,LV_PART_MAIN | LV_STATE_DEFAULT);
-     lv_obj_set_pos(ui->scrHome_wifiIcon, 15, 10);
-     lv_gpro_t.selectItem_add_numbers++;
+         lv_obj_clear_flag(ui->scrHome_wifiIcon,LV_OBJ_FLAG_HIDDEN); //display wifi icon
+         lv_obj_set_style_img_recolor(ui->scrHome_wifiIcon,lv_color_hex(0xFF0000),LV_PART_MAIN | LV_STATE_DEFAULT);
+         lv_obj_set_style_img_recolor_opa(ui->scrHome_wifiIcon,255,LV_PART_MAIN | LV_STATE_DEFAULT);
+         lv_obj_set_pos(ui->scrHome_wifiIcon, 15, 10);
+
+     
+     lv_gpro_t.selectItem_add_numbers=wifi_item;
 
    break;
 
@@ -53,7 +57,7 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
      lv_obj_set_style_img_recolor_opa(ui->scrHome_dryIcon,255,LV_PART_MAIN | LV_STATE_DEFAULT);
      lv_obj_set_pos(ui->scrHome_dryIcon, 48, 10);
 
-      lv_gpro_t.selectItem_add_numbers++;
+      lv_gpro_t.selectItem_add_numbers=dry_item;
 
    break;
 
@@ -69,7 +73,7 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
     lv_obj_set_style_img_recolor_opa(ui->scrHome_plasmaIcon,255,LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_pos(ui->scrHome_plasmaIcon, 81, 10);
    
-    lv_gpro_t.selectItem_add_numbers++;
+    lv_gpro_t.selectItem_add_numbers=plasma_item;
 
    break;
 
@@ -85,7 +89,7 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
     lv_obj_set_style_img_recolor_opa(ui->scrHome_mouseIcon,255,LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_pos(ui->scrHome_mouseIcon, 112, 10);
     
-   lv_gpro_t.selectItem_add_numbers++;
+   lv_gpro_t.selectItem_add_numbers=mouse_item;
 
    break;
 
@@ -94,11 +98,10 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
       lv_gpro_t.selectItem_enable = temp_item;
       lv_edit_select_item(lv_gpro_t.selectItem_enable,ui);
 
-       // ui->scrHome_tempNumbers = lv_label_create(ui->scrHome);
-        //lv_label_set_text(ui->scrHome_tempNumbers, "00");
-        lv_obj_set_style_text_color(ui->scrHome_tempNumbers,lv_color_hex(0xFF0000), 0); //red color
+
+      lv_obj_set_style_text_color(ui->scrHome_tempNumbers,lv_color_hex(0xFF0000), 0); //red color
        
-       lv_gpro_t.selectItem_add_numbers++;
+       lv_gpro_t.selectItem_add_numbers=temp_item;
 
 
    break;
@@ -111,12 +114,16 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
 
      lv_obj_set_style_text_color(ui->scrHome_timerHoursNumbers, lv_color_hex(0xFF0000), 0); //red color
 
-     lv_gpro_t.selectItem_add_numbers++;
+     lv_gpro_t.selectItem_add_numbers=timer_item;
 
      lv_gpro_t.lv_seletc_time=0;
 
 
    break;
+
+   default:
+
+   break
 
 
     }
@@ -124,9 +131,6 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
    
 
 }
-
-
-
 
 /****************************************************************************************
 *
@@ -190,6 +194,10 @@ static void lv_edit_select_item(uint8_t item,lv_ui* ui)
     
        break;
 
+       default:
+
+       break;
+
 
 
 }
@@ -207,47 +215,80 @@ void check_select_icon_hidden(lv_ui* ui)
 {
 
       static uint8_t changed_icon_default =0xff;
+
       
-      if(gpro_t.gTimer_lv_disp_icon_hold > 3){
+      
+    if(gpro_t.gTimer_lv_disp_icon_hold > 3){
 
           gpro_t.gTimer_lv_disp_icon_hold=0;
           
+    switch(lv_gpro_t.selectItem_add_numbers){
 
-
-
-       if(changed_icon_default != lv_gpro_t.selectItem_add_numbers){
-
-              changed_icon_default = lv_gpro_t.selectItem_add_numbers;
-          //shut off display color red that timer timing defalult color is black
-          lv_obj_set_style_text_color(ui->scrHome_timerHoursNumbers, lv_color_hex(0x000000), 0); //black color
-      
-           //shut off display color red that default is color black.
-           
-           lv_obj_set_style_img_recolor(ui->scrHome_wifiIcon,lv_color_hex(0x000000),LV_PART_MAIN | LV_STATE_DEFAULT);
     
-  
+    case null_item:
+     
+    
+    break;
+    
+      case wifi_item:
         
+          //shut off display color red that default is color black.
+           lv_obj_set_style_img_recolor(ui->scrHome_wifiIcon,lv_color_hex(0x000000),LV_PART_MAIN | LV_STATE_DEFAULT);
+          lv_gpro_t.selectItem_add_numbers= 0xff;
+       break;
+    
+       case dry_item:
+
             //shut off DRY_ICON display color red that default is color black.
            lv_obj_set_style_img_recolor(ui->scrHome_dryIcon,lv_color_hex(0x000000),LV_PART_MAIN | LV_STATE_DEFAULT);
-       
+          lv_gpro_t.selectItem_add_numbers= 0xff;
+       break;
     
-     
-
+       case plasma_item:
+        
+          
            //shut off PLASMA_ICON display color red that default is color black.
            lv_obj_set_style_img_recolor(ui->scrHome_plasmaIcon,lv_color_hex(0x000000),LV_PART_MAIN | LV_STATE_DEFAULT);
+            lv_gpro_t.selectItem_add_numbers= 0xff;
+       break;
     
-  
-
+       case mouse_item:
 
             //shut off MOUSE_ICON display color red that default is color black.
            lv_obj_set_style_img_recolor(ui->scrHome_mouseIcon,lv_color_hex(0x000000),LV_PART_MAIN | LV_STATE_DEFAULT);
+           lv_gpro_t.selectItem_add_numbers= 0xff;
+       break;
     
     
-             //shut off tempNumbers display color red that default is color black.
-            lv_obj_set_style_text_color(ui->scrHome_tempNumbers, lv_color_hex(0x000000), 0); //black color
+       case temp_item:
+            
+         //shut off tempNumbers display color red that default is color black.
+               lv_obj_set_style_text_color(ui->scrHome_tempNumbers, lv_color_hex(0x000000), 0); //black color
 
+          
+            lv_gpro_t.selectItem_add_numbers= 0xff;
+    
+       break;
+    
+    
+       case timer_item:
+    
+            //shut off display color red that timer timing defalult color is black
+
+           lv_obj_set_style_text_color(ui->scrHome_timerHoursNumbers, lv_color_hex(0x000000), 0); //black color
+    
+           lv_gpro_t.selectItem_add_numbers= 0xff;
+         break;
+
+         default:
+
+         break;
+
+
+
+        }
        
+
        }
-    }
 
 }

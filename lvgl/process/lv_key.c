@@ -115,7 +115,7 @@ void check_button_state(lv_ui *ui)
                gpro_t.gTimer_lv_disp_icon_hold=0;
                lv_gpro_t.lv_seletc_time++;
                lv_key_select_item(lv_gpro_t.lv_seletc_time,ui);
-               
+               gpro_t.gTimer_lv_disp_icon_hold=0;
                
             }
     }
