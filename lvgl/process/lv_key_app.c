@@ -123,7 +123,7 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
 
    default:
 
-   break
+   break;
 
 
     }
@@ -143,7 +143,7 @@ static void lv_edit_select_item(uint8_t item,lv_ui* ui)
 {
 
     switch(lv_gpro_t.selectItem_enable){
-    case null_item:
+      case null_item:
     
       break;
     
@@ -214,10 +214,8 @@ static void lv_edit_select_item(uint8_t item,lv_ui* ui)
 void check_select_icon_hidden(lv_ui* ui)
 {
 
-      static uint8_t changed_icon_default =0xff;
+    static uint8_t changed_icon_default =0xff;
 
-      
-      
     if(gpro_t.gTimer_lv_disp_icon_hold > 3){
 
           gpro_t.gTimer_lv_disp_icon_hold=0;
@@ -232,15 +230,18 @@ void check_select_icon_hidden(lv_ui* ui)
     
       case wifi_item:
         
-          //shut off display color red that default is color black.
-           lv_obj_set_style_img_recolor(ui->scrHome_wifiIcon,lv_color_hex(0x000000),LV_PART_MAIN | LV_STATE_DEFAULT);
-          lv_gpro_t.selectItem_add_numbers= 0xff;
+//          //shut off display color red that default is color black.
+//           lv_obj_set_style_img_recolor(ui->scrHome_wifiIcon,lv_color_hex(0x000000),LV_PART_MAIN | LV_STATE_DEFAULT);
+//            lv_obj_set_style_img_opa(ui->scrHome_wifiIcon,0, LV_PART_MAIN | LV_STATE_DEFAULT);
+//            lv_obj_set_pos(ui->scrHome_wifiIcon, 15, 10);
+          lv_gpro_t.selectItem_add_numbers= 0xfe;
        break;
     
        case dry_item:
 
             //shut off DRY_ICON display color red that default is color black.
            lv_obj_set_style_img_recolor(ui->scrHome_dryIcon,lv_color_hex(0x000000),LV_PART_MAIN | LV_STATE_DEFAULT);
+            
           lv_gpro_t.selectItem_add_numbers= 0xff;
        break;
     

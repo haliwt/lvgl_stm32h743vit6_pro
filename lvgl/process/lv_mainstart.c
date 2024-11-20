@@ -34,6 +34,10 @@ bsp_pro_t gpro_t;
 
 uint8_t min_value;
 
+
+uint8_t wifi_symbol,wifi_not,wifi_disp_default=0xff,wifi_not_default=0xff;
+
+
 /****************************************************************************************
 *
 *Function Name:void check_button_state(void) 
@@ -110,7 +114,11 @@ void update_works_time(lv_ui *ui)
      if(timeColon_disp_default != time_colon_symbol){
         timeColon_disp_default = time_colon_symbol;
         time_colon_not++;
+
+        
         lv_obj_clear_flag(ui->scrHome_timeColon, LV_OBJ_FLAG_HIDDEN); // 显示标签
+         lv_obj_set_style_img_recolor_opa(ui->scrHome_wifiIcon,255,LV_PART_MAIN | LV_STATE_DEFAULT);
+       
         lv_obj_set_pos(ui->scrHome_wifiIcon, 15, 10);
 
 
@@ -126,7 +134,11 @@ void update_works_time(lv_ui *ui)
                timeColon_not_default = time_colon_not;
                time_colon_symbol++;
 
+     
+           lv_obj_set_style_img_recolor_opa(ui->scrHome_wifiIcon,0,LV_PART_MAIN | LV_STATE_DEFAULT);
+
            lv_obj_add_flag(ui->scrHome_timeColon,LV_OBJ_FLAG_HIDDEN); //hidden icon
+         
            lv_obj_set_pos(ui->scrHome_wifiIcon, 15, 10);
            
        }
@@ -145,7 +157,7 @@ void update_works_time(lv_ui *ui)
 void update_wifi_blinkicon_fun(lv_ui* ui)
 {
       
-    static uint8_t wifi_symbol,wifi_not,wifi_disp_default=0xff,wifi_not_default=0xff;
+  //  static uint8_t wifi_symbol,wifi_not,wifi_disp_default=0xff,wifi_not_default=0xff;
 
     if(gpro_t.wifi_link_success ==0){
 
@@ -156,8 +168,16 @@ void update_wifi_blinkicon_fun(lv_ui* ui)
              
              wifi_disp_default = wifi_symbol;
              wifi_not++;
+
+            if(lv_gpro_t.selectItem_add_numbers==0xfe){
+
+                lv_obj_set_style_img_recolor(ui->scrHome_wifiIcon,lv_color_hex(0x000000),LV_PART_MAIN | LV_STATE_DEFAULT);
+                lv_gpro_t.selectItem_add_numbers = 0xff;
+
+            }
           
             lv_obj_clear_flag(ui->scrHome_wifiIcon,LV_OBJ_FLAG_HIDDEN); //display wifi icon
+            lv_obj_set_pos(ui->scrHome_wifiIcon, 15, 10);
             
         }
    }
@@ -169,6 +189,7 @@ void update_wifi_blinkicon_fun(lv_ui* ui)
          wifi_symbol ++;
        
          lv_obj_add_flag(ui->scrHome_wifiIcon,LV_OBJ_FLAG_HIDDEN);//wifi icon hidden
+         lv_obj_set_pos(ui->scrHome_wifiIcon, 15, 10);
         
 
        }
@@ -176,7 +197,8 @@ void update_wifi_blinkicon_fun(lv_ui* ui)
     else{
 
         gpro_t.gTimer_lv_disp_wifi_colon =0;
-        
+          wifi_not++;
+          wifi_symbol ++;
     }
 
   }
