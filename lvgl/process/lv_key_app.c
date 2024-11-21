@@ -120,8 +120,41 @@ void lv_key_select_item(uint8_t select,lv_ui* ui)
 
      lv_gpro_t.selectItem_add_numbers=timer_item;
 
-     lv_gpro_t.lv_seletc_time=0;
+    
 
+
+   break;
+
+
+   case month_item:
+    runing_select_item= month_item;
+    lv_edit_select_item(select,ui);
+
+    lv_obj_set_style_text_color(ui->scrHome_monthNumbers, lv_color_hex(0xFF0000), 0); //red color
+
+   lv_gpro_t.selectItem_add_numbers=month_item;
+
+   break;
+
+   case day_item:
+      runing_select_item= day_item;
+     lv_edit_select_item(select,ui);
+     lv_obj_set_style_text_color(ui->scrHome_dayNumbers, lv_color_hex(0xFF0000), 0); //red color
+     
+      lv_gpro_t.selectItem_add_numbers=day_item;
+
+
+   break;
+
+   case week_item:
+      runing_select_item= week_item;
+       lv_edit_select_item(select,ui);
+       lv_obj_set_style_text_color(ui->scrHome_weekNumbers, lv_color_hex(0xFF0000), 0); //red color
+
+   
+     lv_gpro_t.selectItem_add_numbers=week_item;
+
+     lv_gpro_t.lv_seletc_time=0;
 
    break;
 
@@ -154,7 +187,8 @@ static void lv_edit_select_item(uint8_t item,lv_ui* ui)
       case wifi_item:
         
           //shut off display color red that timer timing defalult color is black
-          lv_obj_set_style_text_color(ui->scrHome_timerHoursNumbers, lv_color_hex(0x000000), 0); //black color
+         // lv_obj_set_style_text_color(ui->scrHome_timerHoursNumbers, lv_color_hex(0x000000), 0); //black color
+          lv_obj_set_style_text_color(ui->scrHome_weekNumbers, lv_color_hex(0x000000), 0); //black color
        break;
     
        case dry_item:
@@ -203,6 +237,27 @@ static void lv_edit_select_item(uint8_t item,lv_ui* ui)
     
     
        break;
+
+       case month_item:
+          lv_obj_set_style_text_color(ui->scrHome_timerHoursNumbers, lv_color_hex(0x000000), 0); //black color
+         // lv_obj_set_style_text_color(ui->scrHome_monthNumbers, lv_color_hex(0x000000), 0); //black color
+
+       break;
+
+       case day_item:
+
+          //lv_obj_set_style_text_color(ui->scrHome_dayNumbers, lv_color_hex(0x000000), 0); //black color
+          lv_obj_set_style_text_color(ui->scrHome_monthNumbers, lv_color_hex(0x000000), 0); //black color
+
+       break;
+
+       case week_item:
+         // lv_obj_set_style_text_color(ui->scrHome_weekNumbers, lv_color_hex(0x000000), 0); //black color
+         lv_obj_set_style_text_color(ui->scrHome_dayNumbers, lv_color_hex(0x000000), 0); //black color
+
+       break;
+
+       
 
        default:
 
@@ -297,7 +352,31 @@ void check_select_icon_hidden(lv_ui* ui)
            lv_obj_set_style_text_color(ui->scrHome_timerHoursNumbers, lv_color_hex(0x000000), 0); //black color
     
            lv_gpro_t.selectItem_add_numbers= 0xff;
-         break;
+      break;
+
+      case month_item:
+          lv_obj_set_style_text_color(ui->scrHome_monthNumbers, lv_color_hex(0x000000), 0); //black color
+    
+           lv_gpro_t.selectItem_add_numbers= 0xff;
+
+      break;
+
+      case day_item:
+
+          lv_obj_set_style_text_color(ui->scrHome_dayNumbers, lv_color_hex(0x000000), 0); //black color
+    
+           lv_gpro_t.selectItem_add_numbers= 0xff;
+
+      break;
+
+      case week_item:
+
+          lv_obj_set_style_text_color(ui->scrHome_weekNumbers, lv_color_hex(0x000000), 0); //black color
+    
+           lv_gpro_t.selectItem_add_numbers= 0xff;
+
+
+      break;
 
          default:
 

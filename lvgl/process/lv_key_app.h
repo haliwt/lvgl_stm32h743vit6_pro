@@ -19,6 +19,9 @@ typedef enum _lv_select{
    mouse_item,
    temp_item,
    timer_item,
+   month_item,
+   day_item,
+   week_item,
 
 }lv_select_item;
 
