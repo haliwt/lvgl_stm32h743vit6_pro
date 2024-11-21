@@ -35,8 +35,7 @@ bsp_pro_t gpro_t;
 uint8_t min_value;
 
 
-uint8_t wifi_symbol,wifi_not,wifi_disp_default=0xff,wifi_not_default=0xff;
-uint8_t wifi_icon_flag;
+
 
 
 /****************************************************************************************
@@ -144,90 +143,4 @@ void update_works_time(lv_ui *ui)
    
 
 }
-/*************************************************************************************************
-*
-*Function Name:void update_wifi_blinkicon_fun(lv_ui* ui)
-*Funtion:wifi icon blink 
-*
-*
-*
-*************************************************************************************************/
-void update_wifi_blinkicon_fun(lv_ui* ui)
-{
-      
-  //  static uint8_t wifi_symbol,wifi_not,wifi_disp_default=0xff,wifi_not_default=0xff;
-
-    static uint8_t switch_flag;
-
-    if(gpro_t.wifi_link_success ==0){
-
-    if(gpro_t.gTimer_lv_disp_wifi_colon <  2){
-    
-
-         if(wifi_disp_default != wifi_symbol){
-             
-             wifi_disp_default = wifi_symbol;
-             wifi_not++;
-             
-            
-
-//            if(lv_gpro_t.selectItem_add_numbers ==0xfe){
-//                lv_gpro_t.selectItem_add_numbers = 0xff;
-//                lv_obj_set_style_img_recolor(ui->scrHome_wifiIcon,lv_color_hex(0x000000),LV_PART_MAIN | LV_STATE_DEFAULT);
-//                
-//
-//            }
-//           
-            wifi_icon_flag =0; 
-          //  lv_obj_set_style_img_opa(ui->scrHome_wifiIcon,255, LV_PART_MAIN|LV_STATE_DEFAULT);
-            lv_obj_clear_flag(ui->scrHome_wifiIcon,LV_OBJ_FLAG_HIDDEN); //display wifi icon
-           // lv_obj_set_pos(ui->scrHome_wifiIcon, 15, 10);
-            
-        }
-   }
-   else if(gpro_t.gTimer_lv_disp_wifi_colon  > 1 &&  gpro_t.gTimer_lv_disp_wifi_colon  < 4){
-
-     if(wifi_not_default != wifi_not){
-      
-         wifi_not_default = wifi_not;
-         wifi_symbol ++;
-
-        // ui->scrHome_wifiIcon = lv_img_create(ui->scrHome);
-   
-         //lv_obj_set_style_img_opa(ui->scrHome_wifiIcon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-         lv_obj_add_flag(ui->scrHome_wifiIcon,LV_OBJ_FLAG_HIDDEN);
-        
-         //lv_obj_set_pos(ui->scrHome_wifiIcon, 15, 10);
-
-         if(!lv_obj_is_visible(ui->scrHome_wifiIcon)){
-
-                wifi_icon_flag =1;
-              //  lv_obj_add_flag(ui->scrHome_wifiIcon,LV_OBJ_FLAG_HIDDEN);
-                switch_flag ++;
-                if(switch_flag ==1){
-                 lv_obj_set_style_img_opa(ui->scrHome_wifiIcon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-
-                }
-                else{
-                  switch_flag =0;
-
-                  lv_obj_set_style_img_opa(ui->scrHome_wifiIcon,255, LV_PART_MAIN|LV_STATE_DEFAULT);
-
-                }
-                
-         }
-        
-
-       }
-    }
-    else{
-
-        gpro_t.gTimer_lv_disp_wifi_colon =0;
-         
-    }
-
-  }
-}
-
-
 

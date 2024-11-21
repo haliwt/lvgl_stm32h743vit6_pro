@@ -76,7 +76,7 @@ static void vTaskMsgPro(void *pvParameters)
         
         check_select_icon_hidden(&guider_ui);
        
-        update_wifi_blinkicon_fun(&guider_ui);
+     //   update_wifi_blinkicon_fun(&guider_ui);
         vTaskDelay(5);
       
 		
