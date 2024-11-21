@@ -45,7 +45,7 @@ void setup_scr_scrHome(lv_ui *ui)
     ui->scrHome_hourNumbers = lv_label_create(ui->scrHome);
     lv_label_set_text(ui->scrHome_hourNumbers, "00");
     lv_label_set_long_mode(ui->scrHome_hourNumbers, LV_LABEL_LONG_WRAP);
-    lv_obj_set_pos(ui->scrHome_hourNumbers, 9, 51);
+    lv_obj_set_pos(ui->scrHome_hourNumbers, 6, 50);
     lv_obj_set_size(ui->scrHome_hourNumbers, 76, 46);
 
     //Write style for scrHome_hourNumbers, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
@@ -68,7 +68,7 @@ void setup_scr_scrHome(lv_ui *ui)
     ui->scrHome_timeColon = lv_label_create(ui->scrHome);
     lv_label_set_text(ui->scrHome_timeColon, ":");
     lv_label_set_long_mode(ui->scrHome_timeColon, LV_LABEL_LONG_WRAP);
-    lv_obj_set_pos(ui->scrHome_timeColon, 75, 51);
+    lv_obj_set_pos(ui->scrHome_timeColon, 72, 50);
     lv_obj_set_size(ui->scrHome_timeColon, 28, 40);
 
     //Write style for scrHome_timeColon, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
@@ -91,7 +91,7 @@ void setup_scr_scrHome(lv_ui *ui)
     ui->scrHome_minuteNumbers = lv_label_create(ui->scrHome);
     lv_label_set_text(ui->scrHome_minuteNumbers, "00");
     lv_label_set_long_mode(ui->scrHome_minuteNumbers, LV_LABEL_LONG_WRAP);
-    lv_obj_set_pos(ui->scrHome_minuteNumbers, 94, 51);
+    lv_obj_set_pos(ui->scrHome_minuteNumbers, 91, 50);
     lv_obj_set_size(ui->scrHome_minuteNumbers, 72, 44);
 
     //Write style for scrHome_minuteNumbers, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
@@ -241,16 +241,16 @@ void setup_scr_scrHome(lv_ui *ui)
 
     //Write codes scrHome_dataNumbers
     ui->scrHome_dataNumbers = lv_label_create(ui->scrHome);
-    lv_label_set_text(ui->scrHome_dataNumbers, "11月15号 星期五");
+    lv_label_set_text(ui->scrHome_dataNumbers, "00");
     lv_label_set_long_mode(ui->scrHome_dataNumbers, LV_LABEL_LONG_WRAP);
-    lv_obj_set_pos(ui->scrHome_dataNumbers, 23, 113);
-    lv_obj_set_size(ui->scrHome_dataNumbers, 129, 17);
+    lv_obj_set_pos(ui->scrHome_dataNumbers, 15, 114);
+    lv_obj_set_size(ui->scrHome_dataNumbers, 27, 16);
 
     //Write style for scrHome_dataNumbers, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
     lv_obj_set_style_border_width(ui->scrHome_dataNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_radius(ui->scrHome_dataNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_text_color(ui->scrHome_dataNumbers, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui->scrHome_dataNumbers, &lv_font_SourceHanSerifSC_Regular_14, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui->scrHome_dataNumbers, &lv_font_montserratMedium_16, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui->scrHome_dataNumbers, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_text_letter_space(ui->scrHome_dataNumbers, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_text_line_space(ui->scrHome_dataNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
@@ -307,6 +307,98 @@ void setup_scr_scrHome(lv_ui *ui)
     lv_obj_set_style_pad_bottom(ui->scrHome_timerMinuteNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_pad_left(ui->scrHome_timerMinuteNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_shadow_width(ui->scrHome_timerMinuteNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+
+    //Write codes scrHome_label_1
+    ui->scrHome_label_1 = lv_label_create(ui->scrHome);
+    lv_label_set_text(ui->scrHome_label_1, "月");
+    lv_label_set_long_mode(ui->scrHome_label_1, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(ui->scrHome_label_1, 35, 113);
+    lv_obj_set_size(ui->scrHome_label_1, 25, 22);
+
+    //Write style for scrHome_label_1, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
+    lv_obj_set_style_border_width(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui->scrHome_label_1, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui->scrHome_label_1, &lv_font_SourceHanSerifSC_Regular_17, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui->scrHome_label_1, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_letter_space(ui->scrHome_label_1, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_line_space(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui->scrHome_label_1, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_width(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+
+    //Write codes scrHome_label_2
+    ui->scrHome_label_2 = lv_label_create(ui->scrHome);
+    lv_label_set_text(ui->scrHome_label_2, "00");
+    lv_label_set_long_mode(ui->scrHome_label_2, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(ui->scrHome_label_2, 55, 114);
+    lv_obj_set_size(ui->scrHome_label_2, 27, 16);
+
+    //Write style for scrHome_label_2, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
+    lv_obj_set_style_border_width(ui->scrHome_label_2, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui->scrHome_label_2, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui->scrHome_label_2, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui->scrHome_label_2, &lv_font_montserratMedium_16, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui->scrHome_label_2, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_letter_space(ui->scrHome_label_2, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_line_space(ui->scrHome_label_2, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui->scrHome_label_2, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui->scrHome_label_2, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui->scrHome_label_2, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui->scrHome_label_2, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui->scrHome_label_2, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui->scrHome_label_2, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_width(ui->scrHome_label_2, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+
+    //Write codes scrHome_label_3
+    ui->scrHome_label_3 = lv_label_create(ui->scrHome);
+    lv_label_set_text(ui->scrHome_label_3, "年");
+    lv_label_set_long_mode(ui->scrHome_label_3, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(ui->scrHome_label_3, 78, 113);
+    lv_obj_set_size(ui->scrHome_label_3, 25, 22);
+
+    //Write style for scrHome_label_3, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
+    lv_obj_set_style_border_width(ui->scrHome_label_3, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui->scrHome_label_3, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui->scrHome_label_3, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui->scrHome_label_3, &lv_font_SourceHanSerifSC_Regular_17, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui->scrHome_label_3, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_letter_space(ui->scrHome_label_3, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_line_space(ui->scrHome_label_3, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui->scrHome_label_3, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui->scrHome_label_3, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui->scrHome_label_3, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui->scrHome_label_3, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui->scrHome_label_3, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui->scrHome_label_3, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_width(ui->scrHome_label_3, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+
+    //Write codes scrHome_label_4
+    ui->scrHome_label_4 = lv_label_create(ui->scrHome);
+    lv_label_set_text(ui->scrHome_label_4, "星期四");
+    lv_label_set_long_mode(ui->scrHome_label_4, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(ui->scrHome_label_4, 100, 113);
+    lv_obj_set_size(ui->scrHome_label_4, 62, 18);
+
+    //Write style for scrHome_label_4, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
+    lv_obj_set_style_border_width(ui->scrHome_label_4, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui->scrHome_label_4, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui->scrHome_label_4, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui->scrHome_label_4, &lv_font_SourceHanSerifSC_Regular_17, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui->scrHome_label_4, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_letter_space(ui->scrHome_label_4, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_line_space(ui->scrHome_label_4, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui->scrHome_label_4, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui->scrHome_label_4, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui->scrHome_label_4, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui->scrHome_label_4, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui->scrHome_label_4, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui->scrHome_label_4, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_width(ui->scrHome_label_4, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
 
     //The custom code of scrHome.
 

@@ -368,26 +368,23 @@ static void update_wifi_blinkicon_fun(lv_ui* ui)
          if(!lv_obj_is_visible(ui->scrHome_wifiIcon)){
 
       
-               switch_flag++;
-          
-                   lv_obj_add_flag(ui->scrHome_wifiIcon,LV_OBJ_FLAG_HIDDEN);
+            switch_flag++;
 
-                   
-                     
-
-                         if(switch_flag  > 2){
-                             switch_flag =0; 
-                            gpro_t.gTimer_lv_disp_wifi_colon =0;
-                             switch_flag=0;
-                             runing_select_item = 0xff;
-                            
-                             lv_obj_set_style_img_opa(ui->scrHome_wifiIcon,255, LV_PART_MAIN|LV_STATE_DEFAULT);
-                         }
-                       
+            lv_obj_add_flag(ui->scrHome_wifiIcon,LV_OBJ_FLAG_HIDDEN);
 
 
 
-                   }
+
+            if(switch_flag  > 2){
+                switch_flag =0; 
+                gpro_t.gTimer_lv_disp_wifi_colon =0;
+                switch_flag=0;
+                runing_select_item = 0xff;
+
+                lv_obj_set_style_img_opa(ui->scrHome_wifiIcon,255, LV_PART_MAIN|LV_STATE_DEFAULT);
+            }
+
+            }
               
                 
          }
