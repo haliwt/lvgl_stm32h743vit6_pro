@@ -31,13 +31,13 @@ typedef struct
 	lv_obj_t *scrHome_timerHoursNumbers;
 	lv_obj_t *scrHome_humidityNumber;
 	lv_obj_t *scrHome_tempNumbers;
-	lv_obj_t *scrHome_dataNumbers;
 	lv_obj_t *scrHome_timerColon;
 	lv_obj_t *scrHome_timerMinuteNumbers;
-	lv_obj_t *scrHome_label_1;
-	lv_obj_t *scrHome_label_2;
-	lv_obj_t *scrHome_label_3;
-	lv_obj_t *scrHome_label_4;
+	lv_obj_t *scrHome_monthText;
+	lv_obj_t *scrHome_monthNumbers;
+	lv_obj_t *scrHome_weekNumbers;
+	lv_obj_t *scrHome_dayNumbers;
+	lv_obj_t *scrHome_dayText;
 }lv_ui;
 
 typedef void (*ui_setup_scr_t)(lv_ui * ui);
@@ -70,7 +70,7 @@ LV_IMG_DECLARE(_mouse_black_alpha_22x17);
 LV_FONT_DECLARE(lv_font_montserratMedium_50)
 LV_FONT_DECLARE(lv_font_montserratMedium_16)
 LV_FONT_DECLARE(lv_font_montserratMedium_42)
-LV_FONT_DECLARE(lv_font_SourceHanSerifSC_Regular_17)
+LV_FONT_DECLARE(lv_font_AdobeFangsongStd_18)
 
 
 #ifdef __cplusplus

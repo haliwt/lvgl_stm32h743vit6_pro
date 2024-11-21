@@ -239,29 +239,6 @@ void setup_scr_scrHome(lv_ui *ui)
     lv_obj_set_style_pad_left(ui->scrHome_tempNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_shadow_width(ui->scrHome_tempNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
 
-    //Write codes scrHome_dataNumbers
-    ui->scrHome_dataNumbers = lv_label_create(ui->scrHome);
-    lv_label_set_text(ui->scrHome_dataNumbers, "00");
-    lv_label_set_long_mode(ui->scrHome_dataNumbers, LV_LABEL_LONG_WRAP);
-    lv_obj_set_pos(ui->scrHome_dataNumbers, 15, 114);
-    lv_obj_set_size(ui->scrHome_dataNumbers, 27, 16);
-
-    //Write style for scrHome_dataNumbers, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
-    lv_obj_set_style_border_width(ui->scrHome_dataNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_radius(ui->scrHome_dataNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_color(ui->scrHome_dataNumbers, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui->scrHome_dataNumbers, &lv_font_montserratMedium_16, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_opa(ui->scrHome_dataNumbers, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_letter_space(ui->scrHome_dataNumbers, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_line_space(ui->scrHome_dataNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_align(ui->scrHome_dataNumbers, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_opa(ui->scrHome_dataNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_top(ui->scrHome_dataNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_right(ui->scrHome_dataNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_bottom(ui->scrHome_dataNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_left(ui->scrHome_dataNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_shadow_width(ui->scrHome_dataNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-
     //Write codes scrHome_timerColon
     ui->scrHome_timerColon = lv_label_create(ui->scrHome);
     lv_label_set_text(ui->scrHome_timerColon, ":");
@@ -308,97 +285,120 @@ void setup_scr_scrHome(lv_ui *ui)
     lv_obj_set_style_pad_left(ui->scrHome_timerMinuteNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_shadow_width(ui->scrHome_timerMinuteNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
 
-    //Write codes scrHome_label_1
-    ui->scrHome_label_1 = lv_label_create(ui->scrHome);
-    lv_label_set_text(ui->scrHome_label_1, "月");
-    lv_label_set_long_mode(ui->scrHome_label_1, LV_LABEL_LONG_WRAP);
-    lv_obj_set_pos(ui->scrHome_label_1, 35, 113);
-    lv_obj_set_size(ui->scrHome_label_1, 25, 22);
+    //Write codes scrHome_monthText
+    ui->scrHome_monthText = lv_label_create(ui->scrHome);
+    lv_label_set_text(ui->scrHome_monthText, "月");
+    lv_label_set_long_mode(ui->scrHome_monthText, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(ui->scrHome_monthText, 64, 107);
+    lv_obj_set_size(ui->scrHome_monthText, 20, 21);
 
-    //Write style for scrHome_label_1, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
-    lv_obj_set_style_border_width(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_radius(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_color(ui->scrHome_label_1, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui->scrHome_label_1, &lv_font_SourceHanSerifSC_Regular_17, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_opa(ui->scrHome_label_1, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_letter_space(ui->scrHome_label_1, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_line_space(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_align(ui->scrHome_label_1, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_opa(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_top(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_right(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_bottom(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_left(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_shadow_width(ui->scrHome_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    //Write style for scrHome_monthText, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
+    lv_obj_set_style_border_width(ui->scrHome_monthText, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui->scrHome_monthText, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui->scrHome_monthText, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui->scrHome_monthText, &lv_font_AdobeFangsongStd_18, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui->scrHome_monthText, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_letter_space(ui->scrHome_monthText, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_line_space(ui->scrHome_monthText, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui->scrHome_monthText, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui->scrHome_monthText, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui->scrHome_monthText, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui->scrHome_monthText, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui->scrHome_monthText, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui->scrHome_monthText, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_width(ui->scrHome_monthText, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
 
-    //Write codes scrHome_label_2
-    ui->scrHome_label_2 = lv_label_create(ui->scrHome);
-    lv_label_set_text(ui->scrHome_label_2, "00");
-    lv_label_set_long_mode(ui->scrHome_label_2, LV_LABEL_LONG_WRAP);
-    lv_obj_set_pos(ui->scrHome_label_2, 55, 114);
-    lv_obj_set_size(ui->scrHome_label_2, 27, 16);
+    //Write codes scrHome_monthNumbers
+    ui->scrHome_monthNumbers = lv_label_create(ui->scrHome);
+    lv_label_set_text(ui->scrHome_monthNumbers, "00");
+    lv_label_set_long_mode(ui->scrHome_monthNumbers, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(ui->scrHome_monthNumbers, 34, 107);
+    lv_obj_set_size(ui->scrHome_monthNumbers, 27, 15);
 
-    //Write style for scrHome_label_2, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
-    lv_obj_set_style_border_width(ui->scrHome_label_2, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_radius(ui->scrHome_label_2, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_color(ui->scrHome_label_2, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui->scrHome_label_2, &lv_font_montserratMedium_16, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_opa(ui->scrHome_label_2, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_letter_space(ui->scrHome_label_2, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_line_space(ui->scrHome_label_2, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_align(ui->scrHome_label_2, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_opa(ui->scrHome_label_2, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_top(ui->scrHome_label_2, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_right(ui->scrHome_label_2, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_bottom(ui->scrHome_label_2, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_left(ui->scrHome_label_2, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_shadow_width(ui->scrHome_label_2, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    //Write style for scrHome_monthNumbers, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
+    lv_obj_set_style_border_width(ui->scrHome_monthNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui->scrHome_monthNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui->scrHome_monthNumbers, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui->scrHome_monthNumbers, &lv_font_montserratMedium_16, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui->scrHome_monthNumbers, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_letter_space(ui->scrHome_monthNumbers, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_line_space(ui->scrHome_monthNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui->scrHome_monthNumbers, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui->scrHome_monthNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui->scrHome_monthNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui->scrHome_monthNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui->scrHome_monthNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui->scrHome_monthNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_width(ui->scrHome_monthNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
 
-    //Write codes scrHome_label_3
-    ui->scrHome_label_3 = lv_label_create(ui->scrHome);
-    lv_label_set_text(ui->scrHome_label_3, "年");
-    lv_label_set_long_mode(ui->scrHome_label_3, LV_LABEL_LONG_WRAP);
-    lv_obj_set_pos(ui->scrHome_label_3, 78, 113);
-    lv_obj_set_size(ui->scrHome_label_3, 25, 22);
+    //Write codes scrHome_weekNumbers
+    ui->scrHome_weekNumbers = lv_label_create(ui->scrHome);
+    lv_label_set_text(ui->scrHome_weekNumbers, "星期四");
+    lv_label_set_long_mode(ui->scrHome_weekNumbers, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(ui->scrHome_weekNumbers, 51, 134);
+    lv_obj_set_size(ui->scrHome_weekNumbers, 62, 18);
 
-    //Write style for scrHome_label_3, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
-    lv_obj_set_style_border_width(ui->scrHome_label_3, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_radius(ui->scrHome_label_3, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_color(ui->scrHome_label_3, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui->scrHome_label_3, &lv_font_SourceHanSerifSC_Regular_17, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_opa(ui->scrHome_label_3, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_letter_space(ui->scrHome_label_3, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_line_space(ui->scrHome_label_3, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_align(ui->scrHome_label_3, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_opa(ui->scrHome_label_3, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_top(ui->scrHome_label_3, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_right(ui->scrHome_label_3, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_bottom(ui->scrHome_label_3, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_left(ui->scrHome_label_3, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_shadow_width(ui->scrHome_label_3, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    //Write style for scrHome_weekNumbers, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
+    lv_obj_set_style_border_width(ui->scrHome_weekNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui->scrHome_weekNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui->scrHome_weekNumbers, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui->scrHome_weekNumbers, &lv_font_AdobeFangsongStd_18, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui->scrHome_weekNumbers, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_letter_space(ui->scrHome_weekNumbers, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_line_space(ui->scrHome_weekNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui->scrHome_weekNumbers, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui->scrHome_weekNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui->scrHome_weekNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui->scrHome_weekNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui->scrHome_weekNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui->scrHome_weekNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_width(ui->scrHome_weekNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
 
-    //Write codes scrHome_label_4
-    ui->scrHome_label_4 = lv_label_create(ui->scrHome);
-    lv_label_set_text(ui->scrHome_label_4, "星期四");
-    lv_label_set_long_mode(ui->scrHome_label_4, LV_LABEL_LONG_WRAP);
-    lv_obj_set_pos(ui->scrHome_label_4, 100, 113);
-    lv_obj_set_size(ui->scrHome_label_4, 62, 18);
+    //Write codes scrHome_dayNumbers
+    ui->scrHome_dayNumbers = lv_label_create(ui->scrHome);
+    lv_label_set_text(ui->scrHome_dayNumbers, "00");
+    lv_label_set_long_mode(ui->scrHome_dayNumbers, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(ui->scrHome_dayNumbers, 88, 107);
+    lv_obj_set_size(ui->scrHome_dayNumbers, 27, 16);
 
-    //Write style for scrHome_label_4, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
-    lv_obj_set_style_border_width(ui->scrHome_label_4, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_radius(ui->scrHome_label_4, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_color(ui->scrHome_label_4, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui->scrHome_label_4, &lv_font_SourceHanSerifSC_Regular_17, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_opa(ui->scrHome_label_4, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_letter_space(ui->scrHome_label_4, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_line_space(ui->scrHome_label_4, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_align(ui->scrHome_label_4, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_opa(ui->scrHome_label_4, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_top(ui->scrHome_label_4, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_right(ui->scrHome_label_4, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_bottom(ui->scrHome_label_4, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_left(ui->scrHome_label_4, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_shadow_width(ui->scrHome_label_4, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    //Write style for scrHome_dayNumbers, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
+    lv_obj_set_style_border_width(ui->scrHome_dayNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui->scrHome_dayNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui->scrHome_dayNumbers, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui->scrHome_dayNumbers, &lv_font_montserratMedium_16, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui->scrHome_dayNumbers, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_letter_space(ui->scrHome_dayNumbers, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_line_space(ui->scrHome_dayNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui->scrHome_dayNumbers, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui->scrHome_dayNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui->scrHome_dayNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui->scrHome_dayNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui->scrHome_dayNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui->scrHome_dayNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_width(ui->scrHome_dayNumbers, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+
+    //Write codes scrHome_dayText
+    ui->scrHome_dayText = lv_label_create(ui->scrHome);
+    lv_label_set_text(ui->scrHome_dayText, "日");
+    lv_label_set_long_mode(ui->scrHome_dayText, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(ui->scrHome_dayText, 115, 107);
+    lv_obj_set_size(ui->scrHome_dayText, 25, 22);
+
+    //Write style for scrHome_dayText, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
+    lv_obj_set_style_border_width(ui->scrHome_dayText, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui->scrHome_dayText, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui->scrHome_dayText, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui->scrHome_dayText, &lv_font_AdobeFangsongStd_18, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui->scrHome_dayText, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_letter_space(ui->scrHome_dayText, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_line_space(ui->scrHome_dayText, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui->scrHome_dayText, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui->scrHome_dayText, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui->scrHome_dayText, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui->scrHome_dayText, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui->scrHome_dayText, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui->scrHome_dayText, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_width(ui->scrHome_dayText, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
 
     //The custom code of scrHome.
 
