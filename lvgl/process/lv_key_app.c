@@ -196,10 +196,10 @@ static void lv_edit_select_item(uint8_t item,lv_ui* ui)
            //shut off display color red that default is color black.
            lv_gpro_t.selectItem_add_numbers= 0xfe;
            lv_obj_set_style_img_recolor(ui->scrHome_wifiIcon,lv_color_hex(0x000000),LV_PART_MAIN | LV_STATE_DEFAULT);
-           lv_obj_set_style_img_opa(ui->scrHome_wifiIcon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-           lv_obj_add_flag(ui->scrHome_wifiIcon,LV_OBJ_FLAG_HIDDEN);//wifi icon hidden
+          // lv_obj_set_style_img_opa(ui->scrHome_wifiIcon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+          // lv_obj_add_flag(ui->scrHome_wifiIcon,LV_OBJ_FLAG_HIDDEN);//wifi icon hidden
 
-             lv_obj_set_pos(ui->scrHome_wifiIcon, 15, 10);
+           ///  lv_obj_set_pos(ui->scrHome_wifiIcon, 15, 10);
              
     
        break;
@@ -279,6 +279,8 @@ static void lv_edit_select_item(uint8_t item,lv_ui* ui)
 void check_select_icon_hidden(lv_ui* ui)
 {
 
+   static uint8_t wifi_flag,dry_flag,plasma_flag,mouse_flag;
+
     static uint8_t changed_icon_default =0xff;
 
     if(gpro_t.gTimer_lv_disp_icon_hold > 3){
@@ -312,8 +314,23 @@ void check_select_icon_hidden(lv_ui* ui)
     
        case dry_item:
 
+           function_state= dry_state;
+           dry_flag = function_state();
+           if(dry_flag == open){
+
             //shut off DRY_ICON display color red that default is color black.
-           lv_obj_set_style_img_recolor(ui->scrHome_dryIcon,lv_color_hex(0x000000),LV_PART_MAIN | LV_STATE_DEFAULT);
+             lv_obj_set_style_img_recolor(ui->scrHome_dryIcon,lv_color_hex(0x000000),LV_PART_MAIN | LV_STATE_DEFAULT);
+
+            }
+            else{
+              
+              // lv_obj_add_flag(ui->scrHome_dryIcon,LV_OBJ_FLAG_HIDDEN);
+              lv_obj_set_style_img_recolor_opa(ui->scrHome_dryIcon,0,LV_PART_MAIN | LV_STATE_DEFAULT);
+              lv_obj_set_style_opa(ui->scrHome_dryIcon,LV_OPA_TRANSP,0);//
+              lv_obj_add_flag(ui->scrHome_dryIcon,LV_OBJ_FLAG_HIDDEN);
+
+
+            }
            
           lv_gpro_t.selectItem_add_numbers= 0xff;
        break;
@@ -423,9 +440,10 @@ static void update_wifi_blinkicon_fun(lv_ui* ui)
              wifi_disp_default = wifi_symbol;
              wifi_not++;
              
-            lv_obj_clear_flag(ui->scrHome_wifiIcon,LV_OBJ_FLAG_HIDDEN); //display wifi icon
+          //  lv_obj_clear_flag(ui->scrHome_wifiIcon,LV_OBJ_FLAG_HIDDEN); //display wifi icon
                
            // lv_obj_set_pos(ui->scrHome_wifiIcon, 15, 10);
+           lv_obj_set_style_opa(ui->scrHome_wifiIcon,LV_OPA_COVER,0);
             
         }
    }
@@ -439,8 +457,10 @@ static void update_wifi_blinkicon_fun(lv_ui* ui)
          
         // ui->scrHome_wifiIcon = lv_img_create(ui->scrHome);
        
-         lv_obj_set_style_img_opa(ui->scrHome_wifiIcon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-         lv_obj_add_flag(ui->scrHome_wifiIcon,LV_OBJ_FLAG_HIDDEN);
+         //lv_obj_set_style_img_opa(ui->scrHome_wifiIcon, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+         ///lv_obj_add_flag(ui->scrHome_wifiIcon,LV_OBJ_FLAG_HIDDEN);
+         lv_obj_set_style_img_recolor_opa(ui->scrHome_wifiIcon,0,LV_PART_MAIN | LV_STATE_DEFAULT);
+         lv_obj_set_style_opa(ui->scrHome_wifiIcon,LV_OPA_TRANSP,0);
         
          //lv_obj_set_pos(ui->scrHome_wifiIcon, 15, 10);
 
@@ -449,7 +469,8 @@ static void update_wifi_blinkicon_fun(lv_ui* ui)
       
             switch_flag++;
 
-            lv_obj_add_flag(ui->scrHome_wifiIcon,LV_OBJ_FLAG_HIDDEN);
+            //lv_obj_add_flag(ui->scrHome_wifiIcon,LV_OBJ_FLAG_HIDDEN);
+            lv_obj_set_style_opa(ui->scrHome_wifiIcon,LV_OPA_TRANSP,0);
 
 
 
@@ -469,7 +490,7 @@ static void update_wifi_blinkicon_fun(lv_ui* ui)
          }
         
 
-       }
+    }
     else if(gpro_t.gTimer_lv_disp_wifi_colon > 2){
 
         gpro_t.gTimer_lv_disp_wifi_colon =0;
