@@ -319,15 +319,15 @@ void check_select_icon_hidden(lv_ui* ui)
            if(dry_flag == open){
 
             //shut off DRY_ICON display color red that default is color black.
-             lv_obj_set_style_img_recolor(ui->scrHome_dryIcon,lv_color_hex(0x000000),LV_PART_MAIN | LV_STATE_DEFAULT);
+          //   lv_obj_set_style_img_recolor(ui->scrHome_dryIcon,lv_color_hex(0x000000),LV_PART_MAIN | LV_STATE_DEFAULT);
 
             }
             else{
               
               // lv_obj_add_flag(ui->scrHome_dryIcon,LV_OBJ_FLAG_HIDDEN);
-              lv_obj_set_style_img_recolor_opa(ui->scrHome_dryIcon,0,LV_PART_MAIN | LV_STATE_DEFAULT);
-              lv_obj_set_style_opa(ui->scrHome_dryIcon,LV_OPA_TRANSP,0);//
-              lv_obj_add_flag(ui->scrHome_dryIcon,LV_OBJ_FLAG_HIDDEN);
+//              lv_obj_set_style_img_recolor_opa(ui->scrHome_dryIcon,0,LV_PART_MAIN | LV_STATE_DEFAULT);
+//              lv_obj_set_style_opa(ui->scrHome_dryIcon,LV_OPA_TRANSP,0);//
+//              lv_obj_add_flag(ui->scrHome_dryIcon,LV_OBJ_FLAG_HIDDEN);
 
 
             }

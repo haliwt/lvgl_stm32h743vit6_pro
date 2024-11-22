@@ -26,6 +26,9 @@ typedef struct _lv_gpro{
     
 
    uint8_t lv_seletc_time;
+   uint8_t lv_model_key;
+   uint8_t lv_up_key;
+   uint8_t lv_down_key;
 
    uint8_t selectItem_add_numbers;
 

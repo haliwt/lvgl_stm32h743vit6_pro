@@ -98,56 +98,67 @@ static void button_init(lv_ui *ui)
 void check_button_state(lv_ui *ui) 
 {
 
-// static uint8_t key3_high_pressed,key3_low_pressed,key3_default= 0xff,key3_off_default=0xff;
-// static uint8_t key4_high_pressed,key4_low_pressed,key4_default= 0xff,key4_off_default=0xff;
-// static uint8_t key5_high_pressed,key5_low_pressed,key5_default= 0xff,key5_off_default=0xff;
+      
 
-  
- //KEY3-SELECT KEY 
-  if(KEY3 == GPIO_PIN_RESET){ // 替换为实际的GPIO端口和引脚号
-        // 检测到按键按下
-        osDelay(20);
-        
-   if(KEY3==GPIO_PIN_RESET){ //if (HAL_GetTick() - last_debounce_time > debounce_delay) {
+    if(KEY_MODE==0){
           
+         lv_gpro_t.lv_model_key =1;
           
-               gpro_t.key_select_item_enable = 1;
-               gpro_t.gTimer_lv_disp_icon_hold=0;
-               lv_gpro_t.lv_seletc_time++;
-               lv_key_select_item(lv_gpro_t.lv_seletc_time,ui);
-               gpro_t.gTimer_lv_disp_icon_hold=0;
-               
-          
-    }
-   } 
-   else if(KEY_UP == GPIO_PIN_RESET){ // 替换为实际的GPIO端口和引脚号
-        // 检测到按键按下
-        osDelay(10);
+       
+      }
+     else if(KEY_UP==0){
+
+        lv_gpro_t.lv_up_key = 1;
+       
+     }
+     else if(KEY_DOWN==0){
         
-   if(KEY_UP==GPIO_PIN_RESET){ //if (HAL_GetTick() - last_debounce_time > debounce_delay) {
-         
-   
-        gpro_t.gTimer_lv_disp_icon_hold=0;
-        keySelectItem_doing(lv_gpro_t.lv_seletc_time,ui);
-        
-    }
-  }
-  else if(KEY_DOWN == GPIO_PIN_RESET){ // 替换为实际的GPIO端口和引脚号
-        // 检测到按键按下
-        osDelay(10);
-        
-   if(KEY_DOWN==GPIO_PIN_RESET){ //if (HAL_GetTick() - last_debounce_time > debounce_delay) {
-        
-           
-               gpro_t.gTimer_lv_disp_icon_hold=0;
-               keySelectItem_doing(lv_gpro_t.lv_seletc_time,ui);
+         lv_gpro_t.lv_down_key=1;
              
-           
-        } 
-    }
+     
+     }
   
 
 }
+
+void run_button_cmd(lv_ui* ui)
+{
+    if(KEY_MODE == 1 && lv_gpro_t.lv_model_key == 1){
+               lv_gpro_t.lv_model_key++;
+
+
+               buzzer_sound();      
+              gpro_t.key_select_item_enable = 1;
+              gpro_t.gTimer_lv_disp_icon_hold=0;
+              lv_gpro_t.lv_seletc_time++;
+              lv_key_select_item(lv_gpro_t.lv_seletc_time,ui);
+              gpro_t.gTimer_lv_disp_icon_hold=0;
+              
+
+
+    }
+    else if(KEY_UP == 1 && lv_gpro_t.lv_up_key == 1){
+
+         lv_gpro_t.lv_up_key++;
+
+             buzzer_sound();   
+            gpro_t.gTimer_lv_disp_icon_hold=0;
+            keySelectItem_doing(lv_gpro_t.lv_seletc_time,ui);
+
+     }
+    else if(KEY_DOWN == 1 && lv_gpro_t.lv_down_key == 1){
+
+         lv_gpro_t.lv_down_key++;
+
+             buzzer_sound();   
+            gpro_t.gTimer_lv_disp_icon_hold=0;
+            keySelectItem_doing(lv_gpro_t.lv_seletc_time,ui);
+
+     }
+
+
+}
+
 /****************************************************************************************
 *
 *Function Name:static void keySelectItem_doning(uint8_t select,lv_ui* ui)
@@ -180,19 +191,26 @@ static void keySelectItem_doing(uint8_t select,lv_ui* ui)
            if(dry_flag == open){
     
                gpro_t.dry_open = close;
-              // lv_obj_add_flag(ui->scrHome_dryIcon,LV_OBJ_FLAG_HIDDEN);
-              lv_obj_set_style_img_recolor_opa(ui->scrHome_dryIcon,0,LV_PART_MAIN | LV_STATE_DEFAULT);
-              lv_obj_set_style_opa(ui->scrHome_dryIcon,LV_OPA_TRANSP,0);//
-              lv_obj_add_flag(ui->scrHome_dryIcon,LV_OBJ_FLAG_HIDDEN);
+               ui->scrHome_dryIcon= lv_img_create(ui->scrHome);
+               lv_img_set_src(ui->scrHome_dryIcon,NULL);
+               lv_obj_set_pos(ui->scrHome_dryIcon, 48, 10);
+               lv_obj_add_flag(ui->scrHome_dryIcon,LV_OBJ_FLAG_HIDDEN);
+               
+              
+               lv_obj_invalidate(ui->scrHome);
+               osDelay(2000);
+
+             
             }
             else{
     
                gpro_t.dry_open = open;
                //lv_obj_clear_flag(ui->scrHome_dryIcon,LV_OBJ_FLAG_HIDDEN);
-               lv_obj_set_style_opa(ui->scrHome_dryIcon,LV_OPA_COVER,0);
-               lv_obj_set_style_img_recolor_opa(ui->scrHome_dryIcon,255,LV_PART_MAIN | LV_STATE_DEFAULT);
+               
+               //lv_obj_set_style_opa(ui->scrHome_dryIcon,LV_OPA_COVER,0);
+              /// lv_obj_set_style_img_recolor_opa(ui->scrHome_dryIcon,255,LV_PART_MAIN | LV_STATE_DEFAULT);
                //lv_obj_clear_flag(ui->scrHome_dryIcon,LV_OBJ_FLAG_HIDDEN);
-                lv_obj_add_flag(ui->scrHome_dryIcon,LV_OBJ_FLAG_HIDDEN);
+               // lv_obj_add_flag(ui->scrHome_dryIcon,LV_OBJ_FLAG_HIDDEN);
             }
 
     break;

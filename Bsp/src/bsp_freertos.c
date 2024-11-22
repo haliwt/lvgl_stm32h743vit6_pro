@@ -28,7 +28,7 @@
 											函数声明
 **********************************************************************************************************
 */
-
+static void vTaskKey(void *pvParameters);
 static void vTaskMsgPro(void *pvParameters);
 static void vTaskStart(void *pvParameters);
 static void AppTaskCreate (void);
@@ -39,9 +39,13 @@ static void AppTaskCreate (void);
 											变量声明
 **********************************************************************************************************
 */
+static TaskHandle_t xHandleTaskKey = NULL;
 
 static TaskHandle_t xHandleTaskMsgPro = NULL;
 static TaskHandle_t xHandleTaskStart = NULL;
+
+
+uint8_t keyvalue;
 
 
 void freeRTOS_handler(void)
@@ -55,6 +59,30 @@ void freeRTOS_handler(void)
     vTaskStartScheduler();
 
 }
+
+/**********************************************************************************************************
+*	函 数 名: vTaskStart
+*	功能说明: 启动任务，也就是最高优先级任务，这里用作按键扫描。
+*	形    参: pvParameters 是在创建该任务时传递的形参
+*	返 回 值: 无
+*   优 先 级: 4  
+**********************************************************************************************************/
+static void vTaskKey(void *pvParameters)
+{
+   
+    while(1)
+    {
+
+     // keyvalue =  key_scan(0);
+     
+      check_button_state(&guider_ui) ;
+      check_select_icon_hidden(&guider_ui);
+      run_button_cmd(&guider_ui);
+      
+      vTaskDelay(20);
+    }
+}
+
 
 /*
 *********************************************************************************************************
@@ -71,12 +99,10 @@ static void vTaskMsgPro(void *pvParameters)
     while(1)
     {
 	    lv_timer_handler();
-        update_works_time(&guider_ui);
-        check_button_state(&guider_ui);
         
-        check_select_icon_hidden(&guider_ui);
+
+        
        
-     //   update_wifi_blinkicon_fun(&guider_ui);
         vTaskDelay(5);
       
 		
@@ -102,9 +128,9 @@ static void vTaskStart(void *pvParameters)
       
       lv_dispTempHumidity_value(&guider_ui);
 
-      // update_wifi_blinkicon_fun(&guider_ui);
+      update_works_time(&guider_ui);
     
-      vTaskDelay(1000);
+      vTaskDelay(300);
     }
 }
 
@@ -120,6 +146,12 @@ static void vTaskStart(void *pvParameters)
 */
 static void AppTaskCreate (void)
 {
+   xTaskCreate(vTaskKey,            /* 任务函数  */
+                     "vTaskKey",          /* 任务名    */
+                     128,                   /* 任务栈大小，单位word，也就是4字节 */
+                     NULL,                  /* 任务参数  */
+                     3,                     /* 任务优先级*/
+                     &xHandleTaskKey);   /* 任务句柄  */
 
 	
 	

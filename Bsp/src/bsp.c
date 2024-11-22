@@ -23,6 +23,7 @@ void triggerCallback(uint8_t data) {
 void bsp_init(void)
 {
    EE_IIC_Init();
+   buzzer_init();
    gpro_t.wifi_link_success =0;
    gpro_t.dry_open = open;
    gpro_t.plasma_open = open;

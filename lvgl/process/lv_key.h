@@ -17,6 +17,7 @@ void lv_key_init(void);
 void lv_hardware_init(lv_ui *ui);
 
 
+void run_button_cmd(lv_ui* ui);
 
 
 

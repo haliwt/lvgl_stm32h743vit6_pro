@@ -86,10 +86,16 @@ void Error_Handler(void);
 
 #define CMD_DIP_Pin GPIO_PIN_1
 #define CMD_DIP_GPIO_Port GPIOB
+
 #define TFT_RESET_Pin GPIO_PIN_2
 #define TFT_RESET_GPIO_Port GPIOB
-#define CS_Pin GPIO_PIN_12
-#define CS_GPIO_Port GPIOB
+
+#define CS_Pin                          GPIO_PIN_12
+#define CS_GPIO_Port                    GPIOB
+
+
+#define TIM2_CH3_BEEP_Pin GPIO_PIN_2
+#define TIM2_CH3_BEEP_GPIO_Port GPIOA
 
 /* USER CODE BEGIN Private defines */
 

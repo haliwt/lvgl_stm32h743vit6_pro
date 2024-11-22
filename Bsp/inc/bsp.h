@@ -6,6 +6,7 @@
 
 #include "usart.h"
 #include "i2c.h"
+#include "tim.h"
 
 
 
@@ -16,6 +17,7 @@
 #include "bsp_tft_app.h"
 #include "bsp_led.h"
 #include "bsp_key.h"
+#include "bsp_buzzer.h"
 #include "bsp_freertos.h"
 #include "bsp_i2c_app.h"
 #include "bsp_gxhtc3.h"
