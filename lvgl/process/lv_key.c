@@ -97,26 +97,51 @@ static void button_init(lv_ui *ui)
 ****************************************************************************************/
 void check_button_state(lv_ui *ui) 
 {
-
+    if(KEY_MODE == GPIO_PIN_RESET){ // 替换为实际的GPIO端口和引脚号
+        // 检测到按键按下
+        osDelay(20);
+        
+   if(KEY_MODE==GPIO_PIN_RESET){ //if (HAL_GetTick() - last_debounce_time > debounce_delay) {
+          
+               buzzer_sound();
+               gpro_t.key_select_item_enable = 1;
+               gpro_t.gTimer_lv_disp_icon_hold=0;
+               lv_gpro_t.lv_seletc_time++;
+               lv_key_select_item(lv_gpro_t.lv_seletc_time,ui);
+               gpro_t.gTimer_lv_disp_icon_hold=0;
+               
+          
+    }
+   } 
+   else if(KEY_UP == GPIO_PIN_RESET){ // 替换为实际的GPIO端口和引脚号
+        // 检测到按键按下
+        osDelay(20);
+        
+   if(KEY_UP==GPIO_PIN_RESET){ //if (HAL_GetTick() - last_debounce_time > debounce_delay) {
+         
+        buzzer_sound();
+        gpro_t.gTimer_lv_disp_icon_hold=0;
+        keySelectItem_doing(lv_gpro_t.lv_seletc_time,ui);
+        
+    }
+  }
+  else if(KEY_DOWN == GPIO_PIN_RESET){ // 替换为实际的GPIO端口和引脚号
+        // 检测到按键按下
+        osDelay(20);
+        
+   if(KEY_DOWN==GPIO_PIN_RESET){ //if (HAL_GetTick() - last_debounce_time > debounce_delay) {
+        
+               buzzer_sound();
+               gpro_t.gTimer_lv_disp_icon_hold=0;
+               keySelectItem_doing(lv_gpro_t.lv_seletc_time,ui);
+             
+           
+        } 
+    }
+  
       
 
-    if(KEY_MODE==0){
-          
-         lv_gpro_t.lv_model_key =1;
-          
-       
-      }
-     else if(KEY_UP==0){
-
-        lv_gpro_t.lv_up_key = 1;
-       
-     }
-     else if(KEY_DOWN==0){
-        
-         lv_gpro_t.lv_down_key=1;
-             
-     
-     }
+  
   
 
 }

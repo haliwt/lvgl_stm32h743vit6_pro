@@ -28,7 +28,7 @@
 											函数声明
 **********************************************************************************************************
 */
-static void vTaskKey(void *pvParameters);
+//static void vTaskKey(void *pvParameters);
 static void vTaskMsgPro(void *pvParameters);
 static void vTaskStart(void *pvParameters);
 static void AppTaskCreate (void);
@@ -39,7 +39,7 @@ static void AppTaskCreate (void);
 											变量声明
 **********************************************************************************************************
 */
-static TaskHandle_t xHandleTaskKey = NULL;
+//static TaskHandle_t xHandleTaskKey = NULL;
 
 static TaskHandle_t xHandleTaskMsgPro = NULL;
 static TaskHandle_t xHandleTaskStart = NULL;
@@ -67,21 +67,21 @@ void freeRTOS_handler(void)
 *	返 回 值: 无
 *   优 先 级: 4  
 **********************************************************************************************************/
-static void vTaskKey(void *pvParameters)
-{
-   
-    while(1)
-    {
-
-     // keyvalue =  key_scan(0);
-     
-      check_button_state(&guider_ui) ;
-      check_select_icon_hidden(&guider_ui);
-      run_button_cmd(&guider_ui);
-      
-      vTaskDelay(20);
-    }
-}
+//static void vTaskKey(void *pvParameters)
+//{
+//   
+//    while(1)
+//    {
+//
+//     // keyvalue =  key_scan(0);
+//     
+//      check_button_state(&guider_ui) ;
+//      check_select_icon_hidden(&guider_ui);
+//     // run_button_cmd(&guider_ui);
+//      
+//      vTaskDelay(20);
+//    }
+//}
 
 
 /*
@@ -100,8 +100,9 @@ static void vTaskMsgPro(void *pvParameters)
     {
 	    lv_timer_handler();
         
-
-        
+        check_button_state(&guider_ui) ;
+        check_select_icon_hidden(&guider_ui);
+        update_works_time(&guider_ui);
        
         vTaskDelay(5);
       
@@ -128,9 +129,9 @@ static void vTaskStart(void *pvParameters)
       
       lv_dispTempHumidity_value(&guider_ui);
 
-      update_works_time(&guider_ui);
+     // update_works_time(&guider_ui);
     
-      vTaskDelay(300);
+      vTaskDelay(1000);
     }
 }
 
@@ -146,12 +147,12 @@ static void vTaskStart(void *pvParameters)
 */
 static void AppTaskCreate (void)
 {
-   xTaskCreate(vTaskKey,            /* 任务函数  */
-                     "vTaskKey",          /* 任务名    */
-                     128,                   /* 任务栈大小，单位word，也就是4字节 */
-                     NULL,                  /* 任务参数  */
-                     3,                     /* 任务优先级*/
-                     &xHandleTaskKey);   /* 任务句柄  */
+//   xTaskCreate(vTaskKey,            /* 任务函数  */
+//                     "vTaskKey",          /* 任务名    */
+//                     128,                   /* 任务栈大小，单位word，也就是4字节 */
+//                     NULL,                  /* 任务参数  */
+//                     3,                     /* 任务优先级*/
+//                     &xHandleTaskKey);   /* 任务句柄  */
 
 	
 	
